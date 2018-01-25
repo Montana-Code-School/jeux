@@ -63,7 +63,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 
 ## Standards
 ---
-###Github
+### Github
 
 * No more than 3 branches
   * main working branch
@@ -87,7 +87,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 
 ## Deadlines
 ---
- updated later
+ Update this later
 
 ### User Stories
 populate with a few different users?
