@@ -5,8 +5,9 @@ php:
   - 7.0
 
 before_script:
+  - cp .env.travis .env
   - composer self-update
-  - composer install 
+  - composer install
   - php artisan key:generate
 
 script:
