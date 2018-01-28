@@ -85,9 +85,37 @@ Jeux is a handy site that lets you and your friends share games with one another
   * Ask for help
 
 ## <a name="Deadlines"></a> Deadlines
-
- Update this later
-
+  * Thurs. February 1st:
+      - Finish documentation and planning.
+      - Begin building database.
+      - Begin building user view.
+  * Thurs. February 8th:
+      - Database tables created.
+      - Begin populating.
+      - Begin Authentication.
+  * IM WEEKEND:
+      - Testing focus.
+      - Frontend development with vue.
+      - Connect DB to front.
+  * Thurs. February 15th:
+      - Continue testing and front end development.
+  * Thurs. February 22nd: -HALFWAY POINT-
+      - DB connected to Frontend.
+      - All views created.
+  * Thurs. March 1st:
+      - Style frontend.
+  * IM WEEKEND:
+      - Launch to Digital Ocean.
+  * Thurs. March 8th:
+      - Add any remaining feasible features.
+  * Thurs. March 15th:
+      - Finishing touches.
+  * Thurs. March 22nd:
+      - Project DUE Date.
+  * Thurs. March 29th:
+      - Presentation practice.
+  * Thurs. April 5th:
+      - Demo Day!
 ## <a name="User-Stories"></a> User Stories
 populate with a few different users?
 Jill, 14, female
