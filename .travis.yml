@@ -1,0 +1,21 @@
+language: php
+
+php:
+  
+  - 7.0
+
+before_script:
+  - cp .env.travis .env
+  - composer self-update
+  - composer install
+  - php artisan key:generate
+
+script:
+  - vendor/bin/phpunit
+
+services:
+  - mysql
+
+# this will create a called testing if there is no database called testing
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS testing;'
