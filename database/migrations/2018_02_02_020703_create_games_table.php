@@ -16,11 +16,12 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->date('year')->nullable();
+            $table->string('image')->default('gameAvatar.jpg');
+            $table->integer('year')->nullable();
             $table->integer('player_count')->nullable();
             $table->integer('min_age')->nullable();
-            $table->time('min_play')->nullable();
-            $table->time('max_play')->nullable();
+            $table->integer('min_play')->nullable();
+            $table->integer('max_play')->nullable();
             $table->mediumText('description')->nullable();
             $table->boolean('instructions')->nullable();
             $table->timestamps();
