@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+      /* Only use this code if you want to populate one user*/
         // DB::table('users')->insert([
         //   'username' => str_random(10),
         //   'email' => str_random(10).'@gmail.com',
