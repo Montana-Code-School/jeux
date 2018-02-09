@@ -13,3 +13,28 @@
   height: 800px;
   background-color: blue;
 }
+
+.container {
+  margin-top: 70px !important;
+}
+
+.user-profile {
+  background-color: orange;
+  display: flex;
+  max-height: 300px;
+  justify-content: space-around;
+  img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .user-info {
+    padding: 20px;
+    width: 100%;
+    h2 {
+      margin-top: 0;
+    }
+  }
+  .glyphicon {
+    font-size: 4em;
+  }
+}
