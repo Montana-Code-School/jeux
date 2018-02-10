@@ -8388,3 +8388,21 @@ button.close {
   font-size: 4em;
 }
 
+.navbar-nav li a h1 {
+  margin-top: -7px;
+  margin-bottom: 0px;
+  font-size: 30px;
+}
+
+.icons {
+  margin-top: 7px !important;
+}
+
+.icons li {
+  display: inline-block;
+}
+
+.dropdown {
+  position: relative;
+}
+
