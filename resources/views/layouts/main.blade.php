@@ -7,6 +7,17 @@
     <script src="js/bootstrap.js" charset="utf-8"></script>
   </head>
   <body>
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ route('logout') }}">Logout</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endauth
+        </div>
+    @endif
     <div class="menu">
       @component("partials.navbar")
         something went wrong
