@@ -13,7 +13,10 @@
       @endcomponent
     </div>
     <div class="container">
-      <div class="currentPage">
+      @yield("currentpage")
+      @yield("userprofile")
+      @yield("content")
+      <!-- <div class="currentPage">
 
       </div>
       @yield("userinfo")
@@ -23,7 +26,7 @@
         </div>
         <div class="filter">
 
-        </div>
+        </div> -->
       </div>
     </div>
 

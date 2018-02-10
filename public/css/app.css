@@ -8350,6 +8350,10 @@ button.close {
   }
 }
 
+body {
+  padding: 60px;
+}
+
 .test {
   width: 400px;
   height: 800px;
