@@ -16,7 +16,7 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('game_id')->unsigned();
-            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
+            //$table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->integer('borrower_id')->unsigned();
             $table->integer('owner_id')->unsigned();
             $table->boolean('borrowed');
