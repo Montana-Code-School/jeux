@@ -10,7 +10,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 - [What's inside (Technologies)](#What's-inside-Technologies)
 - [Meet the team](#Meet-the-team)
 - [File Structure](#File-Structure)
-- [Standards](#Standards)
+- [Database](#Database)
 - [Deadlines](#Deadlines)
 - [User Stories](#User-Story)
 
@@ -41,6 +41,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 * **Keesha**
   * Routes
   * Testing
+  * Backend/Database
   * Git master
 * **Kelsey**
   * Testing
@@ -95,7 +96,7 @@ Jeux is a handy site that lets you and your friends share games with one another
       - Begin Authentication.
   * IM WEEKEND:
       - Testing focus.
-      - Frontend development with vue.
+      - Frontend development with Laravel, Bootstrap, and paper.js.
       - Connect DB to front.
   * Thurs. February 15th:
       - Continue testing and front end development.
@@ -117,8 +118,7 @@ Jeux is a handy site that lets you and your friends share games with one another
   * Thurs. April 5th:
       - Demo Day!
 ## <a name="User-Stories"></a> User Stories
-populate with a few different users?
-Jill, 14, female
-Ben, 38, Male
-Kendra, 25, Female
-Frank, 17, Male
+  * Name:Jill Ben Kendra-Frank
+  * Username: Frankie5
+  * Password: Password
+  * Email: jbkFrankie@email.com
