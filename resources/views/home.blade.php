@@ -1,4 +1,12 @@
 @extends('layouts.main')
-@section('games')
-<p>some words</p>
+@section('currentpage')
+  <h2 class="lead">Home</h2>
+@endsection
+@section('content')
+
+  @component('partials.gamecontent')
+    <p>
+      oops
+    </p>
+  @endcomponent
 @endsection
