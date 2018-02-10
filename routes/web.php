@@ -23,6 +23,8 @@ Route::get('/user', function () {
     return view('user');
 });
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
