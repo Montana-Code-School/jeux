@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/app.css">
     <title></title>
+    <script src="js/bootstrap.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="menu">
@@ -18,9 +19,7 @@
       <!-- <div class="currentPage">
 
       </div>
-      <div class="userProfile">
-
-      </div>
+      @yield("userinfo")
       <div class="content">
         <div class="boardGames">
           @yield("games")
