@@ -1,9 +1,9 @@
 @extends("layouts.main")
 
 @section("currentpage")
-  <p class="lead">
+  <h2 class="lead">
     Browse
-  </p>
+  </h2>
 @endsection
 
 @section("content")
