@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('currentpage')
-  <h2 class="lead">Home</h2>
+  <h2 class="lead">My Games</h2>
 @endsection
 @section('content')
 

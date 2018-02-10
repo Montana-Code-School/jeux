@@ -6,13 +6,13 @@
       <div class="col-md-4" >
         <ul class="nav navbar-nav">
           <li>
-            <a href="#"><h1>Jeux</h1></a>
+            <a href="{{ route('logout') }}"><h1>Jeux</h1></a>
           </li>
-          <li>
-            <a href="#">My Games</a>
+          <li {{ (Request::is('home') ? 'class=active' : '') }}>
+            <a href="{{ route('home') }}">My Games</a>
           </li>
-          <li>
-            <a href="#">Browse</a>
+          <li {{ (Request::is('browse') ? 'class=active' : '') }}>
+            <a href="{{ route('browse') }}">Browse</a>
           </li>
         </ul>
       </div>
@@ -95,17 +95,22 @@
             </li>
             <!-- USER SECTION -->
             <li>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  <!-- TODO: insert user avatar -->
-                  Username
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Settings</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </div>
+              @auth
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <!-- TODO: insert user avatar -->
+                    Username
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                  </ul>
+                </div>
+              @endauth
+              @guest
+                  <a class="btn btn-default" href="{{ route('login') }}">Login</a>
+              @endguest
             </li>
           </ul>
       </div>

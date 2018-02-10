@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Route::get('/browse', function () {
     return view('browse');
-});
+})->name('browse');
 
 Route::get('/user', function () {
     return view('user');
 });
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Auth::routes();
 
