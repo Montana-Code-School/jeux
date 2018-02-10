@@ -15,9 +15,15 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/browse', function () {
+    return view('browse');
+});
+
 Route::get('/user', function () {
     return view('user');
 });
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
 
