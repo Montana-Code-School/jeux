@@ -8406,12 +8406,15 @@ body {
   display: inline-block;
 }
 
-.friends-content .user-profile {
-  width: 10px;
+.git dropdown {
+  position: relative;
 }
 
-.dropdown {
-  position: relative;
+.notification-drop {
+  left: -240px;
+  width: 442px;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 .game-container {
