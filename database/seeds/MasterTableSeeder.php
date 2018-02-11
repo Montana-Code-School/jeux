@@ -12,7 +12,7 @@ class MasterTableSeeder extends Seeder
     public function run()
     {
       $numUser = 100;
-      $numGames = 50;
+      $numGames = 100;
       $date = date('Y-m-d, H:i:s');
       $dateReturn = date('Y-m-d', strtotime("+30 days"));
       /*
