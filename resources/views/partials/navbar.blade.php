@@ -30,13 +30,12 @@
           <ul class="icons pull-right">
             <!-- FRIENDS SECTION -->
             <li>
-              <div class="dropdown">
+              <div class="dropdown friends-content">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li class="dropdown-header">Friends</li>
-                </ul>
+                @component("partials.friends")
+                @endcomponent
               </div>
             </li>
             <!-- NOTIFICATIONS SECTION -->
@@ -45,52 +44,8 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </button>
-                <ul class="dropdown-menu notification-drop" aria-labelledby="dropdownMenu2">
-                  <li>
-                    <div>
-                      <img src="http://loremflickr.com/50/50"> <strong>Bob</strong> wants to borrow: <span> PANDEMIC LEGACY </span>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                      </button>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <img src="http://loremflickr.com/50/50"> <strong>Nancy</strong> wants to borrow: <span> PANDEMIC LEGACY </span>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                      </button>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <img src="http://loremflickr.com/50/50"> <strong>Kelly</strong> wants to borrow: <span> PANDEMIC LEGACY </span>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                      </button>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <img src="http://loremflickr.com/50/50"> <strong>Hank</strong> wants to borrow: <span> PANDEMIC LEGACY </span>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                      </button>
-                      <button class="btn btn-default" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </li>
-                </ul>
+                @component("partials.notifications")
+                @endcomponent
               </div>
             </li>
             <!-- USER SECTION -->
