@@ -4,6 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Game::class, function (Faker $faker) {
     return [
+      //find word faker
         'name' => $faker->realText(50),
         'year' => $faker->year,
         'player_count' => rand(1,10),

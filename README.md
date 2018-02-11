@@ -11,6 +11,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 - [Meet the team](#Meet-the-team)
 - [File Structure](#File-Structure)
 - [Standards](#Standards)
+- [Database](#Database)
 - [Deadlines](#Deadlines)
 - [User Stories](#User-Story)
 
@@ -41,6 +42,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 * **Keesha**
   * Routes
   * Testing
+  * Backend/Database
   * Git master
 * **Kelsey**
   * Testing
@@ -57,10 +59,44 @@ Jeux is a handy site that lets you and your friends share games with one another
 
 ## <a name="File-Structure"></a> File Structure
 ```
-    Update this later
+/jeux
+|
+|__app
+|   |__Console
+|   |__Exceptions
+|   |__Http
+|   |__Providers
+|      Game.Php
+|      Inventory.php
+|      User.php
+|__bootstrap
+|__config
+|__database
+|   |__factories
+|   |__migrations
+|   |__seeds
+|__public
+|   |__css
+|   |__fonts
+|   |__images
+|   |__js
+|__resources
+|   |__assets
+|   |__lang
+|   |__views
+|__routes
+|__storage
+|   |__app
+|   |__framework
+|   |__logs
+|__testing
+|   |__Feature
+|   |__Unit
+| dataBaseSpecs.md
+| README.md
 ```
+### <a name="Standards"></a> Standards
 
-## <a name="Standards"></a> Standards
 
 ### Github
 
@@ -95,7 +131,7 @@ Jeux is a handy site that lets you and your friends share games with one another
       - Begin Authentication.
   * IM WEEKEND:
       - Testing focus.
-      - Frontend development with vue.
+      - Frontend development with Laravel, Bootstrap, and paper.js.
       - Connect DB to front.
   * Thurs. February 15th:
       - Continue testing and front end development.
@@ -114,11 +150,10 @@ Jeux is a handy site that lets you and your friends share games with one another
       - Project DUE Date.
   * Thurs. March 29th:
       - Presentation practice.
-  * Thurs. April 5th:
+  * Thurs. April 3rd:
       - Demo Day!
 ## <a name="User-Stories"></a> User Stories
-populate with a few different users?
-Jill, 14, female
-Ben, 38, Male
-Kendra, 25, Female
-Frank, 17, Male
+  * Name:Jill Ben Kendra-Frank
+  * Username: Frankie5
+  * Password: Password
+  * Email: jbkFrankie@email.com
