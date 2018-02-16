@@ -98,3 +98,38 @@ body {
     }
   }
 }
+
+.game-full {
+    width: 400px;
+    width: 100%;
+    h2 {
+      margin: 0px 0px 15px 0px;
+    }
+    .game-content {
+      display: flex;
+      width: 100%;
+      img {
+        width: 250px;
+        height: 250px;
+      }
+      .game-info {
+        padding-left: 25px;
+        h4 {
+          margin-top: 0;
+        }
+      }
+    }
+    .game-footer {
+      display:flex;
+      justify-content: flex-end;
+      button {
+        margin-top: 15px;
+      }
+    }
+}
+
+.lightbox {
+  max-width: 1000px;
+  min-width: 600px;
+  display: none;
+}
