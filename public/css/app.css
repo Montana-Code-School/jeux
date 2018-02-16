@@ -8447,3 +8447,51 @@ body {
   text-align: center;
 }
 
+.game-full {
+  width: 400px;
+  width: 100%;
+}
+
+.game-full h2 {
+  margin: 0px 0px 15px 0px;
+}
+
+.game-full .game-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.game-full .game-content img {
+  width: 250px;
+  height: 250px;
+}
+
+.game-full .game-content .game-info {
+  padding-left: 25px;
+}
+
+.game-full .game-content .game-info h4 {
+  margin-top: 0;
+}
+
+.game-full .game-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.game-full .game-footer button {
+  margin-top: 15px;
+}
+
+.lightbox {
+  max-width: 1000px;
+  min-width: 600px;
+  display: none;
+}
+

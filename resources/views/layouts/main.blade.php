@@ -14,6 +14,9 @@
     <script src="{{ asset('js/bootstrap.js') }}" charset="utf-8"></script>
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('js/jquery.flip.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/featherlight.css') }}">
+    <script src="{{ asset('js/featherlight.js') }}" charset="utf-8"></script>
   </head>
   <body>
     <!-- @if (Route::has('login'))
