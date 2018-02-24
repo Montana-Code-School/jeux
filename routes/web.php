@@ -15,13 +15,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/browse', function () {
-    return view('browse');
-})->name('browse');
+Route::get('/browse', 'GameController@index')->name('browse');
 
 Route::get('/user', function () {
     return view('user');
 });
+
+Route::get('/users/{username}', 'UserController@show');
+
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 

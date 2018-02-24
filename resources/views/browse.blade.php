@@ -9,6 +9,13 @@
 @section("content")
   <div class="game-gallery">
 
+    <ul>
+      @foreach ($games as $game)
+        <li>{{ $game->name }}</li>
+      @endforeach
+    </ul>
+
+
   </div>
   <div class="filter">
 
