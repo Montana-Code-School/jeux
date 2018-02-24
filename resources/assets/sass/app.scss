@@ -1,12 +1,12 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
+//$icon-font-path: '/fonts/bootstrap/';
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
 
 body {
   padding: 60px;

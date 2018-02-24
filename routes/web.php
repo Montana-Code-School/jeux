@@ -28,3 +28,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/settings', 'UserController@showSettings')->name('settings');
+
+Route::get('/searchresults', 'HomeController@showSearchResults')->name('searchresults');

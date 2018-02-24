@@ -22,7 +22,7 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default" a href="{{ route('searchresults')}}">Submit</button>
         </form>
       </div>
       <!-- Third Column: CHECK -->
@@ -58,7 +58,7 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li><a href="{{ route('settings')}}">Settings</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                   </ul>
                 </div>
