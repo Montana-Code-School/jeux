@@ -1,3 +1,4 @@
+
 <div class="user-profile-container">
   <div class="user-profile">
     <img src="images/avatar.png" alt="example Avatar" />
@@ -15,3 +16,5 @@
     </div>
   </div>
 </div>
+
+@show
