@@ -1,18 +1,20 @@
-@extends('layouts.main')
-@extends('partials.profile')
+@extends('layouts.one-column')
 
-@section('currentpage')
-  <h2 class="lead">User Profile</h2>
+@section('pageheading')
+<h2 class="lead">User Profile</h2>
 @endsection
 
-@section('profile')
-  ['myVar'=>$user]
-@stop
-
-@section('content')
-  <p>
-    User Page
-
-    {{ $user[0] }}
-  </p>
+@section('userprofile')
+  @component('partials.profile')<!--this doesn't exist yet -->
+  @endcomponent
 @endsection
+
+@section('left-column')
+  @component('partials.index')
+  @endcomponent
+@endsection
+
+<!-- @section('right-column')
+  @component(partials.filter)
+  @endcomponent
+@endsection -->

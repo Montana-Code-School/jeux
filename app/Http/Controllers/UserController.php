@@ -105,4 +105,9 @@ class UserController extends Controller
 
       $user->delete();
     }
+
+
+    public function showSettings() {
+        return view('settings');
+    }
 }

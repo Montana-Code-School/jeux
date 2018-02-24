@@ -26,4 +26,8 @@ class HomeController extends Controller
       //$user->notify(new FriendRequest($friend));
        return view('home');
     }
+
+    public function showSearchResults() {
+        return view('searchresults');
+    }
 }

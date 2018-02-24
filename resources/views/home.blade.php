@@ -1,12 +1,9 @@
-@extends('layouts.main')
-@section('currentpage')
+@extends('layouts.two-column')
+@section('pageheading')
   <h2 class="lead">My Games</h2>
 @endsection
-@section('content')
-
-  @component('partials.gamecontent')
-    <p>
+@section('left-column')
+    @component('partials.index')
       oops
-    </p>
-  @endcomponent
+    @endcomponent
 @endsection

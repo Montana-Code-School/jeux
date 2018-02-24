@@ -152,7 +152,7 @@ Jeux is a handy site that lets you and your friends share games with one another
       - Project DUE Date.
   * Thurs. March 29th:
       - Presentation practice.
-  * Thurs. April 3rd:
+  * Tues. April 3rd:
       - Demo Day!
 ## <a name="User-Stories"></a> User Stories
   * Name:Jill Ben Kendra-Frank
