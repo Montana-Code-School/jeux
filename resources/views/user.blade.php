@@ -1,11 +1,12 @@
 @extends('layouts.main')
+@extends('partials.profile')
 
 @section('currentpage')
   <h2 class="lead">User Profile</h2>
 @endsection
 
 @section('profile')
-  @include('partials.profile', ['myVar'=>$user])
+  ['myVar'=>$user]
 @stop
 
 @section('content')

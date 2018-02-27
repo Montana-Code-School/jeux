@@ -24,7 +24,8 @@ class MasterTableSeeder extends Seeder
           'email' => 'jbkFrankie@email.com',
           'password' => bcrypt('password'),
           'name' => 'Jill Ben Kendra-Frank',
-          'token' => bcrypt('token')
+          'token' => bcrypt('token'),
+          'notification' => true
         ]);
 
         for($i=0; $i<=$numUser; $i++){

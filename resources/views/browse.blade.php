@@ -1,4 +1,5 @@
 @extends("layouts.main")
+@extends("partials.navbar")
 
 @section("currentpage")
   <h2 class="lead">
@@ -9,11 +10,17 @@
 @section("content")
   <div class="game-gallery">
 
-    <ul>
+
       @foreach ($games as $game)
-        <li>{{ $game->name }}</li>
+       {{ $game->name }}
+      </br>
+      </br>
+       @if ($games == 'name')
+       {{name}}
+
+      @endif
       @endforeach
-    </ul>
+
 
 
   </div>
