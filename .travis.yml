@@ -6,6 +6,7 @@ php:
 
 before_script:
   - cp .env.travis .env
+  - mysql -r 'CREATE DATABASE testing;'
   - composer self-update
   - composer install
   - php artisan key:generate
@@ -17,5 +18,5 @@ services:
   - mysql
 
 # this will create a called testing if there is no database called testing
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS testing;'
+# before_install:
+#   - mysql -e 'CREATE DATABASE IF NOT EXISTS testing;'
