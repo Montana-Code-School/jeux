@@ -17,9 +17,9 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
         // Below are the actual tests
         $response->assertStatus(200);
-        $response->assertSee("Laravel");
+        $response->assertSee("Jeux");
         $response->assertSee("Login");
-        $response->assertSee("Register");
+        // $response->assertSee("Register");
 
     }
 }
