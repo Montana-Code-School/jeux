@@ -11,20 +11,23 @@
 |
 */
 // Routes that will give you items dealing with the home page
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('landingPage');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@index')->name('browse');
-Route::get('/browse/{name}', 'GameController@show');
+Route::get('/browse/{name}', 'GameController@show');//->name();
+//TODO Route::resource('games', 'GameController', ['parameters' => [
+//    'browse' => 'name'
+//]]);
+
+Route::resource('games','GameController');
 
 //Routes that will give you items dealing with the user
-Route::get('/user', function () {
-    return view('user');
-});
-Route::get('/users/{username}', 'UserController@show');
+Route::get('/user', 'UserController@index');//->name();
+Route::get('/users/{username}', 'UserController@show');//->name();
+
+Route::resource('users','UserController');
 
 // Authentication
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

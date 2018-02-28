@@ -3,28 +3,18 @@
 
 @section("currentpage")
   <h2 class="lead">
-    Browse
+    Browse Games
   </h2>
 @endsection
 
 @section("content")
   <div class="game-gallery">
 
-
-      @foreach ($games as $game)
-       {{ $game->name }}
-      </br>
-      </br>
-       @if ($games == 'name')
-       {{name}}
-
-      @endif
-      @endforeach
-
+    @show
+     {{ $games }}
 
 
   </div>
   <div class="filter">
 
   </div>
-@endsection

@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('name');
-            $table->string('notification');
             $table->string('token');
             $table->rememberToken();
             $table->softDeletes();

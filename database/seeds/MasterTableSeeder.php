@@ -25,7 +25,6 @@ class MasterTableSeeder extends Seeder
           'password' => bcrypt('password'),
           'name' => 'Jill Ben Kendra-Frank',
           'token' => bcrypt('token'),
-          'notification' => true
         ]);
 
         for($i=0; $i<=$numUser; $i++){
