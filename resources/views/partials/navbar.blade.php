@@ -18,11 +18,11 @@
       </div>
       <!-- Second Column: CHECK -->
       <div class="col-md-4">
-        <form class="navbar-form text-center" role="search">
+        <form class="navbar-form text-center" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-          <button type="submit" class="btn btn-default" a href="{{ route('searchresults')}}">Submit</button>
+          <button type="submit" class="btn btn-info" value="Submit">
         </form>
       </div>
       <!-- Third Column: CHECK -->

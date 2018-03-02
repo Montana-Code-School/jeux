@@ -26,8 +26,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function showSearchResults()
-    {
+    public function showSearchResults() {
         return view('searchresults');
     }
 }

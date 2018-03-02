@@ -8,11 +8,6 @@
     <div class="panel-body">
     <form action="" method="POST">
       <div class ="col-md-6">
-
-
-
-
-
         <div class ="input-group">
           <div class ="input-group-prepend">
             <span class="input-group-text glyphicon glyphicon-user" id="basic-addon1"></span>
@@ -37,12 +32,6 @@
           </div>
           <input type="text" name="confirm password" placeholder="new password" class="form-control">
         </div>
-
-
-
-
-
-
       </div>
       <div class="avatar col-md-6">
         <img src="https://loremflickr.com/320/240">
@@ -51,6 +40,5 @@
       <button type="button" class="btn btn-success">Update Settings</button>
     </form>
   </div>
-
   </div>
 @endsection
