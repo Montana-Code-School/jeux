@@ -8,15 +8,23 @@ use GuzzleHttp\Client;
 
 class GameController extends Controller
 {
-    public function saveGameApiData()
-    {
-      // $client = new Client();
-      // $res = $client->request('GET', 'https://www.boardgamegeek.com/xmlapi2/boardgame',[
-      //
-      // ]
+  public function saveGameApiData()
+      {
+        $client = new Client();
+        $res = $client->request('GET', 'https://www.boardgamegeek.com/xmlapi/collection/mtCodeSchoolPartTime');
+        $xml = simplexml_load_string($res->getBody(),'SimpleXMLElement',LIBXML_NOCDATA);
 
-      // $array = json_decode(json_encode($res->getBody()), true);
-    }
+        $json = json_encode($xml);
+
+        $array = json_decode($json, false);
+
+        $data = [];
+        $data["json"] = $array;
+
+        return view('test', $data);
+
+
+      }
     /**
      * Display a listing of the resource.
      *
@@ -45,11 +53,18 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+      //TODO:: Does the store need an id?
+      
         $game = new Game();
-        $game->column1 = $request->column1;
-        $game->column2 = $request->column2;
-        $game->column3 = $request->column3;
-        $game->column4 = $request->column4;
+        $game->name = $request->name;
+        $game->image = $request->image;
+        $game->year = $request->year;
+        $game->player_count = $request->player_count;
+        $game->min_age = $request->min_age;
+        $game->min_play = $rerquest->min_play;
+        $game->max_play = $request->max_play;
+        $game->description = $request->description;
+        $game->instructions = $request->instructions;
 
         $game->save();
     }
@@ -89,11 +104,17 @@ class GameController extends Controller
     public function update(Request $request, $id)
     {
       $game = App\Game::find($id);
-
-      $game->column1 = $request->column1;
-      $game->column2 = $request->column2;
-      $game->column3 = $request->column3;
-      $game->column4 = $request->column4;
+      //TODO:: make sure that when people are filling out the form that
+      // that the old information is staying with the information.
+      $game->name = $request->name;
+      $game->image = $request->image;
+      $game->year = $request->year;
+      $game->player_count = $request->player_count;
+      $game->min_age = $request->min_age;
+      $game->min_play = $rerquest->min_play;
+      $game->max_play = $request->max_play;
+      $game->description = $request->description;
+      $game->instructions = $request->instructions;
 
       $game->save();
     }

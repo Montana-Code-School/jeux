@@ -10,16 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Routes that will give you items dealing with the home page
 Route::get('/', 'HomeController@index')->name('landingPage');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('test', 'GameController@saveGameApiData');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@index')->name('browse');
 Route::get('/browse/{name}', 'GameController@show');//->name();
-//TODO Route::resource('games', 'GameController', ['parameters' => [
-//    'browse' => 'name'
-//]]);
 
 Route::resource('games','GameController');
 

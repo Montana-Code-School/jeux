@@ -9,10 +9,12 @@
 
 @section("content")
   <div class="game-gallery">
-
     @show
-     {{ $games }}
-
+    @foreach ($games as $game)
+     {{ $game->name }}
+      </br>
+    </br>
+    @endforeach
 
   </div>
   <div class="filter">
