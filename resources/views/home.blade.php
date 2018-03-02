@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-  @component('partials.gamecontent')
+  @component('partials.gamelightbox')
     <p>
       oops
     </p>

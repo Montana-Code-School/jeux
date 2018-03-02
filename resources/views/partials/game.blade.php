@@ -1,4 +1,4 @@
-<div class="game-full">
+<div class="game-popup">
   <!-- Need to update to use data from the routes -->
   <h2>Pandemic</h2>
   <div class="game-content">

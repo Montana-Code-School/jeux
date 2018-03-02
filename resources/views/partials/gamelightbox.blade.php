@@ -1,4 +1,4 @@
-<div class="game-content row">
+<div class="game-popup row">
   <div class="col-sm-8">
     @component('partials.games')
       oops
