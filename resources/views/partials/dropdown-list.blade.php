@@ -1,4 +1,4 @@
-<ul class="dropdown-menu notification-drop" aria-labelledby="dropdownMenu1">
+<ul class="dropdown-menu dropdown-menu-right notification-drop" aria-labelledby="dropdownMenu1">
   <li class="dropdown-header">List Heading</li>
   @for ($i = 0; $i < 6; $i++)
     <li>

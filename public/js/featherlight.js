@@ -1,1 +1,719 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=35)}({35:function(e,t,n){e.exports=n(36)},36:function(e,t){var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(e){"use strict";if(void 0!==e){var t=[],r=function(n){return t=e.grep(t,function(e){return e!==n&&e.$instance.closest("body").length>0})},o={allowfullscreen:1,frameborder:1,height:1,longdesc:1,marginheight:1,marginwidth:1,name:1,referrerpolicy:1,scrolling:1,sandbox:1,src:1,srcdoc:1,width:1},i={keyup:"onKeyUp",resize:"onResize"},a=function(t){e.each(c.opened().reverse(),function(){if(!t.isDefaultPrevented()&&!1===this[i[t.type]](t))return t.preventDefault(),t.stopPropagation(),!1})},s=function(t){if(t!==c._globalHandlerInstalled){c._globalHandlerInstalled=t;var n=e.map(i,function(e,t){return t+"."+c.prototype.namespace}).join(" ");e(window)[t?"on":"off"](n,a)}};c.prototype={constructor:c,namespace:"featherlight",targetAttr:"data-featherlight",variant:null,resetCss:!1,background:null,openTrigger:"click",closeTrigger:"click",filter:null,root:"body",openSpeed:250,closeSpeed:250,closeOnClick:"background",closeOnEsc:!0,closeIcon:"&#10005;",loading:"",persist:!1,otherClose:null,beforeOpen:e.noop,beforeContent:e.noop,beforeClose:e.noop,afterOpen:e.noop,afterContent:e.noop,afterClose:e.noop,onKeyUp:e.noop,onResize:e.noop,type:null,contentFilters:["jquery","image","html","ajax","iframe","text"],setup:function(t,r){"object"!==(void 0===t?"undefined":n(t))||t instanceof e!=!1||r||(r=t,t=void 0);var o=e.extend(this,r,{target:t}),i=o.resetCss?o.namespace+"-reset":o.namespace,a=e(o.background||['<div class="'+i+"-loading "+i+'">','<div class="'+i+'-content">','<button class="'+i+"-close-icon "+o.namespace+'-close" aria-label="Close">',o.closeIcon,"</button>",'<div class="'+o.namespace+'-inner">'+o.loading+"</div>","</div>","</div>"].join("")),s="."+o.namespace+"-close"+(o.otherClose?","+o.otherClose:"");return o.$instance=a.clone().addClass(o.variant),o.$instance.on(o.closeTrigger+"."+o.namespace,function(t){var n=e(t.target);("background"===o.closeOnClick&&n.is("."+o.namespace)||"anywhere"===o.closeOnClick||n.closest(s).length)&&(o.close(t),t.preventDefault())}),this},getContent:function(){if(!1!==this.persist&&this.$content)return this.$content;var t=this,n=this.constructor.contentFilters,r=function(e){return t.$currentTarget&&t.$currentTarget.attr(e)},o=r(t.targetAttr),i=t.target||o||"",a=n[t.type];if(!a&&i in n&&(a=n[i],i=t.target&&o),i=i||r("href")||"",!a)for(var s in n)t[s]&&(a=n[s],i=t[s]);if(!a){var c=i;if(i=null,e.each(t.contentFilters,function(){return(a=n[this]).test&&(i=a.test(c)),!i&&a.regex&&c.match&&c.match(a.regex)&&(i=c),!i}),!i)return"console"in window&&window.console.error("Featherlight: no content filter found "+(c?' for "'+c+'"':" (no target specified)")),!1}return a.process.call(t,i)},setContent:function(t){return t.is("iframe")&&this.$instance.addClass(this.namespace+"-iframe"),this.$instance.removeClass(this.namespace+"-loading"),this.$instance.find("."+this.namespace+"-inner").not(t).slice(1).remove().end().replaceWith(e.contains(this.$instance[0],t[0])?"":t),this.$content=t.addClass(this.namespace+"-inner"),this},open:function(n){var r=this;if(r.$instance.hide().appendTo(r.root),!(n&&n.isDefaultPrevented()||!1===r.beforeOpen(n))){n&&n.preventDefault();var o=r.getContent();if(o)return t.push(r),s(!0),r.$instance.fadeIn(r.openSpeed),r.beforeContent(n),e.when(o).always(function(e){r.setContent(e),r.afterContent(n)}).then(r.$instance.promise()).done(function(){r.afterOpen(n)})}return r.$instance.detach(),e.Deferred().reject().promise()},close:function(t){var n=this,o=e.Deferred();return!1===n.beforeClose(t)?o.reject():(0===r(n).length&&s(!1),n.$instance.fadeOut(n.closeSpeed,function(){n.$instance.detach(),n.afterClose(t),o.resolve()})),o.promise()},resize:function(e,t){if(e&&t){this.$content.css("width","").css("height","");var n=Math.max(e/(this.$content.parent().width()-1),t/(this.$content.parent().height()-1));n>1&&(n=t/Math.floor(t/n),this.$content.css("width",e/n+"px").css("height",t/n+"px"))}},chainCallbacks:function(t){for(var n in t)this[n]=e.proxy(t[n],this,e.proxy(this[n],this))}},e.extend(c,{id:0,autoBind:"[data-featherlight]",defaults:c.prototype,contentFilters:{jquery:{regex:/^[#.]\w/,test:function(t){return t instanceof e&&t},process:function(t){return!1!==this.persist?e(t):e(t).clone(!0)}},image:{regex:/\.(png|jpg|jpeg|gif|tiff|bmp|svg)(\?\S*)?$/i,process:function(t){var n=e.Deferred(),r=new Image,o=e('<img src="'+t+'" alt="" class="'+this.namespace+'-image" />');return r.onload=function(){o.naturalWidth=r.width,o.naturalHeight=r.height,n.resolve(o)},r.onerror=function(){n.reject(o)},r.src=t,n.promise()}},html:{regex:/^\s*<[\w!][^<]*>/,process:function(t){return e(t)}},ajax:{regex:/./,process:function(t){var n=e.Deferred(),r=e("<div></div>").load(t,function(e,t){"error"!==t&&n.resolve(r.contents()),n.fail()});return n.promise()}},iframe:{process:function(t){var n=new e.Deferred,r=e("<iframe/>"),i=function(e,t){var n={},r=new RegExp("^"+t+"([A-Z])(.*)");for(var o in e){var i=o.match(r);i&&(n[(i[1]+i[2].replace(/([A-Z])/g,"-$1")).toLowerCase()]=e[o])}return n}(this,"iframe"),a=function(e,t){var n={};for(var r in e)r in t&&(n[r]=e[r],delete e[r]);return n}(i,o);return r.hide().attr("src",t).attr(a).css(i).on("load",function(){n.resolve(r.show())}).appendTo(this.$instance.find("."+this.namespace+"-content")),n.promise()}},text:{process:function(t){return e("<div>",{text:t})}}},functionAttributes:["beforeOpen","afterOpen","beforeContent","afterContent","beforeClose","afterClose"],readElementConfig:function(t,n){var r=this,o=new RegExp("^data-"+n+"-(.*)"),i={};return t&&t.attributes&&e.each(t.attributes,function(){var t=this.name.match(o);if(t){var n=this.value,a=e.camelCase(t[1]);if(e.inArray(a,r.functionAttributes)>=0)n=new Function(n);else try{n=JSON.parse(n)}catch(e){}i[a]=n}}),i},extend:function(t,n){var r=function(){this.constructor=t};return r.prototype=this.prototype,t.prototype=new r,t.__super__=this.prototype,e.extend(t,this,n),t.defaults=t.prototype,t},attach:function(t,r,o){var i=this;"object"!==(void 0===r?"undefined":n(r))||r instanceof e!=!1||o||(o=r,r=void 0);var a,s=(o=e.extend({},o)).namespace||i.defaults.namespace,c=e.extend({},i.defaults,i.readElementConfig(t[0],s),o),u=function(n){var s=e(n.currentTarget),u=e.extend({$source:t,$currentTarget:s},i.readElementConfig(t[0],c.namespace),i.readElementConfig(n.currentTarget,c.namespace),o),l=a||s.data("featherlight-persisted")||new i(r,u);"shared"===l.persist?a=l:!1!==l.persist&&s.data("featherlight-persisted",l),u.$currentTarget.blur&&u.$currentTarget.blur(),l.open(n)};return t.on(c.openTrigger+"."+c.namespace,c.filter,u),u},current:function(){var e=this.opened();return e[e.length-1]||null},opened:function(){var n=this;return r(),e.grep(t,function(e){return e instanceof n})},close:function(e){var t=this.current();if(t)return t.close(e)},_onReady:function(){var t=this;t.autoBind&&(e(t.autoBind).each(function(){t.attach(e(this))}),e(document).on("click",t.autoBind,function(n){n.isDefaultPrevented()||t.attach(e(n.currentTarget))(n)}))},_callbackChain:{onKeyUp:function(t,n){return 27===n.keyCode?(this.closeOnEsc&&e.featherlight.close(n),!1):t(n)},beforeOpen:function(t,n){return e(document.documentElement).addClass("with-featherlight"),this._previouslyActive=document.activeElement,this._$previouslyTabbable=e("a, input, select, textarea, iframe, button, iframe, [contentEditable=true]").not("[tabindex]").not(this.$instance.find("button")),this._$previouslyWithTabIndex=e("[tabindex]").not('[tabindex="-1"]'),this._previousWithTabIndices=this._$previouslyWithTabIndex.map(function(t,n){return e(n).attr("tabindex")}),this._$previouslyWithTabIndex.add(this._$previouslyTabbable).attr("tabindex",-1),document.activeElement.blur&&document.activeElement.blur(),t(n)},afterClose:function(t,n){var r=t(n),o=this;return this._$previouslyTabbable.removeAttr("tabindex"),this._$previouslyWithTabIndex.each(function(t,n){e(n).attr("tabindex",o._previousWithTabIndices[t])}),this._previouslyActive.focus(),0===c.opened().length&&e(document.documentElement).removeClass("with-featherlight"),r},onResize:function(e,t){return this.resize(this.$content.naturalWidth,this.$content.naturalHeight),e(t)},afterContent:function(e,t){var n=e(t);return this.$instance.find("[autofocus]:not([disabled])").focus(),this.onResize(t),n}}}),e.featherlight=c,e.fn.featherlight=function(e,t){return c.attach(this,e,t),this},e(document).ready(function(){c._onReady()})}else"console"in window&&window.console.info("Too much lightness, Featherlight needs jQuery.");function c(e,t){if(!(this instanceof c)){var n=new c(e,t);return n.open(),n}this.id=c.id++,this.setup(e,t),this.chainCallbacks(c._callbackChain)}}(jQuery)}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(36);
+
+
+/***/ }),
+
+/***/ 36:
+/***/ (function(module, exports) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.9 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+(function ($) {
+	"use strict";
+
+	if ('undefined' === typeof $) {
+		if ('console' in window) {
+			window.console.info('Too much lightness, Featherlight needs jQuery.');
+		}
+		return;
+	}
+
+	/* Featherlight is exported as $.featherlight.
+    It is a function used to open a featherlight lightbox.
+ 	   [tech]
+    Featherlight uses prototype inheritance.
+    Each opened lightbox will have a corresponding object.
+    That object may have some attributes that override the
+    prototype's.
+    Extensions created with Featherlight.extend will have their
+    own prototype that inherits from Featherlight's prototype,
+    thus attributes can be overriden either at the object level,
+    or at the extension level.
+    To create callbacks that chain themselves instead of overriding,
+    use chainCallbacks.
+    For those familiar with CoffeeScript, this correspond to
+    Featherlight being a class and the Gallery being a class
+    extending Featherlight.
+    The chainCallbacks is used since we don't have access to
+    CoffeeScript's `super`.
+ */
+
+	function Featherlight($content, config) {
+		if (this instanceof Featherlight) {
+			/* called with new */
+			this.id = Featherlight.id++;
+			this.setup($content, config);
+			this.chainCallbacks(Featherlight._callbackChain);
+		} else {
+			var fl = new Featherlight($content, config);
+			fl.open();
+			return fl;
+		}
+	}
+
+	var _opened = [],
+	    pruneOpened = function pruneOpened(remove) {
+		_opened = $.grep(_opened, function (fl) {
+			return fl !== remove && fl.$instance.closest('body').length > 0;
+		});
+		return _opened;
+	};
+
+	// Removes keys of `set` from `obj` and returns the removed key/values.
+	function slice(obj, set) {
+		var r = {};
+		for (var key in obj) {
+			if (key in set) {
+				r[key] = obj[key];
+				delete obj[key];
+			}
+		}
+		return r;
+	}
+
+	// NOTE: List of available [iframe attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe).
+	var iFrameAttributeSet = {
+		allowfullscreen: 1, frameborder: 1, height: 1, longdesc: 1, marginheight: 1, marginwidth: 1,
+		name: 1, referrerpolicy: 1, scrolling: 1, sandbox: 1, src: 1, srcdoc: 1, width: 1
+	};
+
+	// Converts camelCased attributes to dasherized versions for given prefix:
+	//   parseAttrs({hello: 1, hellFrozeOver: 2}, 'hell') => {froze-over: 2}
+	function parseAttrs(obj, prefix) {
+		var attrs = {},
+		    regex = new RegExp('^' + prefix + '([A-Z])(.*)');
+		for (var key in obj) {
+			var match = key.match(regex);
+			if (match) {
+				var dasherized = (match[1] + match[2].replace(/([A-Z])/g, '-$1')).toLowerCase();
+				attrs[dasherized] = obj[key];
+			}
+		}
+		return attrs;
+	}
+
+	/* document wide key handler */
+	var eventMap = { keyup: 'onKeyUp', resize: 'onResize' };
+
+	var globalEventHandler = function globalEventHandler(event) {
+		$.each(Featherlight.opened().reverse(), function () {
+			if (!event.isDefaultPrevented()) {
+				if (false === this[eventMap[event.type]](event)) {
+					event.preventDefault();event.stopPropagation();return false;
+				}
+			}
+		});
+	};
+
+	var toggleGlobalEvents = function toggleGlobalEvents(set) {
+		if (set !== Featherlight._globalHandlerInstalled) {
+			Featherlight._globalHandlerInstalled = set;
+			var events = $.map(eventMap, function (_, name) {
+				return name + '.' + Featherlight.prototype.namespace;
+			}).join(' ');
+			$(window)[set ? 'on' : 'off'](events, globalEventHandler);
+		}
+	};
+
+	Featherlight.prototype = {
+		constructor: Featherlight,
+		/*** defaults ***/
+		/* extend featherlight with defaults and methods */
+		namespace: 'featherlight', /* Name of the events and css class prefix */
+		targetAttr: 'data-featherlight', /* Attribute of the triggered element that contains the selector to the lightbox content */
+		variant: null, /* Class that will be added to change look of the lightbox */
+		resetCss: false, /* Reset all css */
+		background: null, /* Custom DOM for the background, wrapper and the closebutton */
+		openTrigger: 'click', /* Event that triggers the lightbox */
+		closeTrigger: 'click', /* Event that triggers the closing of the lightbox */
+		filter: null, /* Selector to filter events. Think $(...).on('click', filter, eventHandler) */
+		root: 'body', /* Where to append featherlights */
+		openSpeed: 250, /* Duration of opening animation */
+		closeSpeed: 250, /* Duration of closing animation */
+		closeOnClick: 'background', /* Close lightbox on click ('background', 'anywhere' or false) */
+		closeOnEsc: true, /* Close lightbox when pressing esc */
+		closeIcon: '&#10005;', /* Close icon */
+		loading: '', /* Content to show while initial content is loading */
+		persist: false, /* If set, the content will persist and will be shown again when opened again. 'shared' is a special value when binding multiple elements for them to share the same content */
+		otherClose: null, /* Selector for alternate close buttons (e.g. "a.close") */
+		beforeOpen: $.noop, /* Called before open. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
+		beforeContent: $.noop, /* Called when content is loaded. Gets event as parameter, this contains all data */
+		beforeClose: $.noop, /* Called before close. can return false to prevent opening of lightbox. Gets event as parameter, this contains all data */
+		afterOpen: $.noop, /* Called after open. Gets event as parameter, this contains all data */
+		afterContent: $.noop, /* Called after content is ready and has been set. Gets event as parameter, this contains all data */
+		afterClose: $.noop, /* Called after close. Gets event as parameter, this contains all data */
+		onKeyUp: $.noop, /* Called on key up for the frontmost featherlight */
+		onResize: $.noop, /* Called after new content and when a window is resized */
+		type: null, /* Specify type of lightbox. If unset, it will check for the targetAttrs value. */
+		contentFilters: ['jquery', 'image', 'html', 'ajax', 'iframe', 'text'], /* List of content filters to use to determine the content */
+
+		/*** methods ***/
+		/* setup iterates over a single instance of featherlight and prepares the background and binds the events */
+		setup: function setup(target, config) {
+			/* all arguments are optional */
+			if ((typeof target === 'undefined' ? 'undefined' : _typeof(target)) === 'object' && target instanceof $ === false && !config) {
+				config = target;
+				target = undefined;
+			}
+
+			var self = $.extend(this, config, { target: target }),
+			    css = !self.resetCss ? self.namespace : self.namespace + '-reset',
+			    /* by adding -reset to the classname, we reset all the default css */
+			$background = $(self.background || ['<div class="' + css + '-loading ' + css + '">', '<div class="' + css + '-content">', '<button class="' + css + '-close-icon ' + self.namespace + '-close" aria-label="Close">', self.closeIcon, '</button>', '<div class="' + self.namespace + '-inner">' + self.loading + '</div>', '</div>', '</div>'].join('')),
+			    closeButtonSelector = '.' + self.namespace + '-close' + (self.otherClose ? ',' + self.otherClose : '');
+
+			self.$instance = $background.clone().addClass(self.variant); /* clone DOM for the background, wrapper and the close button */
+
+			/* close when click on background/anywhere/null or closebox */
+			self.$instance.on(self.closeTrigger + '.' + self.namespace, function (event) {
+				var $target = $(event.target);
+				if ('background' === self.closeOnClick && $target.is('.' + self.namespace) || 'anywhere' === self.closeOnClick || $target.closest(closeButtonSelector).length) {
+					self.close(event);
+					event.preventDefault();
+				}
+			});
+
+			return this;
+		},
+
+		/* this method prepares the content and converts it into a jQuery object or a promise */
+		getContent: function getContent() {
+			if (this.persist !== false && this.$content) {
+				return this.$content;
+			}
+			var self = this,
+			    filters = this.constructor.contentFilters,
+			    readTargetAttr = function readTargetAttr(name) {
+				return self.$currentTarget && self.$currentTarget.attr(name);
+			},
+			    targetValue = readTargetAttr(self.targetAttr),
+			    data = self.target || targetValue || '';
+
+			/* Find which filter applies */
+			var filter = filters[self.type]; /* check explicit type like {type: 'image'} */
+
+			/* check explicit type like data-featherlight="image" */
+			if (!filter && data in filters) {
+				filter = filters[data];
+				data = self.target && targetValue;
+			}
+			data = data || readTargetAttr('href') || '';
+
+			/* check explicity type & content like {image: 'photo.jpg'} */
+			if (!filter) {
+				for (var filterName in filters) {
+					if (self[filterName]) {
+						filter = filters[filterName];
+						data = self[filterName];
+					}
+				}
+			}
+
+			/* otherwise it's implicit, run checks */
+			if (!filter) {
+				var target = data;
+				data = null;
+				$.each(self.contentFilters, function () {
+					filter = filters[this];
+					if (filter.test) {
+						data = filter.test(target);
+					}
+					if (!data && filter.regex && target.match && target.match(filter.regex)) {
+						data = target;
+					}
+					return !data;
+				});
+				if (!data) {
+					if ('console' in window) {
+						window.console.error('Featherlight: no content filter found ' + (target ? ' for "' + target + '"' : ' (no target specified)'));
+					}
+					return false;
+				}
+			}
+			/* Process it */
+			return filter.process.call(self, data);
+		},
+
+		/* sets the content of $instance to $content */
+		setContent: function setContent($content) {
+			var self = this;
+			/* we need a special class for the iframe */
+			if ($content.is('iframe')) {
+				self.$instance.addClass(self.namespace + '-iframe');
+			}
+
+			self.$instance.removeClass(self.namespace + '-loading');
+
+			/* replace content by appending to existing one before it is removed
+      this insures that featherlight-inner remain at the same relative
+   	 position to any other items added to featherlight-content */
+			self.$instance.find('.' + self.namespace + '-inner').not($content) /* excluded new content, important if persisted */
+			.slice(1).remove().end() /* In the unexpected event where there are many inner elements, remove all but the first one */
+			.replaceWith($.contains(self.$instance[0], $content[0]) ? '' : $content);
+
+			self.$content = $content.addClass(self.namespace + '-inner');
+
+			return self;
+		},
+
+		/* opens the lightbox. "this" contains $instance with the lightbox, and with the config.
+  	Returns a promise that is resolved after is successfully opened. */
+		open: function open(event) {
+			var self = this;
+			self.$instance.hide().appendTo(self.root);
+			if ((!event || !event.isDefaultPrevented()) && self.beforeOpen(event) !== false) {
+
+				if (event) {
+					event.preventDefault();
+				}
+				var $content = self.getContent();
+
+				if ($content) {
+					_opened.push(self);
+
+					toggleGlobalEvents(true);
+
+					self.$instance.fadeIn(self.openSpeed);
+					self.beforeContent(event);
+
+					/* Set content and show */
+					return $.when($content).always(function ($content) {
+						self.setContent($content);
+						self.afterContent(event);
+					}).then(self.$instance.promise())
+					/* Call afterOpen after fadeIn is done */
+					.done(function () {
+						self.afterOpen(event);
+					});
+				}
+			}
+			self.$instance.detach();
+			return $.Deferred().reject().promise();
+		},
+
+		/* closes the lightbox. "this" contains $instance with the lightbox, and with the config
+  	returns a promise, resolved after the lightbox is successfully closed. */
+		close: function close(event) {
+			var self = this,
+			    deferred = $.Deferred();
+
+			if (self.beforeClose(event) === false) {
+				deferred.reject();
+			} else {
+
+				if (0 === pruneOpened(self).length) {
+					toggleGlobalEvents(false);
+				}
+
+				self.$instance.fadeOut(self.closeSpeed, function () {
+					self.$instance.detach();
+					self.afterClose(event);
+					deferred.resolve();
+				});
+			}
+			return deferred.promise();
+		},
+
+		/* resizes the content so it fits in visible area and keeps the same aspect ratio.
+  		Does nothing if either the width or the height is not specified.
+  		Called automatically on window resize.
+  		Override if you want different behavior. */
+		resize: function resize(w, h) {
+			if (w && h) {
+				/* Reset apparent image size first so container grows */
+				this.$content.css('width', '').css('height', '');
+				/* Calculate the worst ratio so that dimensions fit */
+				/* Note: -1 to avoid rounding errors */
+				var ratio = Math.max(w / (this.$content.parent().width() - 1), h / (this.$content.parent().height() - 1));
+				/* Resize content */
+				if (ratio > 1) {
+					ratio = h / Math.floor(h / ratio); /* Round ratio down so height calc works */
+					this.$content.css('width', '' + w / ratio + 'px').css('height', '' + h / ratio + 'px');
+				}
+			}
+		},
+
+		/* Utility function to chain callbacks
+     [Warning: guru-level]
+     Used be extensions that want to let users specify callbacks but
+     also need themselves to use the callbacks.
+     The argument 'chain' has callback names as keys and function(super, event)
+     as values. That function is meant to call `super` at some point.
+  */
+		chainCallbacks: function chainCallbacks(chain) {
+			for (var name in chain) {
+				this[name] = $.proxy(chain[name], this, $.proxy(this[name], this));
+			}
+		}
+	};
+
+	$.extend(Featherlight, {
+		id: 0, /* Used to id single featherlight instances */
+		autoBind: '[data-featherlight]', /* Will automatically bind elements matching this selector. Clear or set before onReady */
+		defaults: Featherlight.prototype, /* You can access and override all defaults using $.featherlight.defaults, which is just a synonym for $.featherlight.prototype */
+		/* Contains the logic to determine content */
+		contentFilters: {
+			jquery: {
+				regex: /^[#.]\w/, /* Anything that starts with a class name or identifiers */
+				test: function test(elem) {
+					return elem instanceof $ && elem;
+				},
+				process: function process(elem) {
+					return this.persist !== false ? $(elem) : $(elem).clone(true);
+				}
+			},
+			image: {
+				regex: /\.(png|jpg|jpeg|gif|tiff|bmp|svg)(\?\S*)?$/i,
+				process: function process(url) {
+					var self = this,
+					    deferred = $.Deferred(),
+					    img = new Image(),
+					    $img = $('<img src="' + url + '" alt="" class="' + self.namespace + '-image" />');
+					img.onload = function () {
+						/* Store naturalWidth & height for IE8 */
+						$img.naturalWidth = img.width;$img.naturalHeight = img.height;
+						deferred.resolve($img);
+					};
+					img.onerror = function () {
+						deferred.reject($img);
+					};
+					img.src = url;
+					return deferred.promise();
+				}
+			},
+			html: {
+				regex: /^\s*<[\w!][^<]*>/, /* Anything that starts with some kind of valid tag */
+				process: function process(html) {
+					return $(html);
+				}
+			},
+			ajax: {
+				regex: /./, /* At this point, any content is assumed to be an URL */
+				process: function process(url) {
+					var self = this,
+					    deferred = $.Deferred();
+					/* we are using load so one can specify a target with: url.html #targetelement */
+					var $container = $('<div></div>').load(url, function (response, status) {
+						if (status !== "error") {
+							deferred.resolve($container.contents());
+						}
+						deferred.fail();
+					});
+					return deferred.promise();
+				}
+			},
+			iframe: {
+				process: function process(url) {
+					var deferred = new $.Deferred();
+					var $content = $('<iframe/>');
+					var css = parseAttrs(this, 'iframe');
+					var attrs = slice(css, iFrameAttributeSet);
+					$content.hide().attr('src', url).attr(attrs).css(css).on('load', function () {
+						deferred.resolve($content.show());
+					})
+					// We can't move an <iframe> and avoid reloading it,
+					// so let's put it in place ourselves right now:
+					.appendTo(this.$instance.find('.' + this.namespace + '-content'));
+					return deferred.promise();
+				}
+			},
+			text: {
+				process: function process(text) {
+					return $('<div>', { text: text });
+				}
+			}
+		},
+
+		functionAttributes: ['beforeOpen', 'afterOpen', 'beforeContent', 'afterContent', 'beforeClose', 'afterClose'],
+
+		/*** class methods ***/
+		/* read element's attributes starting with data-featherlight- */
+		readElementConfig: function readElementConfig(element, namespace) {
+			var Klass = this,
+			    regexp = new RegExp('^data-' + namespace + '-(.*)'),
+			    config = {};
+			if (element && element.attributes) {
+				$.each(element.attributes, function () {
+					var match = this.name.match(regexp);
+					if (match) {
+						var val = this.value,
+						    name = $.camelCase(match[1]);
+						if ($.inArray(name, Klass.functionAttributes) >= 0) {
+							/* jshint -W054 */
+							val = new Function(val); /* jshint +W054 */
+						} else {
+							try {
+								val = JSON.parse(val);
+							} catch (e) {}
+						}
+						config[name] = val;
+					}
+				});
+			}
+			return config;
+		},
+
+		/* Used to create a Featherlight extension
+     [Warning: guru-level]
+     Creates the extension's prototype that in turn
+     inherits Featherlight's prototype.
+     Could be used to extend an extension too...
+     This is pretty high level wizardy, it comes pretty much straight
+     from CoffeeScript and won't teach you anything about Featherlight
+     as it's not really specific to this library.
+     My suggestion: move along and keep your sanity.
+  */
+		extend: function extend(child, defaults) {
+			/* Setup class hierarchy, adapted from CoffeeScript */
+			var Ctor = function Ctor() {
+				this.constructor = child;
+			};
+			Ctor.prototype = this.prototype;
+			child.prototype = new Ctor();
+			child.__super__ = this.prototype;
+			/* Copy class methods & attributes */
+			$.extend(child, this, defaults);
+			child.defaults = child.prototype;
+			return child;
+		},
+
+		attach: function attach($source, $content, config) {
+			var Klass = this;
+			if ((typeof $content === 'undefined' ? 'undefined' : _typeof($content)) === 'object' && $content instanceof $ === false && !config) {
+				config = $content;
+				$content = undefined;
+			}
+			/* make a copy */
+			config = $.extend({}, config);
+
+			/* Only for openTrigger and namespace... */
+			var namespace = config.namespace || Klass.defaults.namespace,
+			    tempConfig = $.extend({}, Klass.defaults, Klass.readElementConfig($source[0], namespace), config),
+			    sharedPersist;
+			var handler = function handler(event) {
+				var $target = $(event.currentTarget);
+				/* ... since we might as well compute the config on the actual target */
+				var elemConfig = $.extend({ $source: $source, $currentTarget: $target }, Klass.readElementConfig($source[0], tempConfig.namespace), Klass.readElementConfig(event.currentTarget, tempConfig.namespace), config);
+				var fl = sharedPersist || $target.data('featherlight-persisted') || new Klass($content, elemConfig);
+				if (fl.persist === 'shared') {
+					sharedPersist = fl;
+				} else if (fl.persist !== false) {
+					$target.data('featherlight-persisted', fl);
+				}
+				if (elemConfig.$currentTarget.blur) {
+					elemConfig.$currentTarget.blur(); // Otherwise 'enter' key might trigger the dialog again
+				}
+				fl.open(event);
+			};
+
+			$source.on(tempConfig.openTrigger + '.' + tempConfig.namespace, tempConfig.filter, handler);
+
+			return handler;
+		},
+
+		current: function current() {
+			var all = this.opened();
+			return all[all.length - 1] || null;
+		},
+
+		opened: function opened() {
+			var klass = this;
+			pruneOpened();
+			return $.grep(_opened, function (fl) {
+				return fl instanceof klass;
+			});
+		},
+
+		close: function close(event) {
+			var cur = this.current();
+			if (cur) {
+				return cur.close(event);
+			}
+		},
+
+		/* Does the auto binding on startup.
+     Meant only to be used by Featherlight and its extensions
+  */
+		_onReady: function _onReady() {
+			var Klass = this;
+			if (Klass.autoBind) {
+				/* Bind existing elements */
+				$(Klass.autoBind).each(function () {
+					Klass.attach($(this));
+				});
+				/* If a click propagates to the document level, then we have an item that was added later on */
+				$(document).on('click', Klass.autoBind, function (evt) {
+					if (evt.isDefaultPrevented()) {
+						return;
+					}
+					/* Bind featherlight */
+					var handler = Klass.attach($(evt.currentTarget));
+					/* Dispatch event directly */
+					handler(evt);
+				});
+			}
+		},
+
+		/* Featherlight uses the onKeyUp callback to intercept the escape key.
+     Private to Featherlight.
+  */
+		_callbackChain: {
+			onKeyUp: function onKeyUp(_super, event) {
+				if (27 === event.keyCode) {
+					if (this.closeOnEsc) {
+						$.featherlight.close(event);
+					}
+					return false;
+				} else {
+					return _super(event);
+				}
+			},
+
+			beforeOpen: function beforeOpen(_super, event) {
+				// Used to disable scrolling
+				$(document.documentElement).addClass('with-featherlight');
+
+				// Remember focus:
+				this._previouslyActive = document.activeElement;
+
+				// Disable tabbing:
+				// See http://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
+				this._$previouslyTabbable = $("a, input, select, textarea, iframe, button, iframe, [contentEditable=true]").not('[tabindex]').not(this.$instance.find('button'));
+
+				this._$previouslyWithTabIndex = $('[tabindex]').not('[tabindex="-1"]');
+				this._previousWithTabIndices = this._$previouslyWithTabIndex.map(function (_i, elem) {
+					return $(elem).attr('tabindex');
+				});
+
+				this._$previouslyWithTabIndex.add(this._$previouslyTabbable).attr('tabindex', -1);
+
+				if (document.activeElement.blur) {
+					document.activeElement.blur();
+				}
+				return _super(event);
+			},
+
+			afterClose: function afterClose(_super, event) {
+				var r = _super(event);
+				// Restore focus
+				var self = this;
+				this._$previouslyTabbable.removeAttr('tabindex');
+				this._$previouslyWithTabIndex.each(function (i, elem) {
+					$(elem).attr('tabindex', self._previousWithTabIndices[i]);
+				});
+				this._previouslyActive.focus();
+				// Restore scroll
+				if (Featherlight.opened().length === 0) {
+					$(document.documentElement).removeClass('with-featherlight');
+				}
+				return r;
+			},
+
+			onResize: function onResize(_super, event) {
+				this.resize(this.$content.naturalWidth, this.$content.naturalHeight);
+				return _super(event);
+			},
+
+			afterContent: function afterContent(_super, event) {
+				var r = _super(event);
+				this.$instance.find('[autofocus]:not([disabled])').focus();
+				this.onResize(event);
+				return r;
+			}
+		}
+	});
+
+	$.featherlight = Featherlight;
+
+	/* bind jQuery elements to trigger featherlight */
+	$.fn.featherlight = function ($content, config) {
+		Featherlight.attach(this, $content, config);
+		return this;
+	};
+
+	/* bind featherlight on ready if config autoBind is set */
+	$(document).ready(function () {
+		Featherlight._onReady();
+	});
+})(jQuery);
+
+/***/ })
+
+/******/ });

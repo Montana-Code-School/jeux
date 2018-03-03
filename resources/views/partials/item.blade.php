@@ -1,10 +1,10 @@
 <!--lightbox  -->
-<div class="game-popup">
-  <!-- Need to update to use data from the routes -->
-  <h2>Item Title</h2>
-  <div class="game-content">
+<!-- <div class="tile-popup">
+  Need to update to use data from the routes -->
+  <!-- <h2>Item Title</h2>
+  <div class="item-content">
     <img src="{{ asset('images/gameAvatar.jpg')}}" alt="game"></img>
-    <div class="game-info">
+    <div class="item-info">
       <h4>description</h4>
       <p>This is a description of the game blah lahbah. You will lose because pandemic hates you. This is a description of the game blah lahbah. You will lose because pandemic hates you. This is a description of the game blah lahbah. You will lose because pandemic hates you. </p>
       <h5>Players</h5>
@@ -15,10 +15,10 @@
       <p>15-30mins</p>
     </div>
   </div>
-  <div class="game-footer">
+  <div class="item-footer">
     <button type="button" class="btn btn-primary">Add Game</button>
   </div>
-</div>
+</div> -->
 
 <!-- actual tile/item? -->
 <div class="tile">
@@ -29,16 +29,11 @@
     <div class="tile-back">
       <h4>Monopoly</h4>
       <p>Age: 12+</p>
-      <p>
-        Time: 30-45 mins
-      </p>
-      <p>
-        Players: 2-
-      </p>
+      <p>Time: 30-45 mins</p>
+      <p>Players: 2</p>
     </div>
   </a>
 </div>
-
 
 <!-- people? -->
 <!-- <div class="people-tile">

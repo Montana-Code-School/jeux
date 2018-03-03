@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.one-column')
 @section('pageheading')
 <h2 class="lead">Settings Page</h2>
 @endsection

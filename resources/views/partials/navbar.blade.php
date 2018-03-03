@@ -59,7 +59,7 @@
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                     <li><a href="#">Profile</a></li>
                     <li><a href="{{ route('settings')}}">Settings</a></li>
-                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                    <li><a href="{{ route('logout')}}">Logout</a></li>
                   </ul>
                 </div>
               @endauth

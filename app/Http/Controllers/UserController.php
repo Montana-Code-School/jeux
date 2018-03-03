@@ -82,6 +82,7 @@ class UserController extends Controller
         //
     }
 
+
     public function showSettings() {
         return view('settings');
     }
