@@ -18,7 +18,8 @@ class CreateGamesTable extends Migration
             $table->string('name');
             $table->string('image')->default('gameAvatar.jpg');
             $table->integer('year')->nullable();
-            $table->integer('player_count')->nullable();
+            $table->integer('min_player')->nullable();
+            $table->integer('max_player')->nullable();
             $table->integer('min_age')->nullable();
             $table->integer('min_play')->nullable();
             $table->integer('max_play')->nullable();

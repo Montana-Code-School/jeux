@@ -7,8 +7,8 @@
   <body>
 
     <pre>
-      @foreach($json->item as $item)
-      {{ $item->name }}
+      @foreach($json['item'] as $item)
+      {{ print_r($item) }}
       @endforeach
     </pre>
 
