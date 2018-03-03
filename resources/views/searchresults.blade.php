@@ -1,12 +1,12 @@
 @extends('layouts.main')
-@section('currentpage')
+@section('pageheading')
 <h2 class="lead">Search Results Page</h2>
 @endsection
 
 @section('content')
 <div class="game-content row">
   <div class="col-sm-8">
-    @component('partials.games')
+    @component('partials.index')
       oops
     @endcomponent
   </div>

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('currentpage')
+@section('pageheading')
 <h2 class="lead">Settings Page</h2>
 @endsection
 

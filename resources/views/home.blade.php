@@ -1,12 +1,18 @@
 @extends('layouts.main')
-@section('currentpage')
+@section('pageheading')
   <h2 class="lead">My Games</h2>
 @endsection
 @section('content')
-
-  @component('partials.gamelightbox')
-    <p>
+<div class="game-popup row">
+  <div class="col-sm-8">
+    @component('partials.index')
       oops
-    </p>
-  @endcomponent
+    @endcomponent
+  </div>
+  <div class="col-sm-4 filter-container">
+    Right side
+    @section('filtercontainer')
+    @endsection
+  </div>
+</div>
 @endsection

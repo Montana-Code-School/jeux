@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('currentpage')
+@section('pageheading')
 <h2 class="lead">User Profile</h2>
 @endsection
 @section('userprofile')

@@ -1,6 +1,7 @@
+<!--lightbox  -->
 <div class="game-popup">
   <!-- Need to update to use data from the routes -->
-  <h2>Pandemic</h2>
+  <h2>Item Title</h2>
   <div class="game-content">
     <img src="{{ asset('images/gameAvatar.jpg')}}" alt="game"></img>
     <div class="game-info">
@@ -18,3 +19,30 @@
     <button type="button" class="btn btn-primary">Add Game</button>
   </div>
 </div>
+
+<!-- actual tile/item? -->
+<div class="tile">
+  <a href="#" data-featherlight="#mylightbox">
+    <div class="tile-front">
+      <img src="{{ asset('images/gameAvatar.jpg') }}" alt="monopoly"/>
+    </div>
+    <div class="tile-back">
+      <h4>Monopoly</h4>
+      <p>Age: 12+</p>
+      <p>
+        Time: 30-45 mins
+      </p>
+      <p>
+        Players: 2-
+      </p>
+    </div>
+  </a>
+</div>
+
+
+<!-- people? -->
+<!-- <div class="people-tile">
+  <div class="people-front">
+    <img src="{{ asset('images/avatar.png') }}" alt="example Avatar"width="175" height="175"/>
+  </div>
+</div> -->

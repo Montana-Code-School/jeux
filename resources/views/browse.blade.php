@@ -1,16 +1,16 @@
 @extends("layouts.main")
 
-@section("currentpage")
+@section("pageheading")
   <h2 class="lead">
     Browse
   </h2>
 @endsection
 
 @section("content")
-  <div class="game-gallery">
-    <div class="game-content row">
+  <div class="item-gallery">
+    <div class="item-content row">
       <div class="col-sm-8">
-        @component('partials.games')
+        @component('partials.index')
           oops
         @endcomponent
       </div>

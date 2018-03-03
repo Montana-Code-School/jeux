@@ -34,7 +34,7 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 </button>
-                @component("partials.friends")
+                @component("partials.dropdown-list")
                 @endcomponent
               </div>
             </li>
@@ -44,7 +44,7 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </button>
-                @component("partials.notifications")
+                @component("partials.dropdown-list")
                 @endcomponent
               </div>
             </li>
