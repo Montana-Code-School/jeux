@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      //$user->notify(new FriendRequest($friend));
+       return view('home');
     }
 
     public function showSearchResults() {

@@ -72,3 +72,7 @@
     </div>
   </div>
 </nav>
+
+<script type="text/javascript">
+  //ajax calls for search functions
+</script>

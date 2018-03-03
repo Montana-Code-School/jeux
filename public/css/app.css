@@ -8358,32 +8358,43 @@ body {
   margin-top: 0px !important;
 }
 
+.user-profile-container {
+  padding: 5px 10px 5px 10px;
+}
+
 .user-profile {
-  background-color: orange;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: orange;
   max-height: 300px;
+  width: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
 .user-profile img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .user-profile .user-info {
-  padding: 20px;
+  padding: 5px;
   width: 100%;
 }
 
-.user-profile .user-info h2 {
+.user-profile .user-info h4 {
+  font-weight: bold;
   margin-top: 0;
+  margin-bottom: 5;
+}
+
+.user-profile .user-info span {
+  white-space: nowrap;
 }
 
 .user-profile .glyphicon {
-  font-size: 4em;
+  font-size: 1em;
 }
 
 .navbar-nav li a h1 {
@@ -8407,6 +8418,12 @@ body {
 .dropdown .dropdown-menu {
   overflow-y: scroll;
   height: 500px;
+}
+
+.dropdown .jeux-dropdown-header {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center !important;
 }
 
 .tile-container {

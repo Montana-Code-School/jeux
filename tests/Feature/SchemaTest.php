@@ -16,7 +16,7 @@ class SchemaTest extends TestCase
     public function testDatabase()
     {
         $this->assertDatabaseHas('users',[
-          'email'=>'ondricka.keaton@example.net'
+          'email'=>'jbkFrankie@email.com'
         ]);
     }
 }
