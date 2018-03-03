@@ -11,14 +11,12 @@ class MasterTableSeeder extends Seeder
      */
     public function run()
     {
-      $numUser = 10;
-      $numGames = 100;
+
       $date = date('Y-m-d, H:i:s');
       $dateReturn = date('Y-m-d', strtotime("+30 days"));
-      /*
-      Only use this code if you want to populate one user
-      This is the User Everyone will need to have in your Database
-      */
+
+      $this->seedGames();
+
         DB::table('users')->insert([[
           'username' => 'Frankie1',
           'email' => 'jbkFrankie1@email.com',
@@ -60,138 +58,116 @@ class MasterTableSeeder extends Seeder
           'updated_at' => $date
         ]]);
 
-        // for($i=0; $i<=$numUser; $i++){
-        //   $randOne = rand(1,$numUser);
-        //   $randTwo = rand(1,$numUser);
-        //
-        //   while($randOne == $randTwo){
-        //     $randTwo = rand(1,$numUser);
-        //   }
-          DB::table('friends')->insert([[
-            'user_id'=>1,
-            'friend_id'=>2
-          ],
-          [
-            'user_id'=>1,
-            'friend_id'=>3
-          ],
-          [
-            'user_id'=>1,
-            'friend_id'=>4
-          ],
-          [
-            'user_id'=>2,
-            'friend_id'=>3
-          ],
-          [
-            'user_id'=>2,
-            'friend_id'=>4
-          ],
-          [
-            'user_id'=>3,
-            'friend_id'=>4
-          ]]);
-        //}
+        DB::table('friends')->insert([[
+          'user_id'=>1,
+          'friend_id'=>2
+        ],
+        [
+          'user_id'=>1,
+          'friend_id'=>3
+        ],
+        [
+          'user_id'=>1,
+          'friend_id'=>4
+        ],
+        [
+          'user_id'=>2,
+          'friend_id'=>3
+        ],
+        [
+          'user_id'=>2,
+          'friend_id'=>4
+        ],
+        [
+          'user_id'=>3,
+          'friend_id'=>4
+        ]]);
 
-        for($i=0; $i<=$numGames; $i++){
-          $randOne = rand(1,$numUser);
-          $randTwo = rand(1,$numUser);
+        DB::table('inventories')->insert([[
+          'game_id' => 89,
+          'borrower_id' => null,
+          'owner_id' => 1,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 43,
+          'borrower_id' => 3,
+          'owner_id' => 1,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 4,
+          'borrower_id' => null,
+          'owner_id' => 1,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 109,
+          'borrower_id' => 4,
+          'owner_id' => 2,
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
+        ],
+        [
+          'game_id' => 180,
+          'borrower_id' => null,
+          'owner_id' => 2,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 55,
+          'borrower_id' => null,
+          'owner_id' => 2,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 55,
+          'borrower_id' => null,
+          'owner_id' => 3,
+          'date_borrowed' =>  null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 82,
+          'borrower_id' => null,
+          'owner_id' => 3,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 2,
+          'borrower_id' => null,
+          'owner_id' => 3,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 27,
+          'borrower_id' => null,
+          'owner_id' => 4,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 68,
+          'borrower_id' => 1,
+          'owner_id' => 4,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 89,
+          'borrower_id' => null,
+          'owner_id' => 4,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ]]);
 
-          while($randOne == $randTwo){
-            $randTwo = rand(1,$numUser);
-          }
-
-          // if no borrower_id no date_borrowed or date_returned
-          $borrowerId = rand(0, 1) ? $randTwo : null;
-
-          DB::table('inventories')->insert([[
-            'game_id' => 89,
-            'borrower_id' => null,
-            'owner_id' => 1,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 43,
-            'borrower_id' => 3,
-            'owner_id' => 1,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 4,
-            'borrower_id' => null,
-            'owner_id' => 1,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 109,
-            'borrower_id' => 4,
-            'owner_id' => 2,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 180,
-            'borrower_id' => null,
-            'owner_id' => 2,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 55,
-            'borrower_id' => null,
-            'owner_id' => 2,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 55,
-            'borrower_id' => null,
-            'owner_id' => 3,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 82,
-            'borrower_id' => null,
-            'owner_id' => 3,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 2,
-            'borrower_id' => null,
-            'owner_id' => 3,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 27,
-            'borrower_id' => null,
-            'owner_id' => 4,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 68,
-            'borrower_id' => 1,
-            'owner_id' => 4,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ],
-          [
-            'game_id' => 89,
-            'borrower_id' => null,
-            'owner_id' => 4,
-            'date_borrowed' => $borrowerId === null ? null : $date,
-            'date_returned' => $borrowerId === null ? null : $dateReturn
-          ]]);
-        }
-        $users = factory(App\User::class, $numUser)->create();
-        //$games = factory(App\Game::class, $numGames)->create();
-        $this->seedGames();
     }
 
     public function seedGames(){
