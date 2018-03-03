@@ -18,7 +18,8 @@
       </div>
       <!-- Second Column: CHECK -->
       <div class="col-md-4">
-        <form class="navbar-form text-center" role="search">
+         <form class="navbar-form text-center" role="search" method="GET" action="/browse/{name}">
+        <!-- <form id="searchForm" class="navbar-form text-center" role="search" method="GET"> -->
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
@@ -72,3 +73,7 @@
     </div>
   </div>
 </nav>
+
+<script type="text/javascript">
+  //ajax calls for search functions
+</script>

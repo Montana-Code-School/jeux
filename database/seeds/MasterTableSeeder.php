@@ -24,7 +24,7 @@ class MasterTableSeeder extends Seeder
           'email' => 'jbkFrankie@email.com',
           'password' => bcrypt('password'),
           'name' => 'Jill Ben Kendra-Frank',
-          'token' => bcrypt('token')
+          'token' => bcrypt('token'),
         ]);
 
         for($i=0; $i<=$numUser; $i++){
@@ -60,6 +60,35 @@ class MasterTableSeeder extends Seeder
           ]);
         }
         $users = factory(App\User::class, $numUser)->create();
-        $games = factory(App\Game::class, $numGames)->create();
+        //$games = factory(App\Game::class, $numGames)->create();
+        $this->seedGames();
+    }
+
+    public function seedGames(){
+
+      $path = getcwd() . "/database/seeds/gameData.json";
+
+      $json = file_get_contents($path);
+
+      $array = json_decode($json, true);
+
+      foreach($array['item'] as $item){
+        $game = factory(App\Game::class)->create([
+          'name' => $item['name'],
+          'image' => $item['image'],
+          'year' => $item['yearpublished'],
+          'min_player' => $item['stats']['@attributes']['minplayers'],
+          'max_player' => $item['stats']['@attributes']['maxplayers'],
+          'min_play' =>
+              isset($item['stats']['@attributes']['minplaytime'])
+            ? $item['stats']['@attributes']['minplaytime']
+            : rand(30,90),
+          'max_play' =>
+              isset($item['stats']['@attributes']['maxplaytime'])
+            ? $item['stats']['@attributes']['maxplaytime']
+            : rand(45, 120)
+        ]);
+        $game->save();
+      }
     }
 }
