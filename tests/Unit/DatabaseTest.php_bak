@@ -66,8 +66,8 @@ class DatabaseTest extends TestCase
             Tests the default seeded user
         */
 
-        $this->assertDatabaseHas('users', ['username' => 'Frankie5'])
-              ->assertDatabaseHas('users', ['email' => 'jbkFrankie@email.com'])
+        $this->assertDatabaseHas('users', ['username' => 'Frankie1'])
+              ->assertDatabaseHas('users', ['email' => 'jbkFrankie1@email.com'])
               ->assertDatabaseHas('users', ['name' => 'Jill Ben Kendra-Frank'])
               ->assertDatabaseHas('users', ['id' => 1])
               ->assertDatabaseHas('users', ['image' => 'avatar.png']);
