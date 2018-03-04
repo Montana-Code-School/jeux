@@ -30,7 +30,7 @@ class FriendRequest extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['database'];
     }
 
     /**
@@ -57,7 +57,8 @@ class FriendRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            //TODO::Who wants to be your friends
+            //TODO:: maybe use todata
         ];
     }
 }

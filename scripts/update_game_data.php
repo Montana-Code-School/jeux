@@ -1,4 +1,7 @@
-<?php  
+<?php
+
+// This is a function that will call to the Api to require fresh data if needed. 
+
    public function saveGameApiData()
        {
          $client = new Client();

@@ -26,6 +26,4 @@ class User extends Model implements Authenticatable
       return $this->hasMany('App\Inventory', 'owner_id');
     }
 
-    //@TODO needs notification
-
 }
