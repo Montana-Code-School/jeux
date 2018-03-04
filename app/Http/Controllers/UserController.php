@@ -7,6 +7,7 @@ use App\User;
 use App\Game;
 use App\Inventory;
 
+use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
 use App\Notifications\FriendRequest;
 use App\Notifications\BorrowRequest;
@@ -80,6 +81,17 @@ class UserController extends Controller
       $owner->notify(new BorrowRequest($borrower, $game));
 
     }
+
+    public function notificationRead($notification_id)
+    {
+
+      $user = Auth::user();
+      $notification = $user->unreadNotifications->find($notification_id);
+      $notification->markAsRead();
+
+    }
+
+
 
     /**
      * Remove the specified resource from storage.
