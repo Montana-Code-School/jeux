@@ -71,7 +71,7 @@ class UserModelTest extends TestCase
     public function testUserHasGame()
     {
         $user = User::with('inventory')->where('id', 1)->get();
-        $this->assertTrue(sizeof($user) >= 1);
+        $this->assertTrue(sizeof($user[0]->inventory) >= 1);
     }
 
     public function testUserHasNotification()
