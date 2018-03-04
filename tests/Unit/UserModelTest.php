@@ -64,13 +64,19 @@ class UserModelTest extends TestCase
 
     public function testUserHasFriend()
     {
-        $user = User::find(1)->friends()->where('user_id', 1)->get();
-        $this->assertTrue(sizeof($user) >= 1);
+        $user = User::with('friends')->where('id', 1)->get();
+        $this->assertTrue(sizeof($user[0]->friends) >= 1);
     }
 
     public function testUserHasGame()
     {
         $user = User::with('inventory')->where('id', 1)->get();
+        $this->assertTrue(sizeof($user) >= 1);
+    }
+
+    public function testUserHasNotification()
+    {
+        $user = User::with('notification')->where('id', 1)->get();
         $this->assertTrue(sizeof($user) >= 1);
     }
 }
