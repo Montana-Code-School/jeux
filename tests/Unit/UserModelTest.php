@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\User;
+use App\Inventory;
 
 class UserModelTest extends TestCase
 {
@@ -63,14 +64,13 @@ class UserModelTest extends TestCase
 
     public function testUserHasFriend()
     {
-
         $user = User::find(1)->friends()->where('user_id', 1)->get();
-        echo sizeof($user);
         $this->assertTrue(sizeof($user) >= 1);
     }
 
-    public function testCreateGames()
+    public function testUserHasGame()
     {
-        $this->assertTrue(true);
+        $user = User::with('inventory')->where('id', 1)->get();
+        $this->assertTrue(sizeof($user) >= 1);
     }
 }
