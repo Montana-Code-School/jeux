@@ -18,12 +18,11 @@
       </div>
       <!-- Second Column: CHECK -->
       <div class="col-md-4">
-         <form class="navbar-form text-center" role="search" method="GET" action="/browse/{name}">
-        <!-- <form id="searchForm" class="navbar-form text-center" role="search" method="GET"> -->
+        <form class="navbar-form text-center" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-info" value="Submit">
         </form>
       </div>
       <!-- Third Column: CHECK -->
@@ -35,17 +34,38 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 </button>
-                @component("partials.friends")
+
+
+                @php
+                $items = [];
+                foreach($friends as $friend) {
+                  $items[] = [
+                    'image' => $friend->image,
+                    'title' => $friend->username,
+                    'description' => 'Hello! My name is '. $friend->name
+                  ];
+
+                }
+
+
+                @endphp
+                @component("partials.dropdown-list",["items"=>$items])
+                @slot("list_name")
+                  Friends
+                @endslot
                 @endcomponent
               </div>
             </li>
             <!-- NOTIFICATIONS SECTION -->
             <li>
-              <div class="dropdown">
+              <div class="dropdown notifications-content">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </button>
-                @component("partials.notifications")
+                @component("partials.dropdown-list",["items"=>[]])
+                @slot("list_name")
+                  Notifications
+                @endslot
                 @endcomponent
               </div>
             </li>
@@ -59,8 +79,8 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                    <li><a href="{{ route('settings')}}">Settings</a></li>
+                    <li><a href="{{ route('logout')}}">Logout</a></li>
                   </ul>
                 </div>
               @endauth
