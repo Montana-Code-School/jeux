@@ -14,7 +14,7 @@
 // Routes that will give you items dealing with the home page
 Route::get('/', 'HomeController@index')->name('landingPage');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('test/{id}', 'UserController@borrowGame');
+
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@index')->name('browse');
@@ -30,5 +30,9 @@ Route::resource('users','UserController');
 
 // Authentication
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+// Notification Routes
+Route::get('test/{id}', 'UserController@makeFriend');
+Route::get('notification_read/{notification_id}', 'UserController@notificationRead');
 
 Auth::routes();
