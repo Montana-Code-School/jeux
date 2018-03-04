@@ -2,7 +2,8 @@
 
 namespace App\Notifications;
 
-use App\Borrow;
+use App\User;
+use App\Game;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,9 +18,10 @@ class BorrowRequest extends Notification
      *
      * @return void
      */
-    public function __construct(Borrow $borrow)
+    public function __construct(User $borrower, Game $game)
     {
-        $this-> $borrow= $borrow;
+        $this->borrower = $borrower;
+        $this->game = $game;
     }
 
     /**
@@ -57,7 +59,13 @@ class BorrowRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+          'friend_id' => $this->borrower->id,
+          'friend_name' => $this->borrower->name,
+          'user_name' => $this->borrower->username,
+          'friend_avatar' => $this->borrower->image,
+          'game_id' => $this->game->id,
+          'game_name' => $this->game->name,
+          'game_image' => $this->game->image
         ];
     }
 }

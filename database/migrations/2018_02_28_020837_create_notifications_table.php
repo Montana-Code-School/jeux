@@ -14,7 +14,7 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->increments('id')->nullable();
+            $table->string('id')->primary();
             $table->string('type')->nullable();
             $table->string('notifiable_type')->nullable();
             $table->integer('notifiable_id')->nullable();
@@ -22,7 +22,7 @@ class CreateNotificationsTable extends Migration
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
 
-            $table->index(['notifiable_type', 'notifiable_id'])
+            $table->index(['notifiable_type', 'notifiable_id']);
         });
     }
 

@@ -14,7 +14,7 @@
 // Routes that will give you items dealing with the home page
 Route::get('/', 'HomeController@index')->name('landingPage');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('test', 'GameController@saveGameApiData');
+Route::get('test/{id}', 'UserController@borrowGame');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@index')->name('browse');

@@ -2,14 +2,14 @@
 
 namespace App\Notifications;
 
-use App\Friend;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class FriendRequest extends Notification
-{
+{ 
     use Queueable;
 
     /**
@@ -17,9 +17,9 @@ class FriendRequest extends Notification
      *
      * @return void
      */
-    public function __construct(Friends $friend)
+    public function __construct(User $friend)
     {
-        $this->friend= $user;
+        $this->friend = $friend;
     }
 
     /**
@@ -57,8 +57,11 @@ class FriendRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-            //TODO::Who wants to be your friends
-            //TODO:: maybe use todata
+          'friend_id' => $this->friend->id,
+          'friend_name' => $this->friend->name,
+          'user_name' => $this->friend->username,
+          'friend_avatar' => $this->friend->image
+
         ];
     }
 }

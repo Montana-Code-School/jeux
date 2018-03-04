@@ -4,8 +4,15 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Game;
+use App\Inventory;
 
 use Illuminate\Http\Request;
+use App\Notifications\FriendRequest;
+use App\Notifications\BorrowRequest;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -31,6 +38,8 @@ class UserController extends Controller
         $user = User::with('inventory', 'friends')->where('username', $username)->get();
         $data['user'] = $user;
 
+        $user->notify(new FriendRequest($user));
+
          return view('user')->with($data);
     }
 
@@ -43,7 +52,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $user = App\User::find($id);
+      $user = User::find($id);
       //TODO:: make sure that when people are filling out the form that
       // that the old information is staying with the information.
       $user->name = $request->name;
@@ -54,6 +63,24 @@ class UserController extends Controller
       $user->save();
     }
 
+    public function makeFriend($id)
+    {
+      $friend = User::find($id);
+      Auth::user()->friends()->attach($friend);
+      $friend->notify(new FriendRequest(Auth::user()));
+    }
+
+    public function borrowGame($inventory_id)
+    {
+      $borrower = Auth::user();
+      $owner_id = Inventory::find($inventory_id)->owner_id;
+      $owner = User::find($owner_id);
+      $game_id = Inventory::find($inventory_id)->game_id;
+      $game = Game::find($game_id);
+      $owner->notify(new BorrowRequest($borrower, $game));
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -62,7 +89,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-      $user = App\User::find($id);
+      $user = User::find($id);
 
       $user->delete();
     }
