@@ -32,7 +32,6 @@ class UserModelTest extends TestCase
 
     public function testReadUser()
     {
-        // $this->assertTrue(true);
         $this->assertDatabaseHas('users', ['id'=>$this->user->id])
               ->assertDatabaseHas('users', ['username'=>$this->user->username])
               ->assertDatabaseHas('users', ['email'=>$this->user->email])
@@ -47,26 +46,27 @@ class UserModelTest extends TestCase
 
     public function testUpdateUser()
     {
-        $user = User::find($this->user->id);
-        $user->name = "Test Change";
-        $user->save();
+        $tempUser = User::find($this->user->id);
+        $tempUser->name = "Test Change";
+        $tempUser->save();
 
-        echo $user;
-
-        $this->assertDatabaseHas('users', ['name'=>$user->name]);
+        $this->assertDatabaseHas('users', ['name'=>$tempUser->name]);
     }
 
     public function testDeleteUser()
     {
-        $user = User::find($this->user->id);
-        $user->delete();
+        $tempUser = User::find($this->user->id);
+        $tempUser->delete();
 
-        $this->assertDatabaseMissing('users', ['id'=>$user->id]);
+        $this->assertDatabaseMissing('users', ['id'=>$this->user->id]);
     }
 
-    public function testUserFriend()
+    public function testUserHasFriend()
     {
-        $this->assertTrue(true);
+
+        $user = User::find(1)->friends()->where('user_id', 1)->get();
+        echo sizeof($user);
+        $this->assertTrue(sizeof($user) >= 1);
     }
 
     public function testCreateGames()
