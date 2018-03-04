@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\User;
-use App\Inventory;
 
 class UserModelTest extends TestCase
 {
