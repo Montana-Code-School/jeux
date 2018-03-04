@@ -17,7 +17,8 @@ class GameModelTest extends TestCase
      * @return void
      */
 
-    public function setup() {
+    public function setup()
+    {
         parent::setup();
         $this->game = new Game;
 
