@@ -1,4 +1,5 @@
 <?php
+//TODO::put notifications stuff in here!
 
 namespace App\Http\Controllers;
 
@@ -27,10 +28,9 @@ class UserController extends Controller
      */
     public function show($username)
     {
-      //$user = User::where('username', $username)->get();
         $user = User::with('inventory', 'friends')->where('username', $username)->get();
         $data['user'] = $user;
-         //return view('user', compact('user'));
+
          return view('user')->with($data);
     }
 
@@ -50,7 +50,6 @@ class UserController extends Controller
       $user->image = $request->image;
       $user->username = $request->username;
       $user->email = $request->email;
-
 
       $user->save();
     }

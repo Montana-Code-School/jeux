@@ -17,7 +17,7 @@ class BorrowRequest extends Notification
      *
      * @return void
      */
-    public function __construct(Barrow $borrow)
+    public function __construct(Borrow $borrow)
     {
         $this-> $borrow= $borrow;
     }
@@ -30,7 +30,7 @@ class BorrowRequest extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**

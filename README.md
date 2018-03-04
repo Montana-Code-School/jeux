@@ -21,7 +21,6 @@ Jeux is a handy site that lets you and your friends share games with one another
 * Laravel
 * Php
 * SASS
-* Vue.js
 * OAuth
 * Bootstrap
 ### Backend
@@ -29,11 +28,11 @@ Jeux is a handy site that lets you and your friends share games with one another
 * Eloquent
 ### Testing gear
 * Phpunit
-* Jasmine
+* Dusk
+* Travis Ci
 ### Communication
 * Github
 * Slack
-* Trello
 
 ## <a name="Meet-the-team"></a> Meet the team
 
@@ -46,16 +45,17 @@ Jeux is a handy site that lets you and your friends share games with one another
   * Git master
 * **Kelsey**
   * Testing
-  * Database
 * **Kerry**
-  * Front End (Accessibility)
-  * Front End Testing
+  * Project Manager
 * **Matt**
-  * User Experience
+  * Mock ups
+  * Testing
   * Deployment
   * Git master
 * **Nate**
-  * Project Manager
+  * Routes
+  * Testing
+  * Backend/Database
 
 ## <a name="File-Structure"></a> File Structure
 ```
@@ -65,6 +65,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 |   |__Console
 |   |__Exceptions
 |   |__Http
+|   |__Notifications
 |   |__Providers
 |      Game.Php
 |      Inventory.php
@@ -85,11 +86,13 @@ Jeux is a handy site that lets you and your friends share games with one another
 |   |__lang
 |   |__views
 |__routes
+|__scripts
 |__storage
 |   |__app
 |   |__framework
 |   |__logs
-|__testing
+|__tests
+|   |__Browser
 |   |__Feature
 |   |__Unit
 | dataBaseSpecs.md
@@ -109,10 +112,9 @@ Jeux is a handy site that lets you and your friends share games with one another
   * Add a description
   * Add the Git masters as reviewers
   * **Do not merge in your own branch to master, must have a new set of eyes merge into master**
-* Code must be formatted and clean before a merge may be done
 
 ### Code
-* Everyone must have the same linter downloaded on their preferred editor
+* Code must be formatted and clean before a merge may be done
 
 ### Due Dates
 * If you are unable to get a project done by it's stated due date
