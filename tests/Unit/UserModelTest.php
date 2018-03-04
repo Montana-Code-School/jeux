@@ -74,9 +74,9 @@ class UserModelTest extends TestCase
         $this->assertTrue(sizeof($user[0]->inventory) >= 1);
     }
 
-    public function testUserHasNotification()
-    {
-        $user = User::with('notification')->where('id', 1)->get();
-        $this->assertTrue(sizeof($user) >= 1);
-    }
+    // public function testUserHasNotification()
+    // {
+    //     $user = User::with('notification')->where('id', 1)->get();
+    //     $this->assertTrue(sizeof($user[0]->notification) >= 1);
+    // }
 }
