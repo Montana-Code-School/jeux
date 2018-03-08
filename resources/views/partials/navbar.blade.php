@@ -37,6 +37,7 @@
 
 
                 @php
+
                 $items = [];
                 foreach($friends as $friend) {
                   $items[] = [
@@ -46,8 +47,6 @@
                   ];
 
                 }
-
-
                 @endphp
                 @component("partials.dropdown-list",["items"=>$items])
                 @slot("list_name")
