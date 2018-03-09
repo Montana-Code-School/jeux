@@ -12,11 +12,10 @@
 
   <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
   <script src="{{ asset('js/bootstrap.js') }}" charset="utf-8"></script>
-  <!-- <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-  <script src="{{ asset('js/jquery.flip.js') }}"></script> -->
-
+  <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+  <!-- <script src="{{ asset('js/jquery.flip.js') }}"></script> -->
   <link rel="stylesheet" href="{{ asset('css/featherlight.css') }}">
-  <script src="{{ asset('js/featherlight.js') }}" charset="utf-8"></script>
+  <script src="{{ asset('js/featherlight.js') }}"></script>
 </head>
 <body>
   <div class="menu">
@@ -37,5 +36,8 @@
     </div>
   </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+  <!--<script type="text/javascript" language="javascript" src="{{ asset('js/p5.min.js') }}"></script>-->
+  <script type="text/javascript" src="{{ asset('js/sketch.js') }}"></script>
 </body>
 </html>
