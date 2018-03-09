@@ -63,20 +63,21 @@
         options to add an expansion-->
     <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#addGame">Add Game</button>
     <div id="addGame" class="collapse">
+      <ul>
       <label for="name">Name</label>
-      <input id="name" class="filterCheck" type="text" placeholder="Name"></input>
+      <li><input id="name" class="filterCheck" type="text" placeholder="Name"></input></li>
       <label for="year">Year</label>
-      <input id = "year"  class="filterCheck" type="text" placeholder="Publish Year"></input>
+      <li><input id = "year"class="filterCheck" type="text" placeholder="Publish Year"></input></li>
       <label for="miplayers">Min Players</label>
-      <input id = "miplayers" class="filterCheck" type="text" placeholder="Min Players"></input>
+      <li><input id = "miplayers" class="filterCheck" type="text" placeholder="Min Players"></input></li>
       <label for="mxplayers">Max Players</label>
-      <input id = "mxplayers" class="filterCheck" type="text" placeholder="Max Players"></input>
+      <li><input id = "mxplayers" class="filterCheck" type="text" placeholder="Max Players"></input></li>
       <label for="mipltime">Min Playtime</label>
-      <input id = "mipltime" class="filterCheck" type="text" placeholder="Min Play Time"></input>
+      <li><input id = "mipltime" class="filterCheck" type="text" placeholder="Min Play Time"></input></li>
       <label for="mxpltime">Max Playtime</label>
-      <input id = "mxpltime" class="filterCheck" type="text" placeholder="Max Play Time"></input>
-      <input id = "" class="filterCheck" type="text" placeholder="Description"></input>
-      <input class="filterCheck" type="toggle"></input>
+      <li><input id = "mxpltime" class="filterCheck" type="text" placeholder="Max Play Time"></input></li>
+      <li><input id = "" class="filterCheck" type="text" placeholder="Description"></input></li>
+      </ul>
     </div>
 
   </div>
