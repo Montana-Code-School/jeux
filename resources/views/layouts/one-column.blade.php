@@ -29,6 +29,7 @@
     @yield("userprofile")
     @yield("content")
   </div>
-  <script src="{{ asset('js/sketch.js') }}"></script>
+  <script src="{{ asset('js/p5.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/sketch.js') }}"></script>
 </body>
 </html>

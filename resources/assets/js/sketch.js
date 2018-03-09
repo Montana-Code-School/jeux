@@ -1,6 +1,5 @@
-$( document ).ready(function(){
+
   // TURTLE STUFF:
-  console.log("sketch seen");
   var x, y; // the current position of the turtle
   var currentangle = 0; // which way the turtle is pointing
   var step = 40; // how much the turtle moves with each 'F'
@@ -100,5 +99,4 @@ $( document ).ready(function(){
    ellipse(x, y, radius, radius);
   }
 
-
-});
+  setup();
