@@ -1,11 +1,8 @@
-<div class="user-profile">
+<div class="dropdown-item-content">
   <img src="images/{{$item->image}}" alt="example Avatar" />
-  <div class="user-info">
-    <h2>{{$item->title}}</h2>
-    {{$item->description}}
-  </div>
-  <div>
-    <span class="glyphicon glyphicon-plus"></span>
+  <div class="dropdown-item-info">
+    <h4>{{$item->title}}</h4>
+    <span>{{$item->description}}</span>
   </div>
 </div>
 
