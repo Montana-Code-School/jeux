@@ -4,8 +4,6 @@
 <h2 class="lead">User Profile</h2>
 @endsection
 
-<h1>{{ $data['userProfile']['username'] }}</h1>
-
 @section('userprofile')
   @component('partials.profile', ['user' => $data['userProfile']])<!--this doesn't exist yet -->
   @endcomponent
