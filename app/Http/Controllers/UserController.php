@@ -36,9 +36,23 @@ class UserController extends Controller
      */
     public function show($username)
     {
+      /*
+        The show method gets a users profile and return a list of games owned
+        and borrowed by that user.
+
+        TODO need to determine if person is friend
+        TODO determine what happens if use does not exist?
+        TODO determine if game is in Auth User Inventory
+        TODO determine if game is borrowed by profile user
+        TODO determine profile user borrowed game count
+        TODO determine profile user lended game count
+        TODO determine profile user total owned games
+      */
+
       // Get Authenticated user information
       $authUser = Auth::User();
 
+      // Set Authenticated user information
       $data['authUser'] = [
         'id'=>$authUser->id,
         'image'=>$authUser->image,
@@ -47,11 +61,9 @@ class UserController extends Controller
         'name'=>$authUser->name,
       ];
 
+
       // Get user profile information with user inventory
       $userProfile = User::with('inventory')->where('username', $username)->get();
-
-      // TODO need to determine if person is friend
-
       // Set user profile information
       $data['userProfile'] = [
         'id'=>$userProfile[0]->id,
@@ -61,18 +73,19 @@ class UserController extends Controller
         'name'=>$userProfile[0]->name,
       ];
 
-      // Get game information
+      // Profile Users Games
       $inventory = $userProfile[0]->inventory;
       $data['games'] = [];
-      dd($inventory);
+
       for($i = 0; $i < sizeof($inventory); $i++) {
+
+        // Get game information
         $gameQuery = Game::find($inventory[$i]->id);
-        // dd($gameQuery);
 
-
-        // set game information
+        // Set game information
         $game = [
           'game_id'=>$gameQuery->game_id,
+          'name'=>$gameQuery->name,
           'image'=>$gameQuery->image,
           'year'=>$gameQuery->year,
           'min_player'=>$gameQuery->min_player,
@@ -88,6 +101,7 @@ class UserController extends Controller
         array_push($data['games'], $game);
       }
 
+      // return $data for the view
        return view('user', ['data' => $data]);
     }
 
@@ -101,7 +115,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
       $user = User::find($id);
-      //TODO:: make sure that when people are filling out the form that
+
       // that the old information is staying with the information.
       $user->name = $request->name;
       $user->image = $request->image;
