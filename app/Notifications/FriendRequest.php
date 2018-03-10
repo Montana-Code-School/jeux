@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class FriendRequest extends Notification
-{ 
+{
     use Queueable;
 
     /**
@@ -17,9 +17,9 @@ class FriendRequest extends Notification
      *
      * @return void
      */
-    public function __construct(User $friend)
+    public function __construct(User $user)
     {
-        $this->friend = $friend;
+        $this->friend = $user;
     }
 
     /**
