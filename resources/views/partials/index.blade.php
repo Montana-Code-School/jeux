@@ -1,6 +1,6 @@
 <div class="tile-container">
-  @foreach($games as $game)
-  @component('partials.item', ['game'=>$game])
+  @foreach($games as $indexKey => $game)
+  @component('partials.item', ['index'=>$indexKey,'game'=>$game])
   @endcomponent
   @endforeach
 </div>

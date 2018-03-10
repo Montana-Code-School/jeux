@@ -124,22 +124,45 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  .tile {
-    height: 175px;
+
+  .flip-container {
+    perspective: 350px;
+  }
+
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+      transform: rotateY(180deg);
+  }
+
+  .flip-container, .front, .back {
     width: 175px;
-    margin-bottom: 15px;
-    .tile-front {
-      img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-    .tile-back {
-      display: none;
+    height: 175px;
+    img {
       width: 100%;
       height: 100%;
-      text-align: center;
     }
+  }
+
+  .flipper {
+    transition: 0.6s;
+	  transform-style: preserve-3d;
+	  position: relative;
+  }
+
+  .front, .back{
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .back {
+  	transform: rotateY(180deg);
   }
 }
 
