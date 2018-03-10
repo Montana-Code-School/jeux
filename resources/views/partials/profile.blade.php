@@ -3,7 +3,7 @@
   <div class="user-profile">
     <img src="images/avatar.png" alt="example Avatar" />
     <div class="user-info">
-      <h4>Username</h4>
+      <h4>Username HERE</h4>
       <span>
         Borrowing: 2 Games
       </span>

@@ -37,9 +37,11 @@ class UserController extends Controller
     public function show($username)
     {
         $user = User::with('inventory', 'friends')->where('username', $username)->get();
-        $data['user'] = $user;
+        dd($user);
+        $data['user']->id = $user->id;
 
-        $user->notify(new FriendRequest($user));
+
+        // $user->notify(new FriendRequest($user));
 
          return view('user')->with($data);
     }
