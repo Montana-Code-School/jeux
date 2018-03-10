@@ -36,14 +36,59 @@ class UserController extends Controller
      */
     public function show($username)
     {
-        $user = User::with('inventory', 'friends')->where('username', $username)->get();
-        dd($user);
-        $data['user']->id = $user->id;
+      // Get Authenticated user information
+      $authUser = Auth::User();
+
+      $data['authUser'] = [
+        'id'=>$authUser->id,
+        'image'=>$authUser->image,
+        'username'=>$authUser->username,
+        'email'=>$authUser->email,
+        'name'=>$authUser->name,
+      ];
+
+      // Get user profile information with user inventory
+      $userProfile = User::with('inventory')->where('username', $username)->get();
+
+      // TODO need to determine if person is friend
+
+      // Set user profile information
+      $data['userProfile'] = [
+        'id'=>$userProfile[0]->id,
+        'image'=>$userProfile[0]->image,
+        'username'=>$userProfile[0]->username,
+        'email'=>$userProfile[0]->email,
+        'name'=>$userProfile[0]->name,
+      ];
+
+      // Get game information
+      $inventory = $userProfile[0]->inventory;
+      $data['games'] = [];
+      dd($inventory);
+      for($i = 0; $i < sizeof($inventory); $i++) {
+        $gameQuery = Game::find($inventory[$i]->id);
+        // dd($gameQuery);
 
 
-        // $user->notify(new FriendRequest($user));
+        // set game information
+        $game = [
+          'game_id'=>$gameQuery->game_id,
+          'image'=>$gameQuery->image,
+          'year'=>$gameQuery->year,
+          'min_player'=>$gameQuery->min_player,
+          'max_player'=>$gameQuery->max_player,
+          'min_age'=>$gameQuery->min_age,
+          'min_play'=>$gameQuery->min_play,
+          'max_play'=>$gameQuery->max_play,
+          'description'=>$gameQuery->description,
+          'instructions'=>$gameQuery->instructions,
+          'borrower_id'=>$inventory[$i]->borrower_id,
+        ];
 
-         return view('user')->with($data);
+        array_push($data['games'], $game);
+      }
+
+       return view('user', ['data' => $data]);
     }
 
     /**

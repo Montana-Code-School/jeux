@@ -3,17 +3,16 @@
 @section('pageheading')
 <h2 class="lead">User Profile</h2>
 @endsection
-<pre>
-  {{ var_dump($user) }}
-</pre>
+
+<h1>{{ $data['userProfile']['username'] }}</h1>
 
 @section('userprofile')
-  @component('partials.profile')<!--this doesn't exist yet -->
+  @component('partials.profile', ['user' => $data['userProfile']])<!--this doesn't exist yet -->
   @endcomponent
 @endsection
 
 @section('left-column')
-  @component('partials.index')
+  @component('partials.index', ['games' => $data['games']])
   @endcomponent
 @endsection
 
