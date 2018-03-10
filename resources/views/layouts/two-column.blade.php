@@ -36,6 +36,8 @@
       </div>
     </div>
   </div>
-
+  <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+  <script src="{{ asset('js/jquery.flip.js')}}" charset="utf-utf-8"></script>
+  <script src="{{ asset('js/script.js')}}" charset="utf-8"></script>
 </body>
 </html>
