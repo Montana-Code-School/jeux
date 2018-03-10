@@ -22,17 +22,17 @@
 
 <!-- actual tile/item? -->
 <div class="tile">
-  <a href="#" data-featherlight="#mylightbox">
+  <!-- <a href="#" data-featherlight="#mylightbox"> -->
     <div class="tile-front">
-      <img src="{{ asset('images/gameAvatar.jpg') }}" alt="monopoly"/>
+      <img  src="{{$game->image}}"alt="A board game image"/>
     </div>
-    <div class="tile-back">
+    <!-- <div class="tile-back">
       <h4>Monopoly</h4>
       <p>Age: 12+</p>
       <p>Time: 30-45 mins</p>
       <p>Players: 2</p>
-    </div>
-  </a>
+    </div> -->
+  <!-- </a> -->
 </div>
 
 <!-- people? -->

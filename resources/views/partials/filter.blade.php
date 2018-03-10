@@ -9,11 +9,16 @@
   <div class="filter">
     <div id="title">
       <h2 class="text-center">Options</h2>
+    </br>
+    <form>
+      <input type="text" ></input>
+    </form>
+  </br>
+</br>
     </div>
     <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#age">Age</button>
     <div id="age" class="collapse">
     </br>
-
         <ul>
           <li><input class="filterCheck" type="checkbox">Everyone</input></li>
           <li><input class="filterCheck" type="checkbox">3+</input></li>

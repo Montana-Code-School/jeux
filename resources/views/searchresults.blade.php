@@ -9,7 +9,6 @@
       oops
     @endcomponent
     <br><p class="text-right">More Games...</p><br/>
-    <br><p class="text-right">More People...</p><br/>
 @endsection
 
 @section('right-column')

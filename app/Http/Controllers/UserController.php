@@ -38,8 +38,7 @@ class UserController extends Controller
     {
         $user = User::with('inventory', 'friends')->where('username', $username)->get();
         $data['user'] = $user;
-
-        $user->notify(new FriendRequest($user));
+        $user->notify(new FriendRequest($user[0]));
 
          return view('user')->with($data);
     }
