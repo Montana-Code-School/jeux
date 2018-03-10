@@ -1,6 +1,6 @@
 <div class="tile-container">
-  @for($i = 0; $i < 8; $i++)
-  @component('partials.item')
+  @foreach($games as $game)
+  @component('partials.item', ['game'=>$game])
   @endcomponent
-  @endfor
+  @endforeach
 </div>
