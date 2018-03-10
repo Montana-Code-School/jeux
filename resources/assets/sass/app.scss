@@ -10,6 +10,13 @@
 
 body {
   padding: 60px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
 }
 
 .container {
