@@ -11,8 +11,10 @@
         Lending: 1 Game
       </span>
     </div>
-    <div>
-      <span class="glyphicon glyphicon-plus"></span>
-    </div>
+    @if(!$user['is_friend'])
+      <div>
+        <span class="glyphicon glyphicon-plus"></span>
+      </div>
+    @endif
   </div>
 </div>

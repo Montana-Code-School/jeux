@@ -1,4 +1,5 @@
 <div class="tile-container">
+
   @isset($games)
     @if(count($games) > 0)
       @foreach($games as $indexKey => $game)

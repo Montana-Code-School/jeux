@@ -1,6 +1,7 @@
 <div id="lb{{ $index }}" class="item-full">
+
   <div class="item-content">
-    <img src="{{ asset('images/gameAvatar.jpg')}}" alt="game"></img>
+    <img src="{{ $game['image'] }}" alt="game"></img>
     <div class="item-info">
       <h4><strong>description</strong></h4>
       <p>{{ $game['description']}}</p>
@@ -19,9 +20,11 @@
         <p>{{ $game['min_play'] }}-{{ $game['max_play'] }} minutes</p>
       @endif
     </div>
+    @if(!$game['own_game'])
     <div class="add-item-inventory">
       Add to collection
     </div>
+    @endif
   </div>
   <div class="owner-container">
     <h4><strong>Borrow from Friends</strong><h4>

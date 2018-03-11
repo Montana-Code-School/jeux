@@ -40,9 +40,7 @@ class UserController extends Controller
         The show method gets a users profile and return a list of games owned
         and borrowed by that user.
 
-        TODO need to determine if person is friend
-        TODO determine what happens if use does not exist?
-        TODO determine if game is in Auth User Inventory
+        TODO determine what happens if user does not exist
         TODO determine if game is borrowed by profile user
         TODO determine profile user borrowed game count
         TODO determine profile user lended game count
@@ -51,7 +49,11 @@ class UserController extends Controller
 
       // Get Authenticated user information
       $auth_user = Auth::User();
+
+      // Get Auth user friends
       $auth_friends = $auth_user->friends;
+
+      //create easily searchable array of friend IDs
       $auth_friends_ids = array();
       for($i = 0; $i < sizeof($auth_friends); $i++) {
           array_push($auth_friends_ids, $auth_friends[$i]->id);
@@ -68,6 +70,10 @@ class UserController extends Controller
 
       // Get user profile information with user inventory
       $userProfile = User::with('inventory')->where('username', $username)->get();
+
+      // determine if user is a friends
+      $is_friend = (array_search($userProfile[0]->id, $auth_friends_ids) ? true : false);
+
       $userInventory = $userProfile[0]->inventory;
 
       // Set user profile information
@@ -77,6 +83,7 @@ class UserController extends Controller
         'username'=>$userProfile[0]->username,
         'email'=>$userProfile[0]->email,
         'name'=>$userProfile[0]->name,
+        'is_friend'=>$is_friend,
       ];
 
       $data['games'] = [];
@@ -92,7 +99,16 @@ class UserController extends Controller
 
         for($j = 0; $j < sizeof($gameInventory); $j++){
           $user = User::find($gameInventory[$j]->owner_id);
+
+          // set if authed user owns game
+          if($auth_user->id == $user->id) {
+            $own_game = true;
+          }
+
+          // search if game owner is a friend
           $is_friend = array_search($user->id, $auth_friends_ids);
+
+          // if game owner is a freind add them to the owners (you can only borrow from friends)
           if($is_friend) {
             $user =[
               'id'=>$user->id,
@@ -100,10 +116,7 @@ class UserController extends Controller
               'image'=>$user->image,
             ];
 
-            if($auth_user->id === $user['id']) {
-              $own_game = true;
-            }
-            // Add owner to array
+            // Add user to the owner array
             array_push($owner, $user);
           }
         }
@@ -126,9 +139,10 @@ class UserController extends Controller
           'owner'=>$owner,
         ];
 
+        // Add game to response data
         array_push($data['games'], $game);
       }
-      dd($data['games']);
+
       // return $data for the view
        return view('user', ['data' => $data]);
     }

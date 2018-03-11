@@ -20,6 +20,7 @@
       </div>
     </a>
   </div>
+
   @component('partials.item-full', ['index'=>$index, 'game'=>$game])
   @endcomponent
 </div>
