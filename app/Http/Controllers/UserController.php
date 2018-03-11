@@ -50,20 +50,26 @@ class UserController extends Controller
       */
 
       // Get Authenticated user information
-      $authUser = Auth::User();
+      $auth_user = Auth::User();
+      $auth_friends = $auth_user->friends;
+      $auth_friends_ids = array();
+      for($i = 0; $i < sizeof($auth_friends); $i++) {
+          array_push($auth_friends_ids, $auth_friends[$i]->id);
+      }
 
       // Set Authenticated user information
       $data['authUser'] = [
-        'id'=>$authUser->id,
-        'image'=>$authUser->image,
-        'username'=>$authUser->username,
-        'email'=>$authUser->email,
-        'name'=>$authUser->name,
+        'id'=>$auth_user->id,
+        'image'=>$auth_user->image,
+        'username'=>$auth_user->username,
+        'email'=>$auth_user->email,
+        'name'=>$auth_user->name,
       ];
-
 
       // Get user profile information with user inventory
       $userProfile = User::with('inventory')->where('username', $username)->get();
+      $userInventory = $userProfile[0]->inventory;
+
       // Set user profile information
       $data['userProfile'] = [
         'id'=>$userProfile[0]->id,
@@ -73,34 +79,56 @@ class UserController extends Controller
         'name'=>$userProfile[0]->name,
       ];
 
-      // Profile Users Games
-      $inventory = $userProfile[0]->inventory;
       $data['games'] = [];
-
-      for($i = 0; $i < sizeof($inventory); $i++) {
+      for($i = 0; $i < sizeof($userInventory); $i++) {
 
         // Get game information
-        $gameQuery = Game::find($inventory[$i]->id);
+        $gameQuery = Game::with('inventory')->where('id', $userInventory[$i]->game_id)->get();
+        $gameInventory = $gameQuery[0]->inventory;
+
+        // Get Owner information
+        $owner = [];
+        $own_game = false;
+
+        for($j = 0; $j < sizeof($gameInventory); $j++){
+          $user = User::find($gameInventory[$j]->owner_id);
+          $is_friend = array_search($user->id, $auth_friends_ids);
+          if($is_friend) {
+            $user =[
+              'id'=>$user->id,
+              'username'=>$user->username,
+              'image'=>$user->image,
+            ];
+
+            if($auth_user->id === $user['id']) {
+              $own_game = true;
+            }
+            // Add owner to array
+            array_push($owner, $user);
+          }
+        }
 
         // Set game information
         $game = [
-          'game_id'=>$gameQuery->game_id,
-          'name'=>$gameQuery->name,
-          'image'=>$gameQuery->image,
-          'year'=>$gameQuery->year,
-          'min_player'=>$gameQuery->min_player,
-          'max_player'=>$gameQuery->max_player,
-          'min_age'=>$gameQuery->min_age,
-          'min_play'=>$gameQuery->min_play,
-          'max_play'=>$gameQuery->max_play,
-          'description'=>$gameQuery->description,
-          'instructions'=>$gameQuery->instructions,
-          'borrower_id'=>$inventory[$i]->borrower_id,
+          'game_id'=>$gameQuery[0]->id,
+          'own_game'=>$own_game,
+          'name'=>$gameQuery[0]->name,
+          'image'=>$gameQuery[0]->image,
+          'year'=>$gameQuery[0]->year,
+          'min_player'=>$gameQuery[0]->min_player,
+          'max_player'=>$gameQuery[0]->max_player,
+          'min_age'=>$gameQuery[0]->min_age,
+          'min_play'=>$gameQuery[0]->min_play,
+          'max_play'=>$gameQuery[0]->max_play,
+          'description'=>$gameQuery[0]->description,
+          'instructions'=>$gameQuery[0]->instructions,
+          'borrower_id'=>$userInventory[$i]->borrower_id,
+          'owner'=>$owner,
         ];
 
         array_push($data['games'], $game);
       }
-
+      dd($data['games']);
       // return $data for the view
        return view('user', ['data' => $data]);
     }
