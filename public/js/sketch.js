@@ -14,7 +14,7 @@ var whereinstring = 0; // where in the L-system are we?
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch-holder");
-  background(72,255,167);
+  background(229, 180, 82);
   stroke(0, 0, 0, 255);
 
   // start the x and y position at lower-left corner
