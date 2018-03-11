@@ -1,22 +1,21 @@
-// TURTLE STUFF:
 var x, y; // the current position of the turtle
-var currentangle = 0; // which way the turtle is pointing
-var step = 30; // how much the turtle moves with each 'F'
-var angle = 70; // how much the turtle turns with a '-' or '+'
+var currentangle = 0;
+var step = 25;
+var angle = 55;
 
-// LINDENMAYER STUFF (L-SYSTEMS)
-var thestring = 'A'; // "axiom" or start of the string
-var numloops = 5; // how many iterations to pre-compute
-var therules = []; // array for rules
-therules[0] = ['A', '-BF+AFA+FB-']; // first rule
-therules[1] = ['B', '+AF-BFB-FA+']; // second rule
+var thestring = 'A';
+var numloops = 5;
+var therules = [];
+therules[0] = ['A', '-BF+AFA+FB-'];
+therules[1] = ['B', '+AF-BFB-FA+'];
 
 var whereinstring = 0; // where in the L-system are we?
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(250);
-  stroke(0, 0, 0, 100);
+  var canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("sketch-holder");
+  background(72,255,167);
+  stroke(0, 0, 0, 255);
 
   // start the x and y position at lower-left corner
   x = 0;
@@ -34,69 +33,59 @@ function windowResized() {
 
 function draw() {
 
-  // draw the current character in the string:
   drawIt(thestring[whereinstring]);
 
-  // increment the point for where we're reading the string.
-  // wrap around at the end.
   whereinstring++;
   if (whereinstring > thestring.length-1) whereinstring = 0;
-
 }
 
 // interpret an L-system
 function lindenmayer(s) {
-  var outputstring = ''; // start a blank output string
+  var outputstring = '';
 
-  // iterate through 'therules' looking for symbol matches:
   for (var i = 0; i < s.length; i++) {
-    var ismatch = 0; // by default, no match
+    var ismatch = 0;
     for (var j = 0; j < therules.length; j++) {
       if (s[i] == therules[j][0])  {
-        outputstring += therules[j][1]; // write substitution
-        ismatch = 1; // we have a match, so don't copy over symbol
-        break; // get outta this for() loop
+        outputstring += therules[j][1];
+        ismatch = 1;
+        break;
       }
     }
-    // if nothing matches, just copy the symbol over.
+
     if (ismatch == 0) outputstring+= s[i];
   }
 
-  return outputstring; // send out the modified string
+  return outputstring;
 }
 
-//this is a custom function that draws turtle commands
 function drawIt(k) {
 
- if (k=='F') { // draw forward
-   // polar to cartesian based on step and currentangle:
+ if (k=='F') {
+
    var x1 = x + step*cos(radians(currentangle));
    var y1 = y + step*sin(radians(currentangle));
-   line(x, y, x1, y1); // connect the old and the new
+   line(x, y, x1, y1);
 
-   // update the turtle's position:
    x = x1;
    y = y1;
  } else if (k == '+') {
-   currentangle += angle; // turn left
+   currentangle += angle;
  } else if (k == '-') {
-   currentangle -= angle; // turn right
+   currentangle -= angle;
  }
 
- // give me some random color values:
- var r = random(75, 255);
+ var r = random(100, 255);
  var g = random(0, 200);
  var b = random(0, 0);
  var a = random(0, 255);
 
- // pick a gaussian (D&D) distribution for the radius:
  var radius = 0;
  radius += random(0, 20);
  radius += random(0, 20);
- radius += random(0, 20);
+ radius += random(0, 40);
  radius = radius/3;
 
- // draw the stuff:
  fill(r, g, b, a);
  ellipse(x, y, radius, radius);
 }

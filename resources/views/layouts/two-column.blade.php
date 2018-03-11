@@ -26,6 +26,10 @@
     something went wrong
     @endcomponent
   </div>
+
+  <div id="sketch-holder">
+  </div>
+
   <div class="container">
     @yield("pageheading")
     @yield("userprofile")
