@@ -12,7 +12,7 @@ class MasterTableSeeder extends Seeder
     public function run()
     {
 
-      $date = date('Y-m-d, H:i:s');
+      $date = date('Y-m-d H:i:s');
       $dateReturn = date('Y-m-d', strtotime("+30 days"));
 
       $this->seedGames();
