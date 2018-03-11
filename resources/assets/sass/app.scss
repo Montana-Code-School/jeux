@@ -12,6 +12,19 @@ body {
   padding: 60px;
 }
 
+.form-control {
+  border: black !important;
+}
+
+.btn-info {
+  background-color: orange !important;
+  border-color: black !important;
+}
+
+.btn-default {
+  border-color: black !important;
+}
+
 .container {
   margin-top: 0px !important;
 }

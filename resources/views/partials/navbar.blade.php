@@ -20,9 +20,9 @@
       <div class="col-md-4">
         <form class="navbar-form text-center" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search for Games">
           </div>
-          <button type="submit" class="btn btn-info" value="Submit">
+          <button type="submit" class="btn btn-info" value="Submit">Submit</button>
         </form>
       </div>
       <!-- Third Column: CHECK -->
