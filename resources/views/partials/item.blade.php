@@ -24,8 +24,10 @@
 <div class="tile">
   <!-- <a href="#" data-featherlight="#mylightbox"> -->
     <div class="tile-front">
-      <img  src="{{$game->image}}"alt="A board game image"/>
+      <img  src='{{$game->image}}' alt="A board game image"/>
     </div>
+
+
     <!-- <div class="tile-back">
       <h4>Monopoly</h4>
       <p>Age: 12+</p>

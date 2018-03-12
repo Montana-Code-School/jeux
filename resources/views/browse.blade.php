@@ -6,9 +6,8 @@
 
 @section("left-column")
   @component('partials.index',["games"=>$games])
-
   @endcomponent
-  <br><a><p class="text-right">More Games...</p></a><br/>
+
 
 @endsection
 

@@ -116,7 +116,7 @@ body {
     margin-bottom: 15px;
     .tile-front {
       img {
-        height: 100%;
+        height: auto;
         width: 100%;
       }
     }
@@ -161,9 +161,18 @@ body {
 
 .filter{
   background-color:rgba(#ffffff, 0.97);
+  border: solid;
+  border-color: #000;
+  border-width: medium;
    ul li {
     list-style-type: none;
   }
+  #addgame{
+    padding:10px;
+  }
+}
+.slider.round{
+  border-radius: 50px;
 }
 
 

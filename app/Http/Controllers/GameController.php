@@ -17,8 +17,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
-        return view('browse', compact('games'));
+        $games = Game::get();
+
+
+
+        //return view('browse', compact('games'));
     }
 
     /**
@@ -51,13 +54,11 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $data = [];
-        $game = Game::find($id);
-        $data[ ] = $game;
-        // item view not created.
-        return view('item', $data);
+      $games = Game::paginate(8);
+
+        return view('browse', ['games' => $games]);
     }
 
     /**
