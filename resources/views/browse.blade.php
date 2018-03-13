@@ -9,3 +9,7 @@
     oops
   @endcomponent
 @endsection
+  @section("right-column")
+  @component('partials.filter')
+  @endcomponent
+@endsection

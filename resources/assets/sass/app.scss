@@ -21,6 +21,19 @@ body {
   align-items: center;
   margin: 0px;
 
+
+.form-control {
+  border: black !important;
+}
+
+.btn-info {
+  background-color: orange !important;
+  border-color: black !important;
+}
+
+.btn-default {
+  border-color: black !important;
+
 }
 
 .container {
@@ -77,14 +90,84 @@ body {
 
   .dropdown-menu {
     overflow-y: scroll;
-    height: 500px;
+    max-height: 500px;
+
+    .dropdown-header{
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center !important;
+    }
+
+    .dropdown-item {
+      padding: 5px 10px 5px 10px;
+      width: 100%;
+
+      .dropdown-item-content {
+        display: flex;
+        background-color: orange;
+        max-height: 300px;
+        width: 100%;
+        justify-content: space-around;
+        img {
+          max-width: 100px;
+          max-height: 100px;
+        }
+
+        .dropdown-item-info {
+          padding: 5px;
+          width: 100%;
+          h4 {
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 5;
+          }
+          span {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
   }
-//kerry likes this-repurpose later
-  .dropdown-header{
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center !important;
+}
+
+.flip-container {
+  perspective: 350px;
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 175px;
+  height: 175px;
+  img {
+    width: 100%;
+    height: 100%;
   }
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front, .back{
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
 }
 
 .tile-container {
@@ -92,28 +175,12 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  .tile {
-    height: 175px;
-    width: 175px;
-    margin-bottom: 15px;
-    .tile-front {
-      img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-    .tile-back {
-      display: none;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-    }
-  }
 }
 
 .item-full {
     width: 400px;
     width: 100%;
+    display: none;
     h2 {
       margin: 0px 0px 15px 0px;
     }
@@ -139,9 +206,37 @@ body {
       }
     }
 }
+// Style for the partials.filter.blade
+
+.filter{
+  background-color:rgba(#ffffff, 0.97);
+   ul li {
+    list-style-type: none;
+  }
+}
 
 .lightbox {
   max-width: 1000px;
   min-width: 600px;
   display: none;
+}
+
+.item-owner-container {
+  .item-owner-content {
+    width: 100%;
+    text-align: center;
+  }
+  .item-owner-list {
+    display: flex;
+    justify-content: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    .item-owner {
+      margin: 10px;
+      button {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }

@@ -18,10 +18,12 @@ class ComposerServiceProvider extends ServiceProvider
     {
       view()->composer("partials.navbar",function($view){
         $friends = [];
-        if(Auth::check()){
-          $user = Auth::user();
-          $friends = $user->friends()->take(5)->get();
-        }
+
+        if(Auth::check()) {
+        $user = Auth::user();
+        $friends = $user->friends()->take(5)->get();
+      }
+
         $view->with("friends", $friends);
       });
 

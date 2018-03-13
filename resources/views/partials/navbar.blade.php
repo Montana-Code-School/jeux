@@ -6,7 +6,7 @@
       <div class="col-md-4" >
         <ul class="nav navbar-nav">
           <li>
-            <a href="{{ route('logout') }}"><h1>Jeux</h1></a>
+            <a href="{{ route('landingPage') }}"><h1>Jeux</h1></a>
           </li>
           <li {{ (Request::is('home') ? 'class=active' : '') }}>
             <a href="{{ route('home') }}">My Games</a>
@@ -20,9 +20,9 @@
       <div class="col-md-4">
         <form class="navbar-form text-center" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search for Games">
           </div>
-          <button type="submit" class="btn btn-info" value="Submit">
+          <button type="submit" class="btn btn-info" value="Submit">Submit</button>
         </form>
       </div>
       <!-- Third Column: CHECK -->
@@ -37,6 +37,7 @@
 
 
                 @php
+
                 $items = [];
                 foreach($friends as $friend) {
                   $items[] = [
@@ -46,8 +47,6 @@
                   ];
 
                 }
-
-
                 @endphp
                 @component("partials.dropdown-list",["items"=>$items])
                 @slot("list_name")
