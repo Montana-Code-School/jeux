@@ -1,11 +1,7 @@
 {
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/css/app.css": "/css/app.css",
-
     "/js/p5.js": "/js/p5.js",
-    "/js/jquery-3.3.1.js": "/js/jquery-3.3.1.js",
-    "/js/jquery.flip.js": "/js/jquery.flip.js",
     "/js/featherlight.js": "/js/featherlight.js",
-    "/js/sketch.js": "/js/sketch.js"
-
+    "/js/sketch.js": "/js/sketch.js",
+    "/css/app.css": "/css/app.css"
 }
