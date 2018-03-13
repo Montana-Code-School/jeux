@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,10 @@ class HomeController extends Controller
        return view('home');
     }
 
-    public function showSearchResults() {
-        return view('searchresults');
+    public function showSearchResults(Request $request) {
+        $search_games = $request->input('search-games');
+        //% is similar a regex for sql statements when used in conjuntion with like to say "anything before and anything after"
+        $games = Game::where('name', 'ilike', "%$search_games%") ->get();
+        return view('searchresults', ['search_games'=>$search_games, 'games'=>$games]);
     }
 }
