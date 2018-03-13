@@ -34,19 +34,15 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 </button>
-
-
                 @php
-
-                $items = [];
-                foreach($friends as $friend) {
-                  $items[] = [
-                    'image' => $friend->image,
-                    'title' => $friend->username,
-                    'description' => 'Hello! My name is '. $friend->name
-                  ];
-
-                }
+                  $items = [];
+                  foreach($friends as $friend) {
+                    $items[] = [
+                      'image' => $friend->image,
+                      'title' => $friend->username,
+                      'description' => 'Hello! My name is '. $friend->name
+                    ];
+                  }
                 @endphp
                 @component("partials.dropdown-list",["items"=>$items])
                 @slot("list_name")
@@ -61,7 +57,7 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </button>
-                @component("partials.dropdown-list",["items"=>[]])
+                @component("partials.dropdown-list",["items"=>$notification_items])
                 @slot("list_name")
                   Notifications
                 @endslot
