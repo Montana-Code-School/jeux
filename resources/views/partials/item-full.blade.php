@@ -22,7 +22,12 @@
     </div>
     @if(!$game['own_game'])
     <div class="add-item-inventory">
-      Add to collection
+      <form method="post" action="/inventory">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"></input>
+        <input type="hidden" name="game_id" value="{{ $game['game_id'] }}"></input>
+        <button type="submit">Add Game</button>
+      </form>
     </div>
     @endif
   </div>
