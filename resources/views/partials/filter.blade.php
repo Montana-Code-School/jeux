@@ -29,7 +29,7 @@
           <li><input class="filterCheck" type="checkbox">18+</input></li>
         </ul>
     </div>
-
+    </br>
     <div for>
     <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#players">Players
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
@@ -43,7 +43,7 @@
       </ul>
     </div>
   </div>
-
+  </br>
     <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#time">Time
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="time" class="collapse">
@@ -55,7 +55,7 @@
         <li><input class="filterCheck" type="checkbox">Commitment 120++ </input></li>
       </ul>
     </div>
-
+    </br>
     <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#genres">Genres
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="genres" class="collapse">
@@ -69,6 +69,7 @@
         <li><input class="filterCheck" type="checkbox">Party</input></li>
       </ul>
     </div>
+    </br>
 
     <!--TODO:: create the form with elements that have to be filled in
           and that no information is a duplicate.
