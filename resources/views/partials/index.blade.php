@@ -1,5 +1,4 @@
 <div class="tile-container">
-
   @isset($games)
     @if(count($games) > 0)
       @foreach($games as $indexKey => $game)
@@ -11,6 +10,6 @@
     @endif
   @endisset
   @empty($games)
-    <p class="lead">No Games to Display</p>
+    <p class="lead">Games Undefined</p>
   @endempty
 </div>
