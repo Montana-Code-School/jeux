@@ -97,8 +97,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	/* Featherlight is exported as $.featherlight.
     It is a function used to open a featherlight lightbox.
- 
-    [tech]
+ 	   [tech]
     Featherlight uses prototype inheritance.
     Each opened lightbox will have a corresponding object.
     That object may have some attributes that override the

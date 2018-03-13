@@ -26,16 +26,6 @@
     </div>
     @endif
   </div>
-  <div class="owner-container">
-    <h4><strong>Borrow from Friends</strong><h4>
-    <div class="owner-list">
-      <div class="item-owner">
-        <img src="{{asset('images/avatar.png')}}"></img>
-        <p>Username</p>
-        <div class="borrow-item">
-          +
-        </div>
-      </div>
-    </div>
-  </div>
+  @component('partials.item-owner-index', ['owners'=>$game['owner']])
+  @endcomponent
 </div>
