@@ -13,9 +13,6 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/bootstrap.js', 'public/js')
     .js('resources/assets/js/featherlight.js', 'public/js')
-
-    .js('resources/assets/js/jquery-3.3.1.js', 'public/js')
-    .js('resources/assets/js/jquery.flip.js', 'public/js')
     .js('resources/assets/js/p5.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .copy('resources/assets/js/sketch.js', 'public/js');

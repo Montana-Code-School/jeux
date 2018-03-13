@@ -68,15 +68,8 @@
 /***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(40);
+(function webpackMissingModule() { throw new Error("Cannot find module \"/Users/matthewsutton/code/jeux/resources/assets/js/jquery.flip.js\""); }());
 
-
-/***/ }),
-
-/***/ 40:
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\Matt\\Documents\\GitHub\\jeux\\resources\\assets\\js\\jquery.flip.js'");
 
 /***/ })
 
