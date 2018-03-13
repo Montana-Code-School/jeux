@@ -1,20 +1,20 @@
-@extends('layouts.one-column')
+@extends('layouts.two-column')
 
 @section('pageheading')
 <h2 class="lead">User Profile</h2>
 @endsection
 
 @section('userprofile')
-  @component('partials.profile')<!--this doesn't exist yet -->
+  @component('partials.profile', ['user' => $data['userProfile']])<!--this doesn't exist yet -->
   @endcomponent
 @endsection
 
 @section('left-column')
-  @component('partials.index')
+  @component('partials.index', ['games' => $data['games']])
   @endcomponent
 @endsection
 
-<!-- @section('right-column')
-  @component(partials.filter)
+@section('right-column')
+  @component('partials.filter')
   @endcomponent
-@endsection -->
+@endsection
