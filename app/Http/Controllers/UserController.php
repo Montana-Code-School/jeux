@@ -143,8 +143,17 @@ class UserController extends Controller
           // Add game to response data
           array_push($data['games'], $game);
       }
+        
+        // $user = User::with('inventory', 'friends')->where('username', $username)->get();	+      
+        /*
+        $data['user'] = $user;	+        The show method gets a users profile and return a list of games owned
+        and borrowed by that user.
+-        $user->notify(new FriendRequest($user));	+
+-	+        TODO determine what happens if user does not exist
+-         return view('user')->with($data);
 
       // return $data for the view
+      */
        return view('user', ['data' => $data]);
     }
 
