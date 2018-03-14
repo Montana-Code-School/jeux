@@ -36,6 +36,16 @@ body {
   border-color: black !important;
 }
 
+#title-sketch-holder {
+  canvas {
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+  }
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   margin-top: 0px !important;
 }
