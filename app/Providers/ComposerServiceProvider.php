@@ -19,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
       view()->composer("partials.navbar",function($view){
         $friends = [];
+        $friend_items = [];
         $notifications = [];
         $notification_items = [];
         $items = [];
