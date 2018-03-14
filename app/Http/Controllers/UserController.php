@@ -179,15 +179,15 @@ class UserController extends Controller
       // that the old information is staying with the information.
 
       //------------------------------------------------------------------------
-      if ($request->hasFile('image')) {
-        if ($user->image[0] != 'n') {
-          File::delete('images/' . $user->image);
-        }
-        $image = $request->file('image');
-        $filename = time() . '-' . $image->getClientOriginalName();
-        $user->image = $filename;
-        Image::make($photo)->fit(160)->save( public_path('images/uploads/profile/' . $filename ));
-      }
+      // if ($request->hasFile('image')) {
+      //   if ($user->image[0] != 'n') {
+      //     File::delete('images/' . $user->image);
+      //   }
+      //   $image = $request->file('image');
+      //   $filename = time() . '-' . $image->getClientOriginalName();
+      //   $user->image = $filename;
+      //   Image::make($photo)->fit(160)->save( public_path('images/uploads/profile/' . $filename ));
+      // }
       //------------------------------------------------------------------------
       $user->name = $request->input('name');
       //$user->image = $request->image;
@@ -242,6 +242,7 @@ class UserController extends Controller
 
 
     public function showSettings() {
-        return view('settings');
+      $user = Auth::user();
+        return view('settings', compact('user'));
     }
 }

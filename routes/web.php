@@ -40,7 +40,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/settings', 'UserController@showSettings')->name('settings');
-Route::post('user/update', 'UserController@update');
+Route::post('/user/update', 'UserController@update');
 
 Route::get('/searchresults', 'HomeController@showSearchResults')->name('searchresults');
 
