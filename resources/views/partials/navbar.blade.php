@@ -6,7 +6,7 @@
       <div class="col-md-4" >
         <ul class="nav navbar-nav">
           <li>
-            <a href="{{ route('logout') }}"><h1>Jeux</h1></a>
+            <a href="{{ route('landingPage') }}"><h1>Jeux</h1></a>
           </li>
           <li {{ (Request::is('home') ? 'class=active' : '') }}>
             <a href="{{ route('home') }}">My Games</a>
@@ -20,7 +20,7 @@
       <div class="col-md-4">
         <form class="navbar-form text-center" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search for Games">
+            <input type="text" name="search-games" class="form-control" placeholder="Search for Games">
           </div>
           <button type="submit" class="btn btn-info" value="Submit">Submit</button>
         </form>
@@ -34,19 +34,15 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 </button>
-
-
                 @php
-
-                $items = [];
-                foreach($friends as $friend) {
-                  $items[] = [
-                    'image' => $friend->image,
-                    'title' => $friend->username,
-                    'description' => 'Hello! My name is '. $friend->name
-                  ];
-
-                }
+                  $items = [];
+                  foreach($friends as $friend) {
+                    $items[] = [
+                      'image' => $friend->image,
+                      'title' => $friend->username,
+                      'description' => 'Hello! My name is '. $friend->name
+                    ];
+                  }
                 @endphp
                 @component("partials.dropdown-list",["items"=>$items])
                 @slot("list_name")
@@ -61,7 +57,7 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                 </button>
-                @component("partials.dropdown-list",["items"=>[]])
+                @component("partials.dropdown-list",["items"=>$notification_items])
                 @slot("list_name")
                   Notifications
                 @endslot

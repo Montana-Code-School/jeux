@@ -12,6 +12,17 @@ body {
   padding: 60px;
 }
 
+#sketch-holder {
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  z-index: -1;
+}
+
 .form-control {
   border: black !important;
 }
@@ -23,6 +34,7 @@ body {
 
 .btn-default {
   border-color: black !important;
+
 }
 
 .container {
