@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function showSearchResults(Request $request) {
         $search_games = $request->input('search-games');
         //% is similar a regex for sql statements when used in conjuntion with like to say "anything before and anything after"
-        $games = Game::where('name', 'ilike', "%$search_games%") ->get();
+        $games = Game::where('name', 'like', "%$search_games%") ->get();
         return view('searchresults', ['search_games'=>$search_games, 'games'=>$games]);
     }
 }
