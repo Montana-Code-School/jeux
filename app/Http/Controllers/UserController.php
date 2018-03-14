@@ -8,6 +8,7 @@ use App\Game;
 use App\Inventory;
 
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Notifications\FriendRequest;
 use App\Notifications\BorrowRequest;
@@ -15,8 +16,12 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class UserController extends Controller
 {
+  use Notifiable;
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +29,10 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::get();
-
-      return view('user', compact('users'));
+        $user = Auth::user();
+        return view('settings', compact('user'));
+        // $users = User::get();
+        //   return view('user', compact('users'));
     }
 
     /**
@@ -165,16 +171,37 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      $user = User::find($id);
+      $user = Auth::user();
 
+      //TODO:: make sure that when people are filling out the form that
       // that the old information is staying with the information.
-      $user->name = $request->name;
-      $user->image = $request->image;
-      $user->username = $request->username;
-      $user->email = $request->email;
+
+      //------------------------------------------------------------------------
+      if ($request->hasFile('image')) {
+        if ($user->image[0] != 'n') {
+          File::delete('images/' . $user->image);
+        }
+        $image = $request->file('image');
+        $filename = time() . '-' . $image->getClientOriginalName();
+        $user->image = $filename;
+        Image::make($photo)->fit(160)->save( public_path('images/uploads/profile/' . $filename ));
+      }
+      //------------------------------------------------------------------------
+      $user->name = $request->input('name');
+      //$user->image = $request->image;
+      $user->username = $request->input('username');
+      $user->email = $request->input('email');
       $user->save();
+
+      return response()->json([
+        'status' => 'your information has been updated successfully',
+        'image' => url('images/uploads/profile/' . $user->image),
+        'name' => $user->name,
+        'username' => $user->username,
+        'email' => $user->email
+      ]);
     }
 
     public function makeFriend($id)

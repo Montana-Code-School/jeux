@@ -6,12 +6,14 @@ use App\User;
 use App\Game;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class BorrowRequest extends Notification
 {
     use Queueable;
+    use Notifiable;
 
     /**
      * Create a new notification instance.
