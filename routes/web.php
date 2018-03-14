@@ -35,7 +35,6 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 Route::get('test/{id}', 'UserController@makeFriend');
 Route::get('notification_read/{notification_id}', 'UserController@notificationRead');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

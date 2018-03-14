@@ -24,8 +24,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
-          return view('user', compact('users'));
+      $users = User::get();
+
+      return view('user', compact('users'));
     }
 
     /**
@@ -143,8 +144,8 @@ class UserController extends Controller
           // Add game to response data
           array_push($data['games'], $game);
       }
-        
-        // $user = User::with('inventory', 'friends')->where('username', $username)->get();	+      
+
+        // $user = User::with('inventory', 'friends')->where('username', $username)->get();	+
         /*
         $data['user'] = $user;	+        The show method gets a users profile and return a list of games owned
         and borrowed by that user.
@@ -173,7 +174,6 @@ class UserController extends Controller
       $user->image = $request->image;
       $user->username = $request->username;
       $user->email = $request->email;
-
       $user->save();
     }
 
@@ -192,19 +192,14 @@ class UserController extends Controller
       $game_id = Inventory::find($inventory_id)->game_id;
       $game = Game::find($game_id);
       $owner->notify(new BorrowRequest($borrower, $game));
-
     }
 
     public function notificationRead($notification_id)
     {
-
       $user = Auth::user();
       $notification = $user->unreadNotifications->find($notification_id);
       $notification->markAsRead();
-
     }
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -215,7 +210,6 @@ class UserController extends Controller
     public function destroy($id)
     {
       $user = User::find($id);
-
       $user->delete();
     }
 
