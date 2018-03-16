@@ -13,3 +13,4 @@
     <p class="lead">Games Undefined</p>
   @endempty
 </div>
+{{ $games->links() }}
