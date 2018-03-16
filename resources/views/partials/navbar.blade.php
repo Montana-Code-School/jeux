@@ -5,7 +5,7 @@
       <div class="col-md-4" >
         <ul class="nav navbar-nav">
           <li>
-            <a href="{{ route('landingPage') }}"><h1>b<sup>3</sup></h1></a>
+            <a href="{{ route('landing') }}"><h1>Jeux</h1></a>
           </li>
           <li {{ (Request::is('home') ? 'class=active' : '') }}>
             <a href="{{ route('home') }}">My Games</a>

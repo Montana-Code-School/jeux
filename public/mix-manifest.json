@@ -3,5 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/p5.js": "/js/p5.js",
     "/js/featherlight.js": "/js/featherlight.js",
-    "/js/sketch.js": "/js/sketch.js"
+    "/js/background-sketch.js": "/js/background-sketch.js",
+    "/js/title-sketch.js": "/js/title-sketch.js",
+    "/assets/Monofett regular.ttf": "/assets/Monofett regular.ttf"
 }
