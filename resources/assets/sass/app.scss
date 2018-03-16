@@ -91,7 +91,7 @@ body {
 
   .dropdown-menu {
     overflow-y: scroll;
-    max-height: 500px;
+    max-height: 486px; //this is the exact height that shows four dropdown items
 
     .dropdown-header{
       font-size: 18px;
