@@ -47,6 +47,12 @@ class UserController extends Controller
         TODO determine profile user lended game count
         TODO determine profile user total owned games
       */
+      $user_profile = User::with('inventory', 'friends')->where('username', $username)->first();
+      $user_game_ids = [];
+
+      foreach($user_profile->inventory as $inventory) {
+        array_push($user_game_ids, $inventory->game_id);
+      }
 
       // Setup for Auth User
       $auth_user = Auth::User(); // Get Authenticated user information
@@ -67,94 +73,111 @@ class UserController extends Controller
         'name'=>$auth_user->name,
       ];
 
-      // Setup for Profile User
-      $user_profile = User::with('inventory')->where('username', $username)->get();  // Get user profile information with user inventory
-
-      // determine if user is a friends profile or auth user profile
-      $is_friend = (array_search($user_profile[0]->id, $auth_friends_ids) || $auth_user->id == $user_profile[0]->id ? true : false);
-
-      // Set user profile information
+      $user_profile = User::with('inventory')->where('username', $username)->first();
+      if(array_search($user_profile->id, $auth_friends_ids) !== false || $auth_user->id === $user_profile->id) {
+        $is_friend = true;
+      } else {
+        $is_friend = false;
+      }
       $data['userProfile'] = [
-        'id'=>$user_profile[0]->id,
-        'image'=>$user_profile[0]->image,
-        'username'=>$user_profile[0]->username,
-        'email'=>$user_profile[0]->email,
-        'name'=>$user_profile[0]->name,
+        'id'=>$user_profile->id,
+        'image'=>$user_profile->image,
+        'username'=>$user_profile->username,
+        'email'=>$user_profile->email,
+        'name'=>$user_profile->name,
         'is_friend'=>$is_friend,
       ];
 
-      // Setup for user inventory
-      $userInventory = $user_profile[0]->inventory;
-      $data['games'] = [];
+      $game_model = new Game();
+      $data['games'] = $game_model->gameInfo($user_game_ids);
 
-      // Get game information before adding to response
-      foreach($userInventory as $inventory_item) {
-          // Get game information with inventory
-          // Used inventory as a work around because I was unable to quickly get users working. Would like to rework this.
-          $gameQuery = Game::with('inventory')->where('id',$inventory_item->game_id)->get();
-          $gameInventory = $gameQuery[0]->inventory;
-
-          // setup game owner information
-          $owner = [];
-          $own_game = false;
-
-          foreach($gameInventory as $game_owner) {
-            // determine is user owns game
-            $is_friend = array_search($game_owner->owner_id, $auth_friends_ids);
-
-            // get game owner information
-            $user = User::find($game_owner->owner_id);
-
-            // if you own the game set to true
-            if($auth_user->id == $user->id) {
-              $own_game = true;
-            }
-            // if game owner is friend add them to the game owner list
-            if($is_friend) {
-              // set user information
-              $user =[
-                'id'=>$user->id,
-                'username'=>$user->username,
-                'image'=>$user->image,
-              ];
-
-              // Add user to the owner array
-              array_push($owner, $user);
-            }
-          }
-
-          // Set game information
-          $game = [
-            'game_id'=>$gameQuery[0]->id,
-            'own_game'=>$own_game,
-            'name'=>$gameQuery[0]->name,
-            'image'=>$gameQuery[0]->image,
-            'year'=>$gameQuery[0]->year,
-            'min_player'=>$gameQuery[0]->min_player,
-            'max_player'=>$gameQuery[0]->max_player,
-            'min_age'=>$gameQuery[0]->min_age,
-            'min_play'=>$gameQuery[0]->min_play,
-            'max_play'=>$gameQuery[0]->max_play,
-            'description'=>$gameQuery[0]->description,
-            'instructions'=>$gameQuery[0]->instructions,
-            'borrower_id'=>$inventory_item->borrower_id,
-            'owner'=>$owner,
-          ];
-
-          // Add game to response data
-          array_push($data['games'], $game);
-      }
-
-        // $user = User::with('inventory', 'friends')->where('username', $username)->get();	+
-        /*
-        $data['user'] = $user;	+        The show method gets a users profile and return a list of games owned
-        and borrowed by that user.
--        $user->notify(new FriendRequest($user));	+
--	+        TODO determine what happens if user does not exist
--         return view('user')->with($data);
-
-      // return $data for the view
-      */
+//       $game_ids = [];
+//
+//       foreach ($user_profile->inventory as $key => $game) {
+//         array_push($game_ids, $game->game_id);
+//       }
+//
+//       $game_model = new Game();
+//       $games = $game_model->gameInfo($game_ids);
+//
+//       // Setup for Profile User
+//       $user_profile = User::with('inventory')->where('username', $username)->get();  // Get user profile information with user inventory
+//
+//       // determine if user is a friends profile or auth user profile
+//       $is_friend = (array_search($user_profile[0]->id, $auth_friends_ids) || $auth_user->id == $user_profile[0]->id ? true : false);
+//
+//       // Setup for user inventory
+//       $userInventory = $user_profile[0]->inventory;
+//       $data['games'] = [];
+//
+//       // Get game information before adding to response
+//       foreach($userInventory as $inventory_item) {
+//           // Get game information with inventory
+//           // Used inventory as a work around because I was unable to quickly get users working. Would like to rework this.
+//           $gameQuery = Game::with('inventory')->where('id',$inventory_item->game_id)->get();
+//           $gameInventory = $gameQuery[0]->inventory;
+//
+//           // setup game owner information
+//           $owner = [];
+//           $own_game = false;
+//
+//           foreach($gameInventory as $game_owner) {
+//             // determine is user owns game
+//             $is_friend = array_search($game_owner->owner_id, $auth_friends_ids);
+//
+//             // get game owner information
+//             $user = User::find($game_owner->owner_id);
+//
+//             // if you own the game set to true
+//             if($auth_user->id == $user->id) {
+//               $own_game = true;
+//             }
+//             // if game owner is friend add them to the game owner list
+//             if($is_friend) {
+//               // set user information
+//               $user =[
+//                 'id'=>$user->id,
+//                 'username'=>$user->username,
+//                 'image'=>$user->image,
+//               ];
+//
+//               // Add user to the owner array
+//               array_push($owner, $user);
+//             }
+//           }
+//
+//           // Set game information
+//           $game = [
+//             'game_id'=>$gameQuery[0]->id,
+//             'own_game'=>$own_game,
+//             'name'=>$gameQuery[0]->name,
+//             'image'=>$gameQuery[0]->image,
+//             'year'=>$gameQuery[0]->year,
+//             'min_player'=>$gameQuery[0]->min_player,
+//             'max_player'=>$gameQuery[0]->max_player,
+//             'min_age'=>$gameQuery[0]->min_age,
+//             'min_play'=>$gameQuery[0]->min_play,
+//             'max_play'=>$gameQuery[0]->max_play,
+//             'description'=>$gameQuery[0]->description,
+//             'instructions'=>$gameQuery[0]->instructions,
+//             'borrower_id'=>$inventory_item->borrower_id,
+//             'owner'=>$owner,
+//           ];
+//
+//           // Add game to response data
+//           array_push($data['games'], $game);
+//       }
+//
+//         // $user = User::with('inventory', 'friends')->where('username', $username)->get();	+
+//         /*
+//         $data['user'] = $user;	+        The show method gets a users profile and return a list of games owned
+//         and borrowed by that user.
+// -        $user->notify(new FriendRequest($user));	+
+// -	+        TODO determine what happens if user does not exist
+// -         return view('user')->with($data);
+//
+//       // return $data for the view
+//       */
        return view('user', ['data' => $data]);
     }
 
