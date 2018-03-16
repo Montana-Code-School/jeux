@@ -6,6 +6,7 @@ var message = "B  CUBED",
 
 function preload() {
   font = loadFont('assets/Monofett regular.ttf');
+
 }
 
 function setup() {

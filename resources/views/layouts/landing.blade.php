@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
   <script src="{{ asset('js/p5.js') }}" charset="utf-8"></script>
-  <script src="{{ asset('js/paper.js') }}"></script>
-  <script src="{{ asset('js/voronoi.js') }}"></script>
-
 
   <link rel="stylesheet" href="{{ asset('css/featherlight.css') }}">
   <script src="{{ asset('js/featherlight.js') }}" charset="utf-8"></script>
