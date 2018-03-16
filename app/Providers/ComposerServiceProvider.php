@@ -19,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
       view()->composer("partials.navbar",function($view){
         $friends = [];
+        $friend_items = [];
         $notifications = [];
         $notification_items = [];
         $items = [];
@@ -27,7 +28,7 @@ class ComposerServiceProvider extends ServiceProvider
           $user = Auth::user();
           $friends = $user->friends()->take(5)->get();
           foreach($friends as $friend) {
-            $items[] = [
+            $friend_items[] = [
               'image' => $friend->image,
               'title' => $friend->username,
               'description' => 'Hello!  My name is '. $friend->name
@@ -44,6 +45,7 @@ class ComposerServiceProvider extends ServiceProvider
         }
         $view->with([
           "friends"=>$friends,
+          "friend_items"=>$friend_items,
           "notifications"=>$notifications,
           "notification_items"=>$notification_items
         ]);
