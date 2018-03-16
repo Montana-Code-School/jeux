@@ -54,7 +54,7 @@ class GameController extends Controller
     public function show()
     {
       $games = Game::paginate(8);
-       return view('browse', ['games' => $games]);
+       return view('browse', ['games' => $games, 'browse' => true]);
     }
 
     /**

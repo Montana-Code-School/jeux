@@ -5,7 +5,7 @@
 @endsection
 
 @section("left-column")
-  @component('partials.index', ['games' => $games])
+  @component('partials.index', ['games' => $games, 'browse' => $browse])
     oops
   @endcomponent
 @endsection
