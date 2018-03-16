@@ -51,13 +51,10 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $data = [];
-        $game = Game::find($id);
-        $data[ ] = $game;
-        // item view not created.
-        return view('item', $data);
+      $games = Game::paginate(8);
+       return view('browse', ['games' => $games, 'browse' => true]);
     }
 
     /**

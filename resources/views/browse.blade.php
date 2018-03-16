@@ -5,10 +5,11 @@
 @endsection
 
 @section("left-column")
-  @component('partials.index')
+  @component('partials.index', ['games' => $games, 'browse' => $browse])
     oops
   @endcomponent
 @endsection
+
   @section("right-column")
   @component('partials.filter')
   @endcomponent

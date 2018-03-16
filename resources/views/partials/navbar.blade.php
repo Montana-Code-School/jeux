@@ -1,6 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- First Column: CHECK -->
       <div class="col-md-4" >
@@ -27,56 +26,44 @@
       </div>
       <!-- Third Column: CHECK -->
       <div class="col-md-4">
-          <ul class="icons pull-right">
+          <ul class="nav navbar-nav navbar-right">
             <!-- FRIENDS SECTION -->
-            <li>
-              <div class="dropdown friends-content">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                </button>
-                @component("partials.dropdown-list",["items"=>$friend_items])
-                @slot("list_name")
-                  Friends
-                @endslot
-                @endcomponent
-              </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+              @component("partials.dropdown-list",["items"=>$friend_items])
+              @slot("list_name")
+                Friends
+              @endslot
+              @endcomponent
             </li>
             <!-- NOTIFICATIONS SECTION -->
-            <li>
-              <div class="dropdown notifications-content">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                </button>
+            <li class="dropdown notifications-content">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span><span class="caret"></span></a>
                 @component("partials.dropdown-list",["items"=>$notification_items])
                 @slot("list_name")
                   Notifications
                 @endslot
                 @endcomponent
-              </div>
             </li>
             <!-- USER SECTION -->
-            <li>
+            <li class="dropdown">
               @auth
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <!-- TODO: insert user avatar -->
-                    Username
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu3">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="{{ route('settings')}}">Settings</a></li>
-                    <li><a href="{{ route('logout')}}">Logout</a></li>
-                  </ul>
-                </div>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Username</span><span class="caret"></span></a>
+                  <!-- TODO: insert user avatar -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="{{ route('settings')}}">Settings</a></li>
+                  <li><a href="{{ route('logout')}}">Logout</a></li>
+                </ul>
               @endauth
               @guest
-                  <a class="btn btn-default" href="{{ route('login') }}">Login</a>
+                  <a class="dropdown-toggle" href="{{ route('login') }}">Login</a>
               @endguest
             </li>
           </ul>
       </div>
-    </div>
-  </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
 
 <script type="text/javascript">
