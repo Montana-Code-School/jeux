@@ -37,9 +37,10 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $url = $request->server('HTTP_REFERER');
+        $params = $request->query();
         $inventory = new Inventory;
-        $inventory['game_id'] = $request->game_id;
-        $inventory['owner_id'] = $request->user_id;
+        $inventory['game_id'] = $params['game_id'];
+        $inventory['owner_id'] = $params['user_id'];
         $inventory->save();
 
         return redirect($url)->header('game_added', ['success'=> true, 'game_id'=>$request->game_id]);
@@ -85,8 +86,16 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $url = $request->server('HTTP_REFERER');
+        $params = $request->query();
+        $inventory_item = Inventory::where('owner_id', $params['user_id'])
+          ->where('game_id', $params['game_id'])
+          ->first();
+
+        $inventory_item->delete();
+        return redirect($url)->header('game_deleted', ['success'=> true, 'game_id'=>$request->game_id]);
+
     }
 }
