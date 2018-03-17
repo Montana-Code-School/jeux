@@ -21,14 +21,13 @@
       @endif
     </div>
     @if(!$game['own_game'])
-    <div class="add-item-inventory">
-      <form method="post" action="/inventory">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"></input>
-        <input type="hidden" name="game_id" value="{{ $game['game_id'] }}"></input>
-        <button type="submit">Add Game</button>
-      </form>
-    </div>
+      {!! Form::open(['action'=>['InventoryController@store', 'game_id' => $game['game_id'], 'user_id'=>Auth::user()->id]]) !!}
+      {!! Form::button('Add', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+      {!! Form::close() !!}
+    @else
+      {!! Form::open(['_method' => 'delete', 'action'=>['InventoryController@destroy', 'game_id' => $game['game_id'], 'user_id'=>Auth::user()->id]]) !!}
+      {!! Form::button('Remove', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
+      {!! Form::close() !!}
     @endif
   </div>
   @component('partials.item-owner-index', ['owners'=>$game['owner']])

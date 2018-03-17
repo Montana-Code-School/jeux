@@ -43,4 +43,5 @@ Route::get('/settings', 'UserController@showSettings')->name('settings');
 
 Route::get('/searchresults', 'HomeController@showSearchResults')->name('searchresults');
 
-Route::post('/inventory', 'InventoryController@store')->name('Store Inventory');
+Route::post('/inventory/add', 'InventoryController@store')->name('Store Inventory');
+Route::post('/inventory/delete', 'InventoryController@destroy')->name('Destroy Inventory');
