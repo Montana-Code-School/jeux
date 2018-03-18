@@ -12,7 +12,7 @@
 */
 
 // Routes that will give you items dealing with the home page
-Route::get('/', 'HomeController@index')->name('landingPage');
+Route::get('/', 'LandingController@index')->name('landing');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
