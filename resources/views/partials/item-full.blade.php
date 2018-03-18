@@ -30,6 +30,6 @@
       {!! Form::close() !!}
     @endif
   </div>
-  @component('partials.item-owner-index', ['owners'=>$game['owner']])
+  @component('partials.item-owner-index', ['owners'=>$game['owner'], 'game_id'=>$game['game_id']])
   @endcomponent
 </div>

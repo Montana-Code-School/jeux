@@ -138,14 +138,18 @@ class UserController extends Controller
       return redirect($url);
     }
 
-    public function borrowGame($inventory_id)
+    public function borrowGame(Request $request)
     {
+      $url = $request->server('HTTP_REFERER');
+      $params = $request->query();
+
+
       $borrower = Auth::user();
-      $owner_id = Inventory::find($inventory_id)->owner_id;
-      $owner = User::find($owner_id);
-      $game_id = Inventory::find($inventory_id)->game_id;
-      $game = Game::find($game_id);
+      $owner = User::find($params['owner_id']);
+      $game = Game::find($params['game_id']);
       $owner->notify(new BorrowRequest($borrower, $game));
+
+      return redirect($url);
     }
 
     public function notificationRead($notification_id)
