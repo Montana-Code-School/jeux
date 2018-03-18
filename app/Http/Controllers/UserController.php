@@ -24,9 +24,9 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::get();
+      $user = Auth::user();
 
-      return view('user', compact('users'));
+      return view('settings', compact('user'));
     }
 
     /**
@@ -104,15 +104,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      $user = User::find($id);
+      $user = Auth::user();
 
-      // that the old information is staying with the information.
-      $user->name = $request->name;
-      $user->image = $request->image;
-      $user->username = $request->username;
-      $user->email = $request->email;
+      $user->name = $request->input('name');
+      //$user->image = $request->image;
+      $user->username = $request->input('username');
+      $user->email = $request->input('email');
       $user->save();
     }
 
