@@ -25,6 +25,8 @@ Route::resource('games','GameController');
 //Routes that will give you items dealing with the user
 Route::get('/user', 'UserController@index');//->name();
 Route::get('/users/{username}', 'UserController@show');//->name();
+Route::post('/users/friend/add', 'UserController@makeFriend')->name('Request Friend');
+Route::post('/users/friend/delete', 'UserController@removeFriend')->name('Remove Friend');
 
 Route::resource('users','UserController');
 
@@ -32,7 +34,6 @@ Route::resource('users','UserController');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 // Notification Routes
-Route::get('test/{id}', 'UserController@makeFriend');
 Route::get('notification_read/{notification_id}', 'UserController@notificationRead');
 
 Auth::routes();
