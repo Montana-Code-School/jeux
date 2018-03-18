@@ -37,13 +37,12 @@ body {
 }
 
 #title-sketch-holder {
-  canvas {
-    width: 100%;
-    height: 100%;
-    padding: 0px 0px 0px 0px;
-  }
   width: 100%;
   height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0px 0px 0px 0px;
 }
 
 .container {
