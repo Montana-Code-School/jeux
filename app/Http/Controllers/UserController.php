@@ -109,10 +109,12 @@ class UserController extends Controller
       $user = Auth::user();
 
       $user->name = $request->input('name');
-      //$user->image = $request->image;
+      $user->image = $request->image;
       $user->username = $request->input('username');
       $user->email = $request->input('email');
       $user->save();
+
+         return redirect('settings');
     }
 
     public function makeFriend($id)

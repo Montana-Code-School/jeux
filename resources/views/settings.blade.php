@@ -6,7 +6,8 @@
 @section('content')
   <div class ="settings-wrapper panel panel-default">
     <div class="panel-body">
-    {!! Form::open(['action' => ['UserController@update', '$user' => Auth::user()], 'files' => true]) !!}
+    {!! Form::model(Auth::user(), ['action' => ['UserController@update', '$user' => Auth::user()], 'files' => true]) !!}
+    {!! Form::token(); !!}
 
     <div class ="col-md-6">
       <div class ="input-group has-feedback">
