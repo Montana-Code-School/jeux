@@ -116,11 +116,26 @@ class UserController extends Controller
       $user->save();
     }
 
-    public function makeFriend($id)
+    public function makeFriend(Request $request)
     {
-      $friend = User::find($id);
+      $url = $request->server('HTTP_REFERER');
+
+      $params = $request->query();
+      $friend = User::find($params['user_id']);
       Auth::user()->friends()->attach($friend);
       $friend->notify(new FriendRequest(Auth::user()));
+
+      return redirect($url);
+    }
+
+    public function removeFriend(Request $request) {
+      $url = $request->server('HTTP_REFERER');
+
+      $params = $request->query();
+      $friend = Auth::user()->friends()->detach($params['user_id']);
+      // dd($friend);
+
+      return redirect($url);
     }
 
     public function borrowGame($inventory_id)
