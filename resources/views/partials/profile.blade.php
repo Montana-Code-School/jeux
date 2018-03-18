@@ -12,9 +12,15 @@
       </span>
     </div>
     @if(!$user['is_friend'])
-      <div>
-        <span class="glyphicon glyphicon-plus"></span>
-      </div>
+      {!! Form::open(['action'=>['UserController@makeFriend', 'user_id' => $user['id']]]) !!}
+      {!! Form::button('Add Friend', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+      {!! Form::close() !!}
+    @else
+    <div>
+      {!! Form::open(['action'=>['UserController@removeFriend', 'user_id' => $user['id']]]) !!}
+      {!! Form::button('Remove Friend', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
+      {!! Form::close() !!}
+    </div>
     @endif
   </div>
 </div>
