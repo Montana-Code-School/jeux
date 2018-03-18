@@ -34,7 +34,6 @@ body {
 
 .btn-default {
   border-color: black !important;
-
 }
 
 .container {
@@ -80,7 +79,6 @@ body {
 
 .icons {
   margin-top: 7px !important;
-
   li {
     display:inline-block;
   }
@@ -99,8 +97,10 @@ body {
     }
 
     .dropdown-item {
+      @media only screen and (min-width: 600px){
       padding: 5px 10px 5px 10px;
-      width: 100%;
+      min-width: 450px;
+      }
 
       .dropdown-item-content {
         display: flex;
@@ -120,9 +120,6 @@ body {
             font-weight: bold;
             margin-top: 0;
             margin-bottom: 5;
-          }
-          span {
-            white-space: nowrap;
           }
         }
       }
@@ -178,33 +175,33 @@ body {
 }
 
 .item-full {
-    width: 400px;
+  width: 400px;
+  width: 100%;
+  display: none;
+  h2 {
+    margin: 0px 0px 15px 0px;
+}
+  .item-content {
+    display: flex;
     width: 100%;
-    display: none;
-    h2 {
-      margin: 0px 0px 15px 0px;
+    img {
+      width: 250px;
+      height: 250px;
     }
-    .item-content {
-      display: flex;
-      width: 100%;
-      img {
-        width: 250px;
-        height: 250px;
-      }
-      .item-info {
-        padding-left: 25px;
-        h4 {
-          margin-top: 0;
-        }
+    .item-info {
+      padding-left: 25px;
+      h4 {
+        margin-top: 0;
       }
     }
-    .item-footer {
-      display:flex;
-      justify-content: flex-end;
-      button {
-        margin-top: 15px;
-      }
+  }
+  .item-footer {
+    display:flex;
+    justify-content: flex-end;
+    button {
+      margin-top: 15px;
     }
+  }
 }
 // Style for the partials.filter.blade
 
