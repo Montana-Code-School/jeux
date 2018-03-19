@@ -6,11 +6,9 @@
   </head>
   <body>
 
-    <pre>
-      @foreach($json['item'] as $item)
-      {{ print_r($item) }}
-      @endforeach
-    </pre>
+  @foreach ($user as $item)
+  {{ $item }}
+  @endforeach
 
 
 

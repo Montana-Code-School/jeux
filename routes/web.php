@@ -32,7 +32,7 @@ Route::resource('users','UserController');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 // Notification Routes
-Route::get('test/{id}', 'UserController@makeFriend');
+Route::get('test', 'UserController@index');
 Route::get('notification_read/{notification_id}', 'UserController@notificationRead');
 
 Auth::routes();

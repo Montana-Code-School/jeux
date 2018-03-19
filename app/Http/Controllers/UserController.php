@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Game;
 use App\Inventory;
+use Image;
+use File;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
@@ -108,8 +110,17 @@ class UserController extends Controller
     {
       $user = Auth::user();
 
+      if ($request->hasFile('image')) {
+            if($user->image != null) {
+                File::delete('images/uploads/profile' . $user->image);
+            }
+            $image = $request->file('image');
+            $filename = time() . '-' . $image->getClientOriginalName();
+            $user->image = $filename;
+            Image::make($image)->fit(160)->save( public_path('images/uploads/profile/' . $filename ) );
+        }
+
       $user->name = $request->input('name');
-      $user->image = $request->image;
       $user->username = $request->input('username');
       $user->email = $request->input('email');
       $user->save();
