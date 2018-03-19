@@ -112,7 +112,7 @@ class UserController extends Controller
 
       if ($request->hasFile('image')) {
             if($user->image != null) {
-                File::delete('images/uploads/profile' . $user->image);
+                File::delete('images/uploads/profile/' . $user->image);
             }
             $image = $request->file('image');
             $filename = time() . '-' . $image->getClientOriginalName();
