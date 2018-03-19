@@ -27,10 +27,6 @@ function setup() {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
-
 function draw() {
 
   drawIt(thestring[whereinstring]);
@@ -88,4 +84,8 @@ function drawIt(k) {
 
  fill(r, g, b, a);
  ellipse(x, y, radius, radius);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth*BW, windowHeight*BH);
 }

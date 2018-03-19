@@ -4,8 +4,10 @@
 // fontsize = 60,
 // x, y;
 
+var pg;
+
 var landing;
-var speed = 1000;
+var speed = 500;
 
 function preload() {
   // font = loadFont('assets/Monofett regular.ttf');
@@ -18,7 +20,7 @@ function setup() {
   // set up the font
   // textFont(font);
   // textSize(fontsize);
-
+  pg = createGraphics(256, 256);
   //get the width and height of the text so we can center it initially
   // bounds = font.textBounds(message, 0, 0, fontsize);
   // x = width / 2 - bounds.w / 2;
@@ -61,4 +63,14 @@ function draw() {
     landing.setUniform('u_mouse', mouseX, mouseY);
     landing.setUniform('u_time', millis()/speed);
     quad(-1, -1, 1, -1, 1, 1, -1, 1);
+
+    pg.background(175);
+    pg.text('hello world', 50, 50);
+
+
+
   }
+
+  function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}

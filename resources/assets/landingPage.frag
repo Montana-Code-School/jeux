@@ -44,7 +44,7 @@ void main() {
     color += dot(m_point,vec2(.3,.6));
 
     // Show isolines
-    //color -= abs(sin(40.0*m_dist))*0.07;
+    color -= abs(sin(40.0*m_dist))*0.07;
 
     gl_FragColor = vec4(color,0.984);
 }
