@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Game;
 use App\Inventory;
+use Image;
+use File;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
@@ -24,9 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::get();
+      $user = Auth::user();
 
-      return view('user', compact('users'));
+      return view('settings', compact('user'));
     }
 
     /**
@@ -104,16 +106,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      $user = User::find($id);
+      $user = Auth::user();
 
-      // that the old information is staying with the information.
-      $user->name = $request->name;
-      $user->image = $request->image;
-      $user->username = $request->username;
-      $user->email = $request->email;
+      if ($request->hasFile('image')) {
+            if($user->image != null) {
+                File::delete('images/uploads/profile/' . $user->image);
+            }
+            $image = $request->file('image');
+            $filename = time() . '-' . $image->getClientOriginalName();
+            $user->image = $filename;
+            Image::make($image)->fit(160)->save( public_path('images/uploads/profile/' . $filename ) );
+        }
+
+      $user->name = $request->input('name');
+      $user->username = $request->input('username');
+      $user->email = $request->input('email');
       $user->save();
+
+         return redirect('settings');
     }
 
     public function makeFriend(Request $request)
