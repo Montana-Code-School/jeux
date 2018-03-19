@@ -6,7 +6,7 @@
     @isset($owners)
       @if(sizeof($owners) > 0)
         @foreach($owners as $owner)
-          @component('partials.item-owner', ['owner'=>$owner])
+          @component('partials.item-owner', ['owner'=>$owner, 'game_id' => $game_id])
           @endcomponent
         @endforeach
       @else

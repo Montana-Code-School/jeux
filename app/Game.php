@@ -46,7 +46,7 @@ class Game extends Model
             $owners = [];
 
             foreach($gameQuery->inventory as $owner) {
-                if(array_search($owner->owner_id, $auth_friend_ids)) {
+                if(array_search($owner->owner_id, $auth_friend_ids) !== false) {
                     $user = User::find($owner->owner_id);
 
                     $user =[
