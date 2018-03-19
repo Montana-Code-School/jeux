@@ -128,21 +128,40 @@ class UserController extends Controller
          return redirect('settings');
     }
 
-    public function makeFriend($id)
+    public function makeFriend(Request $request)
     {
-      $friend = User::find($id);
+      $url = $request->server('HTTP_REFERER');
+
+      $params = $request->query();
+      $friend = User::find($params['user_id']);
       Auth::user()->friends()->attach($friend);
       $friend->notify(new FriendRequest(Auth::user()));
+
+      return redirect($url);
     }
 
-    public function borrowGame($inventory_id)
+    public function removeFriend(Request $request) {
+      $url = $request->server('HTTP_REFERER');
+
+      $params = $request->query();
+      $friend = Auth::user()->friends()->detach($params['user_id']);
+      // dd($friend);
+
+      return redirect($url);
+    }
+
+    public function borrowGame(Request $request)
     {
+      $url = $request->server('HTTP_REFERER');
+      $params = $request->query();
+
+
       $borrower = Auth::user();
-      $owner_id = Inventory::find($inventory_id)->owner_id;
-      $owner = User::find($owner_id);
-      $game_id = Inventory::find($inventory_id)->game_id;
-      $game = Game::find($game_id);
+      $owner = User::find($params['owner_id']);
+      $game = Game::find($params['game_id']);
       $owner->notify(new BorrowRequest($borrower, $game));
+
+      return redirect($url);
     }
 
     public function notificationRead($notification_id)
