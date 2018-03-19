@@ -28,6 +28,7 @@ Route::get('/users/{username}', 'UserController@show');//->name();
 Route::post('/users/friend/add', 'UserController@makeFriend')->name('Request Friend');
 Route::post('/users/friend/delete', 'UserController@removeFriend')->name('Remove Friend');
 Route::post('/users/borrow/request', 'UserController@borrowGame')->name('Borrow Game');
+Route::post('/users/borrow/return', 'UserController@returnGame')->name('Return Game');
 
 Route::resource('users','UserController');
 
