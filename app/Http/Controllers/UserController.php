@@ -176,9 +176,6 @@ class UserController extends Controller
       $inventory['date_borrowed'] = null;
       $inventory['date_returned'] = null;
 
-      
-      // $user = $user->inventory()->first();
-      # use inventory id to locate the game
       $inventory->update();
 
       return redirect($url);
