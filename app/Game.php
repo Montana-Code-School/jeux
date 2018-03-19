@@ -48,13 +48,15 @@ class Game extends Model
             foreach($gameQuery->inventory as $owner) {
                 if(array_search($owner->owner_id, $auth_friend_ids) !== false) {
                     $user = User::find($owner->owner_id);
+                    $currently_borrowing = ($owner->borrower_id === Auth::user()->id) ? true : false;
 
                     $user =[
+                        'inventory_id'=>$owner->id,
+                        'currently_borrowing'=>$currently_borrowing,
                         'id'=>$user->id,
                         'username'=>$user->username,
                         'image'=>$user->image,
                     ];
-
                     // Add user to the owner array
                     array_push($owners, $user);
                 }
