@@ -13,7 +13,7 @@
     <form>
       <input type="text" placeholder="Filter..."></input>
       <input type="submit">
-      <p id="ev1T" style="display:none">Everyone</p>
+      <ul id="ev1T" style=""></ul>
     </form>
   </br>
 </br>
@@ -23,12 +23,12 @@
     <div id="age" class="collapse">
     </br>
         <ul>
-          <li><input id="ev1" class="filterCheck" type="checkbox" onclick="myFunction()">Everyone</input></li>
-          <li><input class="filterCheck" type="checkbox">3+</input></li>
-          <li><input class="filterCheck" type="checkbox">8+</input></li>
-          <li><input class="filterCheck" type="checkbox">12+</input></li>
-          <li><input class="filterCheck" type="checkbox">15+</input></li>
-          <li><input class="filterCheck" type="checkbox">18+</input></li>
+          <li><input id="ev1" class="filterCheck" type="checkbox">Everyone</input></li>
+          <li><input id="ev2" class="filterCheck" type="checkbox">3+</input></li>
+          <li><input id="ev3" class="filterCheck" type="checkbox">8+</input></li>
+          <li><input id="ev4" class="filterCheck" type="checkbox">12+</input></li>
+          <li><input id="ev5" class="filterCheck" type="checkbox">15+</input></li>
+          <li><input id="ev6" class="filterCheck" type="checkbox">18+</input></li>
         </ul>
     </div>
     </br>
@@ -38,10 +38,10 @@
     <div id="players" class="collapse">
     </br>
       <ul>
-        <li><input class="filterCheck" type="checkbox">1 player</input></li>
-        <li><input class="filterCheck" type="checkbox">2 to 4 players</input></li>
-        <li><input class="filterCheck" type="checkbox">3 to 6 players</input></li>
-        <li><input class="filterCheck" type="checkbox">7+ players</input></li>
+        <li><input id="ev7" class="filterCheck" type="checkbox">1 player</input></li>
+        <li><input id="ev8" class="filterCheck" type="checkbox">2 to 4 players</input></li>
+        <li><input id="ev9" class="filterCheck" type="checkbox">3 to 6 players</input></li>
+        <li><input id="ev10" class="filterCheck" type="checkbox">7+ players</input></li>
       </ul>
     </div>
   </div>
@@ -51,10 +51,10 @@
     <div id="time" class="collapse">
     </br>
       <ul>
-        <li><input class="filterCheck" type="checkbox">Quick 5 to 20 Minutes</input></li>
-        <li><input class="filterCheck" type="checkbox">Medium 30 to 60 Minutes </input></li>
-        <li><input class="filterCheck" type="checkbox">Long 60 to 120 Minutes</input></li>
-        <li><input class="filterCheck" type="checkbox">Commitment 120++ </input></li>
+        <li><input id="ev11" class="filterCheck" type="checkbox">Quick 5 to 20 Minutes</input></li>
+        <li><input id="ev12" class="filterCheck" type="checkbox">Medium 30 to 60 Minutes </input></li>
+        <li><input id="ev13" class="filterCheck" type="checkbox">Long 60 to 120 Minutes</input></li>
+        <li><input id="ev14" class="filterCheck" type="checkbox">Commitment 120++ </input></li>
       </ul>
     </div>
     </br>
@@ -63,12 +63,12 @@
     <div id="genres" class="collapse">
     </br>
       <ul>
-        <li><input class="filterCheck" type="checkbox">Children</input></li>
-        <li><input class="filterCheck" type="checkbox">Fantasy</input></li>
-        <li><input class="filterCheck" type="checkbox">Murder Mystery</input></li>
-        <li><input class="filterCheck" type="checkbox">Horror</input></li>
-        <li><input class="filterCheck" type="checkbox">Word</input></li>
-        <li><input class="filterCheck" type="checkbox">Party</input></li>
+        <li><input id="ev15" class="filterCheck" type="checkbox">Children</input></li>
+        <li><input id="ev16" class="filterCheck" type="checkbox">Fantasy</input></li>
+        <li><input id="ev17" class="filterCheck" type="checkbox">Murder Mystery</input></li>
+        <li><input id="ev18" class="filterCheck" type="checkbox">Horror</input></li>
+        <li><input id="ev19" class="filterCheck" type="checkbox">Word</input></li>
+        <li><input id="ev20" class="filterCheck" type="checkbox">Party</input></li>
       </ul>
     </div>
     </br>
@@ -138,16 +138,15 @@
     </div>
   </div>
 <script>
-  function myFunction(){
-    var checkbox = document.getElementById("ev1");
-    var text = document.getElementById("ev1T");
-
-    if (checkBox.checked == true){
-      text.style.display = "block";
-    }else{
-      text.style.display = "none";
-    }
+$('.filterCheck').click(function() {
+  var filterText = "<li id="+this.id+">"+this.nextSibling.data+"</li>";
+  if(this.checked){
+    $('#ev1T').append(filterText);
+  }else{
+    console.log(this.id);
+    $('#ev1T').find('#'+this.id).remove();
   }
+});
 </script>
 
 </body>
