@@ -1,7 +1,7 @@
 @extends('layouts.two-column')
 
 @section('pageheading')
-<h2 class="lead">User Profile</h2>
+<h2 class="lead"></h2>
 @endsection
 
 @section('userprofile')
@@ -9,12 +9,12 @@
   @endcomponent
 @endsection
 
+
 @section('left-column')
   @component('partials.index', ['games' => $data['games']])
   @endcomponent
 @endsection
 
 @section('right-column')
-  @component('partials.filter')
-  @endcomponent
+
 @endsection

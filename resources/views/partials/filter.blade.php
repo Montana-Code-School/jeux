@@ -12,6 +12,8 @@
     </br>
     <form>
       <input type="text" placeholder="Filter..."></input>
+      <input type="submit">
+      <p id="ev1T" style="display:none">Everyone</p>
     </form>
   </br>
 </br>
@@ -21,7 +23,7 @@
     <div id="age" class="collapse">
     </br>
         <ul>
-          <li><input class="filterCheck" type="checkbox">Everyone</input></li>
+          <li><input id="ev1" class="filterCheck" type="checkbox" onclick="myFunction()">Everyone</input></li>
           <li><input class="filterCheck" type="checkbox">3+</input></li>
           <li><input class="filterCheck" type="checkbox">8+</input></li>
           <li><input class="filterCheck" type="checkbox">12+</input></li>
@@ -132,13 +134,21 @@
         <div class="row">
           <button class="btn btn-primary btn-lg pull-right" type="submit">Submit</button>
         </div>
-
-
       </form>
     </div>
-
   </div>
+<script>
+  function myFunction(){
+    var checkbox = document.getElementById("ev1");
+    var text = document.getElementById("ev1T");
 
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    }else{
+      text.style.display = "none";
+    }
+  }
+</script>
 
 </body>
 </html>

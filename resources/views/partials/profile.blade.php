@@ -1,9 +1,9 @@
 
 <div class="user-profile-container">
   <div class="user-profile">
-    <img src="{{ asset( "images/" . $user['image'] ) }}" alt="example Avatar" />
+    <img class = "img-responsive" src="{{ asset( "images/" . $user['image'] ) }}" alt="example Avatar" height="300"/>
     <div class="user-info">
-      <h4>{{ $user['username'] }}</h4>
+      <h2>{{ $user['username'] }}</h2>
       <span>
         Borrowing: 2 Games
       </span>

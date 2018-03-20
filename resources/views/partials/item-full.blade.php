@@ -1,7 +1,7 @@
 <div id="lb{{ $index }}" class="item-full">
 
   <div class="item-content">
-    <img src="{{ $game['image'] }}" alt="game"></img>
+    <img class ="img-responsive" src="{{ $game['image'] }}" alt="game"></img>
     <div class="item-info">
       <h4><strong>description</strong></h4>
       <p>{{ $game['description']}}</p>

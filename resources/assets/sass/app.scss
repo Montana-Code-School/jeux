@@ -36,32 +36,24 @@ body {
   border-color: black !important;
 }
 
-#title-sketch-holder {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 0px 0px 0px 0px;
-}
-
 .container {
   margin-top: 0px !important;
 }
 
 .user-profile-container {
   padding: 5px 10px 5px 10px;
+  max-height: 150px;
+  background-color: orange;
+
 }
 
 .user-profile {
   display: flex;
-  background-color: orange;
-  max-height: 300px;
   width: 100%;
   justify-content: space-around;
   img {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 300px;
+   max-height: 300px;
   }
   .user-info {
     padding: 5px;
@@ -177,10 +169,14 @@ body {
 }
 
 .tile-container {
+  background: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+  align-items: flex-end;
+  margin-top: 200px;
+
 }
 
 .item-full {
@@ -215,7 +211,7 @@ body {
 // Style for the partials.filter.blade
 
 .filter{
-  background-color:rgba(#ffffff, 0.97);
+  background-color:rgba(#9d9d9d, 0.71);
    ul li {
     list-style-type: none;
   }
