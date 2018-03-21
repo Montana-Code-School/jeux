@@ -4,7 +4,7 @@
 <div id="title-sketch-holder">
 </div>
 
-<div class="title-container"</a>>
+<div class="title-container"</a>
   <h1><a href="{{ url('/login') }}">b<sup>3</sup></a></h1>
 </div>
 
