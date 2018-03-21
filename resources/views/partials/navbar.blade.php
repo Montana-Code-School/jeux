@@ -55,10 +55,10 @@
           <!-- USER SECTION -->
           <li class="dropdown">
             @auth
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>Username</span><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{ Auth::user()->username }}</span><span class="caret"></span></a>
                 <!-- TODO: insert user avatar -->
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                <li><a href="#">Profile</a></li>
+                <li><a href="{{ route('profile',['username'=>Auth::user()->username])}}">Profile</a></li>
                 <li><a href="{{ route('settings')}}">Settings</a></li>
                 <li><a href="{{ route('logout')}}">Logout</a></li>
               </ul>

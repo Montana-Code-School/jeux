@@ -24,7 +24,7 @@ Route::resource('games','GameController');
 
 //Routes that will give you items dealing with the user
 Route::get('/user', 'UserController@index');//->name();
-Route::get('/users/{username}', 'UserController@show');//->name();
+Route::get('/users/{username}', 'UserController@show')->name('profile');
 Route::post('/users/friend/add', 'UserController@makeFriend')->name('Request Friend');
 Route::post('/users/friend/delete', 'UserController@removeFriend')->name('Remove Friend');
 Route::post('/users/borrow/request', 'UserController@borrowGame')->name('Borrow Game');
