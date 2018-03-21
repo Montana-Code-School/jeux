@@ -17,6 +17,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class UserController extends Controller
 {
     /**
@@ -125,7 +126,7 @@ class UserController extends Controller
       $user->email = $request->input('email');
       $user->save();
 
-         return redirect('settings');
+         return redirect('users/' . $user->username);
     }
 
     public function makeFriend(Request $request)

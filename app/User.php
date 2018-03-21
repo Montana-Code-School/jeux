@@ -6,14 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
-class User extends Model implements Authenticatable
+
+class User extends Model implements Authenticatable, CanResetPasswordContract
 {
 
 
     protected $fillable = ['name', 'email', 'password', 'username', 'token'];
 
-    use AuthenticableTrait;
+    use AuthenticableTrait, CanResetPassword;
     use Notifiable;
 
     protected $hidden = ['password', 'token', 'remember_token'];
