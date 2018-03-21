@@ -1,5 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Monofett");
 //$icon-font-path: '/fonts/bootstrap/';
 
 // Variables
@@ -368,5 +369,23 @@ body {
   background-color: #080102;
   opacity: 0.8;
   border-radius: 10px;
+}
 
+.title-container {
+     height: 100%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     left:0px;
+     top:0px;
+     h1 {
+       font-size: 40em !important;
+       margin: 0px !important;
+       padding: 0px !important;
+       color: #ffe100;
+       mix-blend-mode: difference;
+       font-family: 'Monofett', cursive;
+     }
 }
