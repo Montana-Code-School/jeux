@@ -32,11 +32,21 @@
         {!! Form::text('name'); !!}
       </div>
     </div>
-    <div class="avatar col-md-6">
-      <img src="https://loremflickr.com/320/240">
-      {!! Form::file('image'); !!}
+    <div class="input-group has-feedback">
+      <div class="input-group-prepend">
+        <div class="avatar col-md-6">
+          {!! Form::label('image', 'Profile Picture'); !!}
+          {!! Form::file('image'); !!}
+        </div>
+      </div>
     </div>
-      {!! Form::button('Update Settings', ['type' => 'submit', 'class' => "btn btn-success"]) !!}
+    <div class="input-group">
+      <div class="input-group-prepend">
+        {!! Form::button('Update Settings', ['type' => 'submit', 'class' => "btn btn-success"]) !!}
+      </div>
+    </div>
+
+
     {!! Form::close() !!}
   </div>
   </div>

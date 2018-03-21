@@ -1,7 +1,7 @@
 
 <div class="user-profile-container">
   <div class="user-profile">
-    <img src="{{ asset( "images/" . $user['image'] ) }}" alt="example Avatar" />
+    <img src="{{ asset( "images/uploads/profile/" . $user['image'] ) }}" alt="example Avatar" />
     <div class="user-info">
       <h4>{{ $user['username'] }}</h4>
       <span>
