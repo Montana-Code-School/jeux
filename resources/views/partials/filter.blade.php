@@ -8,7 +8,7 @@
 
   <div class="filter">
     <div id="title">
-      <h2 class="text-center">Options</h2>
+      <h2 class="text-center" style="color:orange; margin-top: 0px;">Options</h2>
     </br>
     <form>
       <input type="text" placeholder="Filter..."></input>
@@ -16,7 +16,7 @@
   </br>
 </br>
     </div>
-    <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#age">Age
+    <button type="button" class="btn btn-info btn-block" style="color:black" data-toggle="collapse" data-target="#age">Age
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="age" class="collapse">
     </br>
@@ -31,7 +31,7 @@
     </div>
     </br>
     <div for>
-    <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#players">Players
+    <button data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#players">Players
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="players" class="collapse">
     </br>
@@ -44,7 +44,7 @@
     </div>
   </div>
   </br>
-    <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#time">Time
+    <button data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#time">Time
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="time" class="collapse">
     </br>
@@ -56,7 +56,7 @@
       </ul>
     </div>
     </br>
-    <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#genres">Genres
+    <button data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#genres">Genres
     <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
     <div id="genres" class="collapse">
     </br>
@@ -74,7 +74,7 @@
     <!--TODO:: create the form with elements that have to be filled in
           and that no information is a duplicate.
         options to add an expansion-->
-    <button data-toggle="collapse" class="btn btn-primary btn-block" data-target="#addGame">Add Game
+    <button data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#addGame">Add Game
     <span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
     <div id="addGame" class="collapse">
     </br>
@@ -130,7 +130,7 @@
             <span class="slider round"></span>
       </br>
         <div class="row">
-          <button class="btn btn-primary btn-lg pull-right" type="submit">Submit</button>
+          <button class="btn btn-info btn-lg pull-right" type="submit">Submit</button>
         </div>
 
 
