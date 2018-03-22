@@ -7,6 +7,13 @@
     <h4>{{$item->title}}</h4>
     <span>{{$item->description}}</span>
   </div>
+  @if(isset($item->actions))
+    @foreach($item->actions as $action)
+      <button type="button" class="btn btn-default">
+        <span class="glyphicon {{$action['glyphicon']}}"></span>
+      </button>
+    @endforeach
+  @endif
 </div>
 @if($friend_list)
   </a>
