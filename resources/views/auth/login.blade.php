@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     Login
                                 </button>
 
@@ -62,14 +62,14 @@
                         </div>
                         <div class="form-group">
                           <div class="col-md-8 col-md-offset-4">
-                            <div>Don't Have An Account?
+                            <div style="color: white;">Don't Have An Account?
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-8 col-md-offset-4">
-                            <a class="btn btn-primary register-btn" href="{{ route('register') }}">
-                            Register :)
+                            <a class="btn btn-info register-btn color:black;" href="{{ route('register') }}">
+                            Register Here
                             </a>
                           </div>
                         </div>

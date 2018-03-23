@@ -19,11 +19,6 @@
 
 </head>
 <body>
-  <div class="menu">
-    @component("partials.navbar")
-    something went wrong
-    @endcomponent
-  </div>
 
   <div class="container">
     @yield("content")

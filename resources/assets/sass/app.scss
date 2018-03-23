@@ -1,5 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Monofett");
 //$icon-font-path: '/fonts/bootstrap/';
 
 // Variables
@@ -10,6 +11,7 @@
 
 body {
   padding: 60px;
+
 }
 
 #sketch-holder {
@@ -30,10 +32,16 @@ body {
 .btn-info {
   background-color: orange !important;
   border-color: black !important;
+  color: black !important;
 }
 
 .btn-default {
   border-color: black !important;
+}
+
+.btn-primary {
+  background-color: orange !important;
+  border-color: orange !important;
 }
 
 #title-sketch-holder {
@@ -368,5 +376,68 @@ body {
   background-color: #080102;
   opacity: 0.8;
   border-radius: 10px;
+}
 
+.title-container {
+     height: 100%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     left:0px;
+     top:0px;
+     h1 {
+       font-size: 40em !important;
+       margin: 0px !important;
+       padding: 0px !important;
+       color: #ffe100;
+       mix-blend-mode: difference;
+       font-family: 'Monofett', cursive;
+     }
+}
+
+.panel {
+  margin-bottom: 22px;
+  background-color: #080102;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.panel-heading {
+  background-color: #080102;
+  padding: 10px 15px;
+  border-bottom: 2px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.panel-heading > .dropdown .dropdown-toggle {
+  color: inherit;
+}
+
+.a:link {
+  text-decoration: none;
+}
+
+.btn-link {
+  color: white;
+}
+
+.btn-link:focus {
+  color: #F08508;
+}
+
+label {
+  color: white;
+}
+
+.featherlight .featherlight-content {
+  background: #080102;
+  opacity: 0.6;
 }
