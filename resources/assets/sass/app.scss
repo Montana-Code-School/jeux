@@ -370,3 +370,31 @@ body {
   border-radius: 10px;
 
 }
+
+// Styling for login.blade.php
+.panel {
+  opacity: 0.8;
+}
+
+.panel-body {
+  background-color: #080102;
+}
+
+.panel-heading {
+  font-size: 18px;
+  background-color: #8D2B11 !important;
+  color: #898989 !important;
+}
+
+.btn-primary {
+  background-color: orange;
+  border-color: orange;
+}
+
+.btn-link {
+  color: #68AE35;
+}
+
+.label {
+  font-weight: normal;
+}
