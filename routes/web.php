@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@show')->name('home');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@show')->name('browse');
-Route::get('/browse/{name}', 'GameController@show');//->name();
+
 
 Route::resource('games','GameController');
 

@@ -51,10 +51,10 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-      $games = Game::paginate(8);
-       return view('browse', ['games' => $games, 'browse' => true]);
+      $games = GameSearch::apply($request)->paginate(8);
+             return view('browse', ['games' => $games, 'browse' => true]);
     }
 
     /**
@@ -93,5 +93,9 @@ class GameController extends Controller
         $game = App\Game::find($id);
 
         $game->delete();
+    }
+    public function filter(Request $request)
+    {
+        return GameSearch::apply($request);
     }
 }
