@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Game;
 use App\Inventory;
+use Image;
+use File;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ use App\Notifications\FriendRequest;
 use App\Notifications\BorrowRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class UserController extends Controller
@@ -24,9 +27,9 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = User::get();
+      $user = Auth::user();
 
-      return view('user', compact('users'));
+      return view('settings', compact('user'));
     }
 
     /**
@@ -104,16 +107,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      $user = User::find($id);
+      $user = Auth::user();
 
-      // that the old information is staying with the information.
-      $user->name = $request->name;
-      $user->image = $request->image;
-      $user->username = $request->username;
-      $user->email = $request->email;
+      if ($request->hasFile('image')) {
+            if($user->image != null) {
+                File::delete('images/uploads/profile/' . $user->image);
+            }
+            $image = $request->file('image');
+            $filename = time() . '-' . $image->getClientOriginalName();
+            $user->image = $filename;
+            Image::make($image)->fit(160)->save( public_path('images/uploads/profile/' . $filename ) );
+        }
+
+      $user->name = $request->input('name');
+      $user->username = $request->input('username');
+      $user->email = $request->input('email');
       $user->save();
+
+         return redirect('users/' . $user->username);
     }
 
     public function makeFriend(Request $request)
@@ -138,14 +151,35 @@ class UserController extends Controller
       return redirect($url);
     }
 
-    public function borrowGame($inventory_id)
+    public function borrowGame(Request $request)
     {
+      $url = $request->server('HTTP_REFERER');
+      $params = $request->query();
+
+
       $borrower = Auth::user();
-      $owner_id = Inventory::find($inventory_id)->owner_id;
-      $owner = User::find($owner_id);
-      $game_id = Inventory::find($inventory_id)->game_id;
-      $game = Game::find($game_id);
+      $owner = User::find($params['owner_id']);
+      $game = Game::find($params['game_id']);
       $owner->notify(new BorrowRequest($borrower, $game));
+
+      return redirect($url);
+    }
+
+    public function returnGame(Request $request) {
+      $url = $request->server('HTTP_REFERER');
+      $params = $request->query();
+
+      $inventory = User::find($params['owner_id'])->inventory()
+        ->where('owner_id', $params['owner_id'])
+        ->where('game_id', $params['game_id'])->first();
+
+      $inventory['borrower_id'] = null;
+      $inventory['date_borrowed'] = null;
+      $inventory['date_returned'] = null;
+
+      $inventory->update();
+
+      return redirect($url);
     }
 
     public function notificationRead($notification_id)

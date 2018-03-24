@@ -13,7 +13,7 @@
 
 // Routes that will give you items dealing with the home page
 Route::get('/', 'LandingController@index')->name('landing');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@show')->name('home');
 
 
 //Routes that will give you items dealing with games
@@ -24,9 +24,11 @@ Route::resource('games','GameController');
 
 //Routes that will give you items dealing with the user
 Route::get('/user', 'UserController@index');//->name();
-Route::get('/users/{username}', 'UserController@show');//->name();
+Route::get('/users/{username}', 'UserController@show')->name('profile');
 Route::post('/users/friend/add', 'UserController@makeFriend')->name('Request Friend');
 Route::post('/users/friend/delete', 'UserController@removeFriend')->name('Remove Friend');
+Route::post('/users/borrow/request', 'UserController@borrowGame')->name('Borrow Game');
+Route::post('/users/borrow/return', 'UserController@returnGame')->name('Return Game');
 
 Route::resource('users','UserController');
 
@@ -38,9 +40,10 @@ Route::get('notification_read/{notification_id}', 'UserController@notificationRe
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/settings', 'UserController@showSettings')->name('settings');
+Route::post('/user/update', 'UserController@update');
 
 Route::get('/searchresults', 'HomeController@showSearchResults')->name('searchresults');
 
