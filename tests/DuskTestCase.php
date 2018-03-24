@@ -29,7 +29,6 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function driver()
     {
-        dd(config('app.env'));
 
         if(config('app.env') === "testing") {
           $options = (new ChromeOptions)->addArguments([
