@@ -37,7 +37,7 @@
         <img src="https://loremflickr.com/320/240">
         <input type="file" name="upload-avatar">
       </div>
-      <button type="button" class="btn btn-success">Update Settings</button>
+      <button type="button" class="btn btn-info">Update Settings</button>
     </form>
   </div>
   </div>

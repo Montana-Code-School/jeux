@@ -410,7 +410,8 @@ body {
 }
 
 .panel-heading {
-  background-color: #080102;
+  background-color: #8D2B11 !important;
+  color: #898989;
   padding: 10px 15px;
   border-bottom: 2px solid transparent;
   border-top-right-radius: 3px;
@@ -426,7 +427,7 @@ body {
 }
 
 .btn-link {
-  color: white;
+  color: #68AE35;
 }
 
 .btn-link:focus {
