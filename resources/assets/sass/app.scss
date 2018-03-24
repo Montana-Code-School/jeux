@@ -410,8 +410,10 @@ body {
 }
 
 .panel-heading {
-  background-color: #080102;
+  background-color: #8D2B11 !important;
+  color: white !important;
   padding: 10px 15px;
+  border-color: #8D2B11 !important;
   border-bottom: 2px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -426,7 +428,7 @@ body {
 }
 
 .btn-link {
-  color: white;
+  color: #68AE35;
 }
 
 .btn-link:focus {
@@ -439,5 +441,6 @@ label {
 
 .featherlight .featherlight-content {
   background: #080102;
-  opacity: 0.6;
+  opacity: 0.75;
+  color: white;
 }

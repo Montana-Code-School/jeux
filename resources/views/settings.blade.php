@@ -42,10 +42,11 @@
     </div>
     <div class="input-group">
       <div class="input-group-prepend">
-        {!! Form::button('Update Settings', ['type' => 'submit', 'class' => "btn btn-success"]) !!}
+        {!! Form::button('Update Settings', ['type' => 'submit', 'class' => "btn btn-info"]) !!}
       </div>
     </div>
-
+    
+    
 
     {!! Form::close() !!}
   </div>
