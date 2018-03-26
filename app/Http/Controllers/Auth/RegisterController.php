@@ -69,7 +69,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'token' => $data['_token'],
-            'image' => public_path('images/')
         ]);
     }
 }
