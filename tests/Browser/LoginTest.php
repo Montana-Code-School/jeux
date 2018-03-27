@@ -19,12 +19,12 @@ class LoginTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
-                    ->pause(2000)
-                    ->click('#bs-example-navbar-collapse-1 > div:nth-child(3) > ul > li:nth-child(3) > a')
+                    ->pause(7000)
+                    ->click('a[href="http://localhost:8888/login"]')
                     ->on(new Login)
-                    ->type('email', 'jbkFrankie@email.com')
+                    ->type('email', 'jbkFrankie1@email.com')
                     ->type('password', 'password')
-                    ->pause(2000)
+                    ->pause(7000)
                     ->click('.btn')
                     ->assertPathIs('/home');
 
