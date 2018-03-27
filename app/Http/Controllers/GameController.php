@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Search\GameSearch;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 

@@ -13,9 +13,9 @@ class Age implements Filter
      * @param mixed $value
      * @return Builder $builder
      */
-    public static function apply(Game $game, $value)
+    public static function apply(Game $game, $value, $value2)
     {
 
-        return $game->where('min_age', '>=', $value);
+        return $game->where('min_age', '=', $value && 'max_age', '=', $value2);
     }
 }
