@@ -36,7 +36,10 @@ class ComposerServiceProvider extends ServiceProvider
         }
 
         $notifications = $user->notifications;
+        // dd($notifications);
+        Log::debug('Here are the notifications');
         foreach($notifications as $notification) {
+          Log::debug(print_r($notification, true));
           if ($notification->type == 'App\Notifications\FriendRequest') {
             $notification_items[] = [
               'image' => $notification->data['friend_avatar'],
@@ -44,20 +47,37 @@ class ComposerServiceProvider extends ServiceProvider
               'description' => 'Your friend request is from '. $notification->data['friend_name']
             ];
           } else if ($notification->type == 'App\Notifications\BorrowRequest') {
+            // echo '<pre>';
+            // print_r($notification);
+            // echo '</pre>';
+            $game = $notification->data['game'];
+            $borrower = $notifcation->data['borrower'];
             $notification_items[] = [
-              'image' => $notification->data['friend_avatar'],
-              'title' => 'You have a friend request.',
-              'description' => 'Your friend request is from '. $notification->data['friend_name'],
+              'image' => $borrower->image,
+              'title' => "You've received a borrow request.",
+              'description' => $borrower->name . ' wants to borrow your copy of '.$game->name . '.',
               'actions' => [
                 [
                   'glyphicon' => 'glyphicon-ok-circle',
                   'name' => 'accept-friend-request',
-                  // 'controllerRoute' => put controller route here once we have one
+                  'url' => action('UserController@respondToBorrowGame',
+                    [
+                      'can_borrow'=>true,
+                      'owner_id'=>$user->id,
+                      'game_id'=>$game->id,
+                      'borrower_id'=>$borrower->id
+                    ])
                 ],
                 [
                   'glyphicon' => 'glyphicon-remove-circle',
-                  'name' => 'ignore-friend-request'
-                  // 'controllerRoute' => put controller route here once we have one
+                  'name' => 'ignore-friend-request',
+                  'url' => action('UserController@respondToBorrowGame',
+                    [
+                      'can_borrow'=>false,
+                      'owner_id'=>$user->id,
+                      'game_id'=>$game->id,
+                      'borrower_id'=>$borrower->id
+                    ])
                 ]
               ]
             ];

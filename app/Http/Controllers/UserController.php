@@ -15,6 +15,7 @@ use App\Notifications\FriendRequest;
 use App\Notifications\BorrowRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -33,9 +34,9 @@ class UserController extends Controller
      
     public function index()
     {
-      $user = Auth::user();
+        $user = Auth::user();
 
-      return view('settings', compact('user'));
+        return view('settings', compact('user'));
     }
 
     /**
@@ -60,7 +61,7 @@ class UserController extends Controller
         $user_profile = User::with('inventory', 'friends')->where('username', $username)->first();
         $user_game_ids = [];
 
-        foreach($user_profile->inventory as $inventory) {
+        foreach ($user_profile->inventory as $inventory) {
             array_push($user_game_ids, $inventory->game_id);
         }
 
@@ -70,7 +71,7 @@ class UserController extends Controller
         $auth_friends_ids = array(); // create easily searchable array of friend IDs
 
         // Add friend user IDs to auth_friends_ids
-        foreach($auth_friends as $friend) {
+        foreach ($auth_friends as $friend) {
             array_push($auth_friends_ids, $friend->id);
         }
 
@@ -85,7 +86,7 @@ class UserController extends Controller
 
         $user_profile = User::with('inventory')->where('username', $username)->first();
 
-        if(array_search($user_profile->id, $auth_friends_ids) !== false || $auth_user->id === $user_profile->id) {
+        if (array_search($user_profile->id, $auth_friends_ids) !== false || $auth_user->id === $user_profile->id) {
             $is_friend = true;
         } else {
             $is_friend = false;
@@ -125,7 +126,7 @@ class UserController extends Controller
             $filename = time() . '-' . $image->getClientOriginalName();
             $user->image = $filename;
             Image::make($image)->fit(160)->save( public_path('images/uploads/profile/' . $filename ) );
-        }
+      }
 
       $user->name = $request->input('name');
       $user->username = $request->input('username');
@@ -168,6 +169,25 @@ class UserController extends Controller
       $game = Game::find($params['game_id']);
       $owner->notify(new BorrowRequest($borrower, $game));
 
+      return redirect($url);
+    }
+
+    public function respondToBorrowGame(Request $request) {
+      $url = $request->server('HTTP_REFERER');
+      $params = $request->query();
+
+      if ($params['can_borrow'] == true) {
+        $inventory = User::find($params['owner_id'])->inventory()
+          ->where('owner_id', $params['owner_id'])
+          ->where('game_id', $params['game_id'])->first();
+
+        $inventory['borrower_id'] = $params['borrower_id'];
+        $inventory['date_borrowed'] = new DateTime();
+        
+        $inventory->update();
+      } else {
+        Log::info('No game for you.');
+      }
       return redirect($url);
     }
 
