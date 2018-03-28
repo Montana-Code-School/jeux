@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Search\GameSearch;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
@@ -51,10 +52,10 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-      $games = Game::paginate(8);
-       return view('browse', ['games' => $games, 'browse' => true]);
+      $games = GameSearch::apply($request)->paginate(8);
+            return view('browse', ['games' => $games, 'browse' => true]);
     }
 
     /**
