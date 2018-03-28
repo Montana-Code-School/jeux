@@ -163,10 +163,10 @@ class UserController extends Controller
       $url = $request->server('HTTP_REFERER');
       $params = $request->query();
 
-
       $borrower = Auth::user();
       $owner = User::find($params['owner_id']);
       $game = Game::find($params['game_id']);
+      Log::debug(print_r($game, true));
       $owner->notify(new BorrowRequest($borrower, $game));
 
       return redirect($url);
@@ -182,12 +182,13 @@ class UserController extends Controller
           ->where('game_id', $params['game_id'])->first();
 
         $inventory['borrower_id'] = $params['borrower_id'];
-        $inventory['date_borrowed'] = new DateTime();
-        
+        $inventory['date_borrowed'] = new \DateTime();
+
         $inventory->update();
       } else {
         Log::info('No game for you.');
       }
+      // TODO delete $notification
       return redirect($url);
     }
 

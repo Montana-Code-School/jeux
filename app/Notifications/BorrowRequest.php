@@ -59,8 +59,8 @@ class BorrowRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-          'game'=>$this->game,
-          'borrower'=>$this->borrower
+          'game_id'=>$this->game->id,
+          'borrower_id'=>$this->borrower->id
         ];
     }
 }

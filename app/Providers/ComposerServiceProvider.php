@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Log;
+use App\User;
+use App\Game;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -50,8 +52,10 @@ class ComposerServiceProvider extends ServiceProvider
             // echo '<pre>';
             // print_r($notification);
             // echo '</pre>';
-            $game = $notification->data['game'];
-            $borrower = $notifcation->data['borrower'];
+            $game_id = $notification->data['game_id'];
+            $game = Game::find($game_id);
+            $borrower_id = $notification->data['borrower_id'];
+            $borrower = User::find($borrower_id);
             $notification_items[] = [
               'image' => $borrower->image,
               'title' => "You've received a borrow request.",
@@ -59,24 +63,26 @@ class ComposerServiceProvider extends ServiceProvider
               'actions' => [
                 [
                   'glyphicon' => 'glyphicon-ok-circle',
-                  'name' => 'accept-friend-request',
+                  'name' => 'accept-borrow-request',
                   'url' => action('UserController@respondToBorrowGame',
                     [
                       'can_borrow'=>true,
                       'owner_id'=>$user->id,
                       'game_id'=>$game->id,
-                      'borrower_id'=>$borrower->id
+                      'borrower_id'=>$borrower->id,
+                      'notification_id'=>$notification->id
                     ])
                 ],
                 [
                   'glyphicon' => 'glyphicon-remove-circle',
-                  'name' => 'ignore-friend-request',
+                  'name' => 'ignore-borrow-request',
                   'url' => action('UserController@respondToBorrowGame',
                     [
                       'can_borrow'=>false,
                       'owner_id'=>$user->id,
                       'game_id'=>$game->id,
-                      'borrower_id'=>$borrower->id
+                      'borrower_id'=>$borrower->id,
+                      'notification_id'=>$notification->id
                     ])
                 ]
               ]
