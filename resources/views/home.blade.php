@@ -9,3 +9,9 @@
       oops
     @endcomponent
 @endsection
+
+@section('right-column')
+  @component('partials.filter')
+    Filter Component did not load
+  @endcomponent
+@endsection

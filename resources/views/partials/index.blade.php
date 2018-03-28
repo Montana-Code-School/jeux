@@ -13,8 +13,8 @@
     <p class="lead">Games Undefined</p>
   @endempty
 </div>
-@isset($browse)
-@if($browse == true)
+@if(isset($browse))
   {{ $games->links() }}
+@elseif(isset($paginate))
+  {{ $paginate->links() }}
 @endif
-@endisset
