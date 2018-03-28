@@ -11,16 +11,18 @@
         Lending: 1 Game
       </span>
     </div>
-    @if(!$user['is_friend'])
+    @if(Auth::user()->id == $user['id'])
+
+    @elseif(!$user['is_friend'])
       {!! Form::open(['action'=>['UserController@makeFriend', 'user_id' => $user['id']]]) !!}
       {!! Form::button('Add Friend', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
       {!! Form::close() !!}
     @else
-    <div>
-      {!! Form::open(['action'=>['UserController@removeFriend', 'user_id' => $user['id']]]) !!}
-      {!! Form::button('Remove Friend', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
-      {!! Form::close() !!}
-    </div>
+      <div>
+        {!! Form::open(['action'=>['UserController@removeFriend', 'user_id' => $user['id']]]) !!}
+        {!! Form::button('Remove Friend', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
+        {!! Form::close() !!}
+      </div>
     @endif
   </div>
 </div>
