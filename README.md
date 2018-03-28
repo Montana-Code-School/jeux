@@ -54,6 +54,8 @@ Jeux is a handy site that lets you and your friends share games with one another
   * Testing
   * Deployment
   * Git master
+  * Slight frontend work
+  * Our jack of all trades
 * **Nate**
   * Routes
   * Testing

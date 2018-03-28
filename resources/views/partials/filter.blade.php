@@ -163,10 +163,9 @@ $('.filterCheck').click(function() {
     $("#ftchoice").find("#" + this.id).remove();
   }
 
-  // slider.on('update', function(values){
-  //   let filteredItems = filteredItems(Value, Value2)
-  //   renderItems(filteredItems)
-  // })
+  //slider.on('update', function(){
+  //  var handles = handles()
+//});
 
 });
 </script>
