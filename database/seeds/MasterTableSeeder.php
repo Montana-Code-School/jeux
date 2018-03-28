@@ -200,14 +200,14 @@ class MasterTableSeeder extends Seeder
           'borrower_id' => 5,
           'owner_id' => 6,
           'date_borrowed' => $date,
-          'date_returned' => null
+          'date_returned' => $dateReturn
         ],
         [
           'game_id' => 24,
           'borrower_id' => 6,
           'owner_id' => 5,
-          'date_borrowed' => null,
-          'date_returned' => null
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
         ],
         [
           'game_id' => 1,
