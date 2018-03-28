@@ -56,6 +56,26 @@ class MasterTableSeeder extends Seeder
           'remember_token' => bcrypt('remember_token'),
           'created_at' => $date,
           'updated_at' => $date
+        ],
+        [
+          'username' => 'Winnie',
+          'email' => 'winnifred@email.com',
+          'password' => bcrypt('password'),
+          'name' => 'Jill Ben Kendra-Frank III',
+          'token' => bcrypt('token'),
+          'remember_token' => bcrypt('remember_token'),
+          'created_at' => $date,
+          'updated_at' => $date
+        ],
+        [
+          'username' => 'Pegs',
+          'email' => 'peggy@email.com',
+          'password' => bcrypt('password'),
+          'name' => 'Peggy',
+          'token' => bcrypt('token'),
+          'remember_token' => bcrypt('remember_token'),
+          'created_at' => $date,
+          'updated_at' => $date
         ]]);
 
         DB::table('friends')->insert([[
@@ -81,6 +101,14 @@ class MasterTableSeeder extends Seeder
         [
           'user_id'=>3,
           'friend_id'=>4
+        ],
+        [
+          'user_id'=>5,
+          'friend_id'=>6
+        ],
+        [
+          'user_id'=>6,
+          'friend_id'=>5
         ]]);
 
         DB::table('inventories')->insert([[
@@ -164,6 +192,34 @@ class MasterTableSeeder extends Seeder
           'game_id' => 89,
           'borrower_id' => null,
           'owner_id' => 4,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 111,
+          'borrower_id' => 5,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 24,
+          'borrower_id' => 6,
+          'owner_id' => 5,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 1,
+          'borrower_id' => null,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 2,
+          'borrower_id' => null,
+          'owner_id' => 5,
           'date_borrowed' => null,
           'date_returned' => null
         ]]);
