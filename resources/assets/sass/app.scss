@@ -394,13 +394,16 @@ body {
        color: #ffe100;
        mix-blend-mode: difference;
        font-family: 'Monofett', cursive;
+       a {
+         text-decoration: none;
+       }
      }
 }
 
 .panel {
   margin-bottom: 22px;
   background-color: #080102;
-  border: 2px solid transparent;
+  border: 4px solid transparent;
   border-radius: 10px;
   opacity: 0.8;
 }
@@ -443,4 +446,20 @@ label {
   background: #080102;
   opacity: 0.75;
   color: white;
+  border-radius: 3px;
+}
+
+.user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  background-color: #3c2918;
+  border: 3px solid #3c2918;
+  border-radius: 10px;
+  max-height: 300px;
+  width: 101%;
+  padding: 5px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }

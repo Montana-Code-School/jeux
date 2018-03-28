@@ -45,8 +45,8 @@
         {!! Form::button('Update Settings', ['type' => 'submit', 'class' => "btn btn-info"]) !!}
       </div>
     </div>
-    
-    
+
+
 
     {!! Form::close() !!}
   </div>
