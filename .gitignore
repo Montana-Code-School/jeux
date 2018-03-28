@@ -17,3 +17,4 @@ yarn-error.log
 .env
 public/css/app.css
 public/js
+public/images/uploads/profile

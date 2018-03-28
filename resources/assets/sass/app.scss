@@ -229,6 +229,41 @@ body {
   background-color:rgba(#ffffff, 0.97);
    ul li {
     list-style-type: none;
+    color:white;
+  }
+  p{
+    color:white;
+  }
+  .noUi-target{
+
+      .noUi-base{
+
+      .noUi-handle{
+        background-color: #FBA808;
+        border: none;
+        box-shadow: none;
+        display: table;
+        font-size: 15px;
+        position: absolute;
+        text-align: center;
+      }
+      .noUi-connect	{
+        background-color: #000000;
+      }
+    }
+    &::before {
+      background: transparent;
+      content: attr(data-value);
+      display: table-cell;
+      font-size: 15px;
+      font-weight: 18px;
+      position: static;
+      width: 100%;
+      vertical-align: middle;
+    }
+    &::after {
+      display: none;
+    }
   }
 }
 

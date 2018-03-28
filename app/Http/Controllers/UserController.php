@@ -112,7 +112,7 @@ class UserController extends Controller
       $user = Auth::user();
 
       if ($request->hasFile('image')) {
-            if($user->image != null) {
+            if($user->image != 'avatar.png') {
                 File::delete('images/uploads/profile/' . $user->image);
             }
             $image = $request->file('image');
