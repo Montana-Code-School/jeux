@@ -2,7 +2,7 @@
   <a class href="{{ route('profile', $item->title) }}">
 @endif
 <div class="dropdown-item-content">
-  <img src= "{{ asset( "images/uploads/profile/" . $item->image) }}" alt="example Avatar" />
+  <img src= "{{ $item->image_url }}" alt="example Avatar" />
   <div class="dropdown-item-info">
     <h4>{{$item->title}}</h4>
     <span>{{$item->description}}</span>

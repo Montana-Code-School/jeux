@@ -31,33 +31,29 @@ class ComposerServiceProvider extends ServiceProvider
 
         foreach($friends as $friend) {
           $friend_items[] = [
-            'image' => $friend->image,
+            'image_url' => asset( "images/uploads/profile/" . $friend->image),
             'title' => $friend->username,
             'description' => 'Hello!  My name is '. $friend->name
           ];
         }
 
-        $notifications = $user->notifications;
-        // dd($notifications);
+        $notifications = $user->unreadNotifications;
         Log::debug('Here are the notifications');
         foreach($notifications as $notification) {
           Log::debug(print_r($notification, true));
           if ($notification->type == 'App\Notifications\FriendRequest') {
             $notification_items[] = [
-              'image' => $notification->data['friend_avatar'],
+              'image_url' => asset( "images/uploads/profile/" . $notification->data['friend_avatar']),
               'title' => 'You have a friend request.',
               'description' => 'Your friend request is from '. $notification->data['friend_name']
             ];
           } else if ($notification->type == 'App\Notifications\BorrowRequest') {
-            // echo '<pre>';
-            // print_r($notification);
-            // echo '</pre>';
             $game_id = $notification->data['game_id'];
             $game = Game::find($game_id);
             $borrower_id = $notification->data['borrower_id'];
             $borrower = User::find($borrower_id);
             $notification_items[] = [
-              'image' => $borrower->image,
+              'image_url' => asset( "images/uploads/profile/" . $borrower->image),
               'title' => "You've received a borrow request.",
               'description' => $borrower->name . ' wants to borrow your copy of '.$game->name . '.',
               'actions' => [
@@ -87,10 +83,19 @@ class ComposerServiceProvider extends ServiceProvider
                 ]
               ]
             ];
+          } else if ($notification->type == 'App\Notifications\BorrowRequestAccepted') {
+            $game_id = $notification->data['game_id'];
+            $game = Game::find($game_id);
+            $owner_id = $notification->data['owner_id'];
+            $owner = User::find($owner_id);
+            $notification_items[] = [
+              'image_url' => $game->image,
+              'title' => "Your borrow request has been accepted.",
+              'description' => $owner->name . ' has accepted your borrow request for '.$game->name . '.'
+            ];
           }
         }
-
-      };
+      }
       $view->with([
         "friends"=>$friends,
         "friend_items"=>$friend_items,
