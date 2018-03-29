@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-</head>
-<body>
   <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
   <script src="https://unpkg.com/wnumb@1.1.0"></script>
-
+</head>
+<body>
   <form action="{{ route('browse') }}" method="GET">
     <div class="filter">
       <div id="title">
@@ -17,58 +16,29 @@
     </br>
     <form>
       <ul id="ftchoice" style=""></ul>
+      <ul id="input-format" style-""></ul>
+      <input class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
+  <!--Use flash & session-->
   <p>Age</p>
   <div id="slider"></div>
-  <script>
-  var num = wNumb({decimals: 0})
-  noUiSlider.create(slider, {
-    animationDuration: 300,
-    start: [20, 80],
-    connect: true,
-    tooltips: [ num, num ],
-    range: {
-      'min': 1,
-      'max': 100
-    }
-  });
-</script>
 </br>
-
-<!--Use flash & session
-Use Slider
-Min and Max
--->
-
 <p>Players</p>
 <div id="sliderPlay"></div>
-<script>
-var num = wNumb({decimals: 0})
-noUiSlider.create(sliderPlay, {
-  animationDuration: 300,
-  start: [2, 4],
-  connect: true,
-  // tooltips: [ num, num ],
-  range: {
-    'min': 1,
-    'max': 20
-  }
-});
+</br>
+</br>
 
-</script>
-</br>
-</br>
 <!--Play time button  -->
 <button type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#time">Time
   <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
   <div id="time" class="collapse">
   </br>
   <ul>
-    <li><input id="ft20M" class="filterCheck" type="checkbox">Quick 5 to 20 Minutes</input></li>
-    <li><input id="ft60M" class="filterCheck" type="checkbox">Medium 30 to 60 Minutes </input></li>
-    <li><input id="ft120M" class="filterCheck" type="checkbox">Long 60 to 120 Minutes</input></li>
-    <li><input id="ft+M" class="filterCheck" type="checkbox">Commitment 120++ </input></li>
+    <li><input id="20m" class="filterCheck" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
+    <li><input id="60m" class="filterCheck" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
+    <li><input id="120m" class="filterCheck" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
+    <li><input id="Commit+" class="filterCheck" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
   </ul>
 </div>
 </br>
@@ -78,12 +48,12 @@ noUiSlider.create(sliderPlay, {
   <div id="genres" class="collapse">
   </br>
   <ul>
-    <li><input id="ftChild" class="filterCheck" type="checkbox">Children</input></li>
-    <li><input id="ftFan" class="filterCheck" type="checkbox">Fantasy</input></li>
-    <li><input id="ftMM" class="filterCheck" type="checkbox">Murder Mystery</input></li>
-    <li><input id="ftH" class="filterCheck" type="checkbox">Horror</input></li>
-    <li><input id="ftW" class="filterCheck" type="checkbox">Word</input></li>
-    <li><input id="ftP" class="filterCheck" type="checkbox">Party</input></li>
+    <li><input id="chi" class="filterCheck" type="checkbox" value ="child" name="genre">Children</input></li>
+    <li><input id="fan" class="filterCheck" type="checkbox" value ="fantasy" name="genre">Fantasy</input></li>
+    <li><input id="mys" class="filterCheck" type="checkbox" value ="mystery" name="genre">Murder Mystery</input></li>
+    <li><input id="hor" class="filterCheck" type="checkbox" value ="horror" name="genre">Horror</input></li>
+    <li><input id="wor" class="filterCheck" type="checkbox" value ="word" name="genre">Word</input></li>
+    <li><input id="par" class="filterCheck" type="checkbox" value ="party" name="genre">Party</input></li>
   </ul>
 </div>
 </br>
@@ -150,7 +120,7 @@ options to add an expansion-->
 </form>
 </div>
 </br>
-    <input type="submit" class="btn btn-info btn-block">
+
 </div>
 </form>
 
@@ -162,12 +132,39 @@ $('.filterCheck').click(function() {
   } else {
     $("#ftchoice").find("#" + this.id).remove();
   }
+});
 
-  //slider.on('update', function(){
-  //  var handles = handles()
+// Player Slider
+var num = wNumb({decimals: 0})
+noUiSlider.create(sliderPlay, {
+  animationDuration: 300,
+  start: [2, 4],
+  connect: true,
+  // tooltips: [ num, num ],
+  range: {
+    'min': 1,
+    'max': 20
+  }
+});
+
+// Age slider
+var num = wNumb({decimals: 0})
+noUiSlider.create(slider, {
+  animationDuration: 300,
+  start: [20, 80],
+  connect: true,
+  tooltips: [ num, num ],
+  range: {
+    'min': 1,
+    'max': 100
+  }
+});
+
+
+//slider.on('update', function(values, handle){
+//  var handles = handles()
 //});
 
-});
 </script>
 
 </body>

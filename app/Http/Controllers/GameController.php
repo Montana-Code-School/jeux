@@ -95,4 +95,8 @@ class GameController extends Controller
 
         $game->delete();
     }
+    public function filter(Request $request)
+    {
+      return GameSearch::apply($request);
+    }
 }
