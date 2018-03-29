@@ -8,9 +8,7 @@
     @component('partials.index', ['games'=>$games])
       oops
     @endcomponent
-    <br><p>You Searched For: {{$search_games}}</p><br/>
-    <br><p class="text-right">More Games...</p><br/>
-    <br><p class="text-right">More People...</p><br/>
+    <br><p class ="text-right">You Searched For: {{$search_games}}</p><br/>
 @endsection
 
 @section('right-column')
