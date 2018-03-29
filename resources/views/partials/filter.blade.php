@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
+<!-- Links for the noUiSlider  -->
   <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
   <script src="https://unpkg.com/wnumb@1.1.0"></script>
-</head>
-<body>
+
   <form action="{{ route('browse') }}" method="GET">
     <div class="filter">
       <div id="title">
         <h2 class="text-center" style="color:orange; margin-top: 0px;">Options</h2>
       </div>
     </br>
+    <!--form   -->
     <form>
       <ul id="ftchoice" style=""></ul>
       <ul id="input-format" style-""></ul>
@@ -166,6 +162,3 @@ noUiSlider.create(slider, {
 //});
 
 </script>
-
-</body>
-</html>
