@@ -27,7 +27,7 @@ class Login extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                //->assertSee('Jeux')
+                // ->assertSee('B' + '3')
                 ->assertSee('Login')
                 ->assertSee('Register')
                 ->assertSee('E-Mail Address')

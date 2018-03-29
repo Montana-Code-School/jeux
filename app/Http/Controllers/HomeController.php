@@ -53,15 +53,15 @@ class HomeController extends Controller
         $game_ids = [];
 
         //% is similar a regex for sql statements when used in conjuntion with like to say "anything before and anything after"
-        $games = Game::where('name', 'like', "%$search_games%") ->get();
+        $paginate = Game::where('name', 'like', "%$search_games%")->paginate(12);
 
-        foreach ($games as $key => $game) {
+        foreach ($paginate as $key => $game) {
           array_push($game_ids, $game->id);
         }
 
         $gameModel = new Game();
         $games = $game->gameInfo($game_ids);
-
-        return view('searchresults', ['search_games'=>$search_games, 'games'=>$games]);
+        // dd($paginate);
+        return view('searchresults', ['search_games'=>$search_games, 'games'=>$games, 'paginate'=>$paginate]);
     }
 }

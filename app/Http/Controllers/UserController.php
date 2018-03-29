@@ -25,6 +25,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+     
     public function index()
     {
       $user = Auth::user();
@@ -112,7 +118,7 @@ class UserController extends Controller
       $user = Auth::user();
 
       if ($request->hasFile('image')) {
-            if($user->image != null) {
+            if($user->image != 'avatar.png') {
                 File::delete('images/uploads/profile/' . $user->image);
             }
             $image = $request->file('image');

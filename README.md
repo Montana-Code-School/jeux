@@ -1,9 +1,9 @@
-# jeux
+# b3
 
 Game night.
 We all love it, we all do it, we all have a special "gamer tag" that defines who we are in that space.
 Ever wanted to try out a game to see if it's worth the price or the time? I bet you have. We have the solution for you!
-Jeux is a handy site that lets you and your friends share games with one another while allow you to keep track of who has what. No more wondering where your Friday night specialty has gone! Jeux has you covered!
+Jeux is a handy site that lets you and your friends share games with one another while allow you to keep track of who has what. No more wondering where your Friday night specialty has gone! b3 has you covered!
 
 ## Table of Contents
 
@@ -29,33 +29,38 @@ Jeux is a handy site that lets you and your friends share games with one another
 ### Testing gear
 * Phpunit
 * Dusk
-* Travis Ci
 ### Communication
 * Github
+* Zenhub
 * Slack
 
 ## <a name="Meet-the-team"></a> Meet the team
 
 * **Cassidy**
   * Front End Designer
+  * Specialty design work
 * **Keesha**
   * Routes
-  * Testing
   * Backend/Database
   * Git master
+  * Helping on frontend work
 * **Kelsey**
   * Testing
 * **Kerry**
   * Project Manager
+  * Frontend assistant to Cassidy
 * **Matt**
   * Mock ups
   * Testing
   * Deployment
   * Git master
+  * Slight frontend work
+  * Our jack of all trades
 * **Nate**
   * Routes
   * Testing
   * Backend/Database
+  * Helping on frontend work
 
 ## <a name="File-Structure"></a> File Structure
 ```
