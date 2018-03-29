@@ -14,7 +14,7 @@ class Navbar extends BaseComponent
      */
     public function selector()
     {
-        return '#selector';
+        return 'body > div.menu > nav > div > div.navbar-header';
     }
 
     /**
@@ -25,8 +25,7 @@ class Navbar extends BaseComponent
      */
     public function assert(Browser $browser)
     {
-        $browser->assertVisible($this->selector())
-                ->assertSee('My Games');
+        $browser->assertVisible($this->selector());
     }
 
     /**
@@ -37,6 +36,7 @@ class Navbar extends BaseComponent
     public function elements()
     {
         return [
+            '@friends' => '@friends-dropdown-toggle',
             '@element' => '#selector',
         ];
     }
