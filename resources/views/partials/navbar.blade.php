@@ -40,7 +40,7 @@
         @auth
           <li dusk="friends-dropdown-list" class="dropdown">
             <a href="#" dusk="friends-dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
-            @component("partials.dropdown-list",["items"=>$friend_items])
+            @component("partials.dropdown-list",["items"=>$friend_items, "friend_list"=>true])
             @slot("list_name")
               Friends
             @endslot
@@ -49,7 +49,7 @@
           <!-- NOTIFICATIONS SECTION -->
           <li dusk="dropdown-notify-content" class="dropdown notifications-content">
               <a href="#" dusk="dropdown-notify-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span><span class="caret"></span></a>
-              @component("partials.dropdown-list",["items"=>$notification_items])
+              @component("partials.dropdown-list",["items"=>$notification_items, "friend_list"=>false])
               @slot("list_name")
                 Notifications
               @endslot
