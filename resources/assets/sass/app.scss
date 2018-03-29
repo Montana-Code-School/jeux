@@ -172,6 +172,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #A6Bd3D !important;
+  // color: black !important;
 }
 .front {
   z-index: 2;
@@ -182,6 +184,11 @@ body {
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+  opacity: 0.9;
+  padding-left: 5px;
+  color: black !important;
+  border: 2px solid;
+  font-size: 16px;
 }
 
 .tile-container {
