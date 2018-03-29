@@ -15,16 +15,16 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testFrankie1CanLogin()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
-                    ->pause(7000)
+                    ->pause(2000)
                     ->click('a[href="http://localhost:8888/login"]')
                     ->on(new Login)
                     ->type('email', 'jbkFrankie1@email.com')
                     ->type('password', 'password')
-                    ->pause(7000)
+                    ->pause(2000)
                     ->click('.btn')
                     ->assertPathIs('/home');
 
