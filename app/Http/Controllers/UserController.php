@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Notifications\FriendRequest;
 use App\Notifications\BorrowRequest;
 use App\Notifications\BorrowRequestAccepted;
+use App\Notifications\BorrowRequestDenied;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -175,6 +176,7 @@ class UserController extends Controller
     {
       $url = $request->server('HTTP_REFERER');
       $params = $request->query();
+
       $owner = User::find($params['owner_id']);
       $game = Game::find($params['game_id']);
 
@@ -189,7 +191,13 @@ class UserController extends Controller
         $borrower->notify(new BorrowRequestAccepted($owner, $game));
 
         $inventory->update();
-      } else {
+      } else if ($params['can_borrow'] == false) {
+        $inventory = $owner->inventory()
+          ->where('owner_id', $params['owner_id'])
+          ->where('game_id', $params['game_id'])->first();
+
+        $borrower = User::find($params['borrower_id']);
+        $borrower->notify(new BorrowRequestDenied($owner, $game));
         Log::info('No game for you.');
       }
       // TODO delete $notification

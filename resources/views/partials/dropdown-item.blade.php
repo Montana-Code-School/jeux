@@ -17,7 +17,7 @@
       <a class="btn btn-default" href='{{$action['url']}}'>
         <span class="glyphicon {{$action['glyphicon']}}"></span>
       </a>
-      
+
     @endforeach
   @endif
 </div>

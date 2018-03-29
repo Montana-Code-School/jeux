@@ -91,7 +91,17 @@ class ComposerServiceProvider extends ServiceProvider
             $notification_items[] = [
               'image_url' => $game->image,
               'title' => "Your borrow request has been accepted.",
-              'description' => $owner->name . ' has accepted your borrow request for '.$game->name . '.'
+              'description' => $owner->name . ' has accepted your borrow request for '. $game->name . '.'
+            ];
+          } else if ($notification->type == 'App\Notifications\BorrowRequestDenied') {
+            $game_id = $notification->data['game_id'];
+            $game = Game::find($game_id);
+            $owner_id = $notification->data['owner_id'];
+            $owner = User::find($owner_id);
+            $notification_items[] = [
+              'image_url' => $game->image,
+              'title' => "Your borrow request has been denied.",
+              'description' => $owner->name . ' has denied your borrow request for ' . $game->name . '.'
             ];
           }
         }

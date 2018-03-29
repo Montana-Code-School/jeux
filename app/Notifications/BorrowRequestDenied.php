@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\User;
+use App\Game;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,9 +18,10 @@ class BorrowRequestDenied extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $owner, Game $game)
     {
-        //
+        $this->owner = $owner;
+        $this->game = $game;
     }
 
     /**
@@ -29,7 +32,7 @@ class BorrowRequestDenied extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -41,6 +44,7 @@ class BorrowRequestDenied extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Borrow request denied.')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
@@ -55,7 +59,8 @@ class BorrowRequestDenied extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'game_id'=>$this->game->id,
+            'owner_id'=>$this->owner->id
         ];
     }
 }
