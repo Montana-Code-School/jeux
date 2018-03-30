@@ -15,12 +15,12 @@
 
     @elseif(!$user['is_friend'])
       {!! Form::open(['action'=>['UserController@makeFriend', 'user_id' => $user['id']]]) !!}
-      {!! Form::button('Add Friend', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+      {!! Form::button('Add Friend', ['type' => 'submit', 'class' => "btn btn-primary", 'dusk' => 'make-friend']) !!}
       {!! Form::close() !!}
     @else
       <div>
         {!! Form::open(['action'=>['UserController@removeFriend', 'user_id' => $user['id']]]) !!}
-        {!! Form::button('Remove Friend', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
+        {!! Form::button('Remove Friend', ['type' => 'submit', 'class' => "btn btn-danger", 'dusk' => 'make-friend']) !!}
         {!! Form::close() !!}
       </div>
     @endif

@@ -18,6 +18,7 @@ Route::get('/home', 'HomeController@show')->name('home');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@show')->name('browse');
+//Route::get('/browse/{request}', 'GameController@filter')->name('filter');
 
 Route::resource('games','GameController');
 
@@ -28,7 +29,7 @@ Route::post('/users/friend/add', 'UserController@makeFriend')->name('Request Fri
 Route::post('/users/friend/delete', 'UserController@removeFriend')->name('Remove Friend');
 Route::post('/users/borrow/request', 'UserController@borrowGame')->name('Borrow Game');
 Route::post('/users/borrow/return', 'UserController@returnGame')->name('Return Game');
-
+Route::match(['GET', 'POST'], '/users/borrow/respond', 'UserController@respondToBorrowGame')->name('Borrow Response');
 Route::resource('users','UserController');
 
 // Authentication

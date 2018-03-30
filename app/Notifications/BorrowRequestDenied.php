@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class BorrowRequest extends Notification
+class BorrowRequestDenied extends Notification
 {
     use Queueable;
 
@@ -18,9 +18,9 @@ class BorrowRequest extends Notification
      *
      * @return void
      */
-    public function __construct(User $borrower, Game $game)
+    public function __construct(User $owner, Game $game)
     {
-        $this->borrower = $borrower;
+        $this->owner = $owner;
         $this->game = $game;
     }
 
@@ -44,10 +44,10 @@ class BorrowRequest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Borrow request.')
-                    ->line($this->user->name . ' Would like to borrow a game.')
-                    ->action('Allow to borrow game', url('/')) //Need to find where to send notifications
-                    ->line('Thank you!');
+                    ->subject('Borrow request denied.')
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -59,8 +59,8 @@ class BorrowRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-          'game_id'=>$this->game->id,
-          'borrower_id'=>$this->borrower->id
+            'game_id'=>$this->game->id,
+            'owner_id'=>$this->owner->id
         ];
     }
 }
