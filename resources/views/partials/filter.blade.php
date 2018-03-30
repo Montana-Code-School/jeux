@@ -12,7 +12,7 @@
     <!--form   -->
     <form>
       <ul id="ftchoice" style=""></ul>
-      <ul id="input-format" style-""></ul>
+      <ul><input id="input-format"></input></ul>
       <input class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
@@ -109,10 +109,7 @@ options to add an expansion-->
       <textarea rows="4" id="des" type="text" class="form-control" placeholder="Description of the Game"></textarea>
     </div>
   </div>
-</br>
-<div class="row">
   <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
-</div>
 </form>
 </div>
 </br>
@@ -129,6 +126,18 @@ $('.filterCheck').click(function() {
     $("#ftchoice").find("#" + this.id).remove();
   }
 });
+// Age slider
+var num = wNumb({decimals: 0})
+noUiSlider.create(slider, {
+  animationDuration: 300,
+  start: [20, 80],
+  connect: true,
+  tooltips: [ num, num ],
+  range: {
+    'min': 1,
+    'max': 100
+  }
+});
 
 // Player Slider
 var num = wNumb({decimals: 0})
@@ -143,22 +152,15 @@ noUiSlider.create(sliderPlay, {
   }
 });
 
-// Age slider
-var num = wNumb({decimals: 0})
-noUiSlider.create(slider, {
-  animationDuration: 300,
-  start: [20, 80],
-  connect: true,
-  tooltips: [ num, num ],
-  range: {
-    'min': 1,
-    'max': 100
-  }
+var inputFormat = document.getElementById('input-format');
+
+sliderFormat.noUiSlider.on('update', function( values, handle ) {
+	inputFormat.value = values[handle];
 });
 
+inputFormat.addEventListener('change', function(){
+	sliderFormat.noUiSlider.set(this.value);
+});
 
-//slider.on('update', function(values, handle){
-//  var handles = handles()
-//});
 
 </script>
