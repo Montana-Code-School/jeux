@@ -4,6 +4,7 @@
       <img src="{{ asset( "images/uploads/profile/" . $owner['image'] ) }}"></img>
     </div>
     <div class="back">
+      <h4>{{ $owner['username'] }}</h4>
       @if(!$owner['currently_borrowing'])
         {!! Form::open(['action'=>['UserController@borrowGame', 'game_id' => $game_id, 'owner_id' => $owner['id']]]) !!}
         {!! Form::button('Borrow Game', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}

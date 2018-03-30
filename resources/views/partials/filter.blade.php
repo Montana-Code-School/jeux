@@ -4,7 +4,7 @@
   <script src="https://unpkg.com/wnumb@1.1.0"></script>
 
   <form action="{{ route('browse') }}" method="GET">
-    <div class="filter">
+    <div dusk="filter" class="filter">
       <div id="title">
         <h2 class="text-center" style="color:orange; margin-top: 0px;">Options</h2>
       </div>
@@ -13,43 +13,50 @@
     <form>
       <ul id="ftchoice" style=""></ul>
       <ul><input id="input-format"></input></ul>
-      <input class="btn btn-info btn-md pull-right" type="submit">
+      <input dusk="filter-submit" class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
   <!--Use flash & session-->
   <p>Age</p>
-  <div id="slider"></div>
+
+  <div dusk="age-slider" id="slider"></div>
+
 </br>
 <p>Players</p>
-<div id="sliderPlay"></div>
+
+<div dusk="players-slider" id="sliderPlay"></div>
+
 </br>
 </br>
 
 <!--Play time button  -->
-<button type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#time">Time
+<button dusk="Play-time-drop-down" type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#time">Time
   <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
   <div id="time" class="collapse">
   </br>
   <ul>
-    <li><input id="20m" class="filterCheck" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
-    <li><input id="60m" class="filterCheck" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
-    <li><input id="120m" class="filterCheck" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
-    <li><input id="Commit+" class="filterCheck" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
+
+    <li><input id="20m" class="filterCheck" dusk="quick-check" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
+    <li><input id="60m" class="filterCheck" dusk="medium-check" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
+    <li><input id="120m" class="filterCheck"  dusk="long-check" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
+    <li><input id="Commit+" class="filterCheck" dusk="commitment-check" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
+
   </ul>
 </div>
 </br>
 <!--Genre button  -->
-<button type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#genres">Genres
+<button dusk="genre-button" type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#genres">Genres
   <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
   <div id="genres" class="collapse">
   </br>
   <ul>
-    <li><input id="chi" class="filterCheck" type="checkbox" value ="child" name="genre">Children</input></li>
-    <li><input id="fan" class="filterCheck" type="checkbox" value ="fantasy" name="genre">Fantasy</input></li>
-    <li><input id="mys" class="filterCheck" type="checkbox" value ="mystery" name="genre">Murder Mystery</input></li>
-    <li><input id="hor" class="filterCheck" type="checkbox" value ="horror" name="genre">Horror</input></li>
-    <li><input id="wor" class="filterCheck" type="checkbox" value ="word" name="genre">Word</input></li>
-    <li><input id="par" class="filterCheck" type="checkbox" value ="party" name="genre">Party</input></li>
+
+    <li><input id="chi" class="filterCheck" dusk="children-check" type="checkbox" value ="child" name="genre">Children</input></li>
+    <li><input id="fan" class="filterCheck" dusk="fantasy-check" type="checkbox" value ="fantasy" name="genre">Fantasy</input></li>
+    <li><input id="mys" class="filterCheck" dusk="murder-check" type="checkbox" value ="mystery" name="genre">Murder Mystery</input></li>
+    <li><input id="hor" class="filterCheck" dusk="horror-check" type="checkbox" value ="horror" name="genre">Horror</input></li>
+    <li><input id="wor" class="filterCheck" dusk="word-check" type="checkbox" value ="word" name="genre">Word</input></li>
+    <li><input id="par" class="filterCheck" dusk="party-check" type="checkbox" value ="party" name="genre">Party</input></li>
   </ul>
 </div>
 </br>
@@ -58,7 +65,7 @@
 and that no information is a duplicate.
 options to add an expansion-->
 <!--Add a game button  -->
-<button type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#addGame">Add Game
+<button dusk="add-game-button"type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#addGame">Add Game
   <span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
   <div id="addGame" class="collapse">
   </br>
@@ -70,45 +77,46 @@ options to add an expansion-->
   <div class="form-group">
     <label class="gameform col-xs-2" for="name">Name:</label>
     <div class="col-xs-8">
-      <input id="name" type="text" class="form-control" placeholder="name"></input>
+      <input id="name" type="text" dusk="add-game-name" class="form-control" placeholder="name"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-2" for="year">Year:</label>
     <div class="col-xs-8">
-      <input id="year" type="text" class="form-control" placeholder="Publish Year"></input>
+      <input id="year" type="text" dusk="add-game-year" class="form-control" placeholder="Publish Year"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-2" for="minPly">Min Players:</label>
     <div class="col-xs-8">
-      <input id="minPly" type="text" class="form-control" placeholder="Minimum Players"></input>
+      <input id="minPly" type="text" dusk="add-game-min-players" class="form-control" placeholder="Minimum Players"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-2" for="mxPly">Max Players:</label>
     <div class="col-xs-8">
-      <input id="mxPly" type="text" class="form-control" placeholder="Maximum Players"></input>
+      <input id="mxPly" type="text" dusk="add-game-max-player" class="form-control" placeholder="Maximum Players"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-2" for="minPT">Min Play Time:</label>
     <div class="col-xs-8">
-      <input id="minPT" type="text" class="form-control" placeholder="Minimum Play Time"></input>
+      <input id="minPT" type="text" dusk="add-game-min-play-time" class="form-control" placeholder="Minimum Play Time"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-2" for="mxPT">Max Play Time:</label>
     <div class="col-xs-8">
-      <input id="mxPT" type="text" class="form-control" placeholder="Maximum Play Time"></input>
+      <input id="mxPT" type="text" dusk="add-game-max-play-time" class="form-control" placeholder="Maximum Play Time"></input>
     </div>
   </div>
   <div class="form-group">
     <label class="gameform col-xs-3" for="des">Description:</label>
     <div class="col-xs-8">
-      <textarea rows="4" id="des" type="text" class="form-control" placeholder="Description of the Game"></textarea>
+      <textarea rows="4" id="des" type="text" dusk="add-game-description" class="form-control" placeholder="Description of the Game"></textarea>
     </div>
   </div>
+
   <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
 </form>
 </div>

@@ -1,3 +1,6 @@
+@if($friend_list)
+  <a class href="{{ route('profile', $item->title) }}">
+@endif
 <div class="dropdown-item-content">
   <img src= "{{ asset( "images/uploads/profile/" . $item->image) }}" alt="example Avatar" />
   <div class="dropdown-item-info">
@@ -5,7 +8,9 @@
     <span>{{$item->description}}</span>
   </div>
 </div>
-
+@if($friend_list)
+  </a>
+@endif
 
 <!-- <li>
   <div>

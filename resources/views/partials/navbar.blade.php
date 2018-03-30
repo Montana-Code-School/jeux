@@ -27,9 +27,9 @@
       <div class="col-md-4">
         <form class="navbar-form navbar-left" action="{{route('searchresults')}}" method="get" role="search">
           <div class="form-group">
-            <input type="text" name="search-games" class="form-control" placeholder="Search for Games">
+            <input type="text" name="search-games" dusk="search-games-input" class="form-control" placeholder="Search for Games">
           </div>
-          <button type="submit" class="btn btn-info" value="Submit">Submit</button>
+          <button type="submit" dusk="search-games-submit" class="btn btn-info" value="Submit">Submit</button>
         </form>
       </div>
       @endauth
@@ -38,18 +38,18 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- FRIENDS SECTION -->
         @auth
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
-            @component("partials.dropdown-list",["items"=>$friend_items])
+          <li dusk="friends-dropdown-list" class="dropdown">
+            <a href="#" dusk="friends-dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+            @component("partials.dropdown-list",["items"=>$friend_items, "friend_list"=>true])
             @slot("list_name")
               Friends
             @endslot
             @endcomponent
           </li>
           <!-- NOTIFICATIONS SECTION -->
-          <li class="dropdown notifications-content">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span><span class="caret"></span></a>
-              @component("partials.dropdown-list",["items"=>$notification_items])
+          <li dusk="dropdown-notify-content" class="dropdown notifications-content">
+              <a href="#" dusk="dropdown-notify-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span></span><span class="caret"></span></a>
+              @component("partials.dropdown-list",["items"=>$notification_items, "friend_list"=>false])
               @slot("list_name")
                 Notifications
               @endslot
@@ -58,20 +58,20 @@
         @endauth
           <!-- USER SECTION -->
         @guest
-          <li><a class="dropdown-toggle" href="{{ route('register') }}">Register</a></li>
+          <li><a dusk="guest-dropdown-toggle" class="dropdown-toggle" href="{{ route('register') }}">Register</a></li>
         @endguest
-          <li class="dropdown">
+          <li dusk="user-dropdown" class="dropdown">
             @auth
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{ Auth::user()->username }}</span><span class="caret"></span></a>
+              <a href="#" dusk="user-dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{ Auth::user()->username }}</span><span class="caret"></span></a>
                 <!-- TODO: insert user avatar -->
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                <li><a href="{{ route('profile',['username'=>Auth::user()->username])}}">Profile</a></li>
-                <li><a href="{{ route('settings')}}">Settings</a></li>
-                <li><a href="{{ route('logout')}}">Logout</a></li>
+              <ul dusk="user-dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                <li><a dusk="user-profile" href="{{ route('profile',['username'=>Auth::user()->username])}}">Profile</a></li>
+                <li><a dusk="user-settings" href="{{ route('settings')}}">Settings</a></li>
+                <li><a dusk="user-logout" href="{{ route('logout')}}">Logout</a></li>
               </ul>
             @endauth
             @guest
-                <a class="dropdown-toggle" href="{{ route('login') }}">Login</a>
+                <a dusk="guest-login" class="dropdown-toggle" href="{{ route('login') }}">Login</a>
             @endguest
           </li>
         </ul>

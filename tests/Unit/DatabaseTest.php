@@ -50,8 +50,8 @@ class DatabaseTest extends TestCase
             Tests the Inventory datatypes to verify they are of the right type
         */
 
-        $inventory = Inventory::find(1);
-
+        $inventory = Inventory::find(5)->where('borrower_id', 6)->first();
+        //dd($inventory);
         $this->assertTrue(gettype($inventory->id) === 'integer');
         $this->assertTrue(gettype($inventory->game_id) === 'integer');
         $this->assertTrue(gettype($inventory->borrower_id) === 'integer');

@@ -26,14 +26,16 @@ class Game extends Model
         $games =[];
         // setup auth user friend and game ids
         $auth_user = Auth::user()->with('friends', 'inventory')->first();
+        $auth_inventory = Auth::user()->inventory()->get();
+
         $auth_game_ids = [];
         $auth_friend_ids = [];
-
+        
         foreach ($auth_user->friends as $friend) {
             array_push($auth_friend_ids, $friend->id);
         }
 
-        foreach ($auth_user->inventory as $game) {
+        foreach ($auth_inventory as $game) {
             array_push($auth_game_ids, $game->game_id);
         }
 
@@ -42,6 +44,7 @@ class Game extends Model
             $gameQuery = Game::with('inventory')->where('id', $game_id)->first();
 
             $own_game = (array_search($game_id, $auth_game_ids) !== false) ? true: false;
+
 
             $owners = [];
 
