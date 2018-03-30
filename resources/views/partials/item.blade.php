@@ -5,7 +5,7 @@
         <img dusk="tile-game-image" src="{{ $game['image'] }}" alt="{{ $game['name'] }}"/>
       </div>
       <div dusk="tile-back" class="tile-back back">
-        <h4>{{ $game['name'] }}</h4>
+        <h4 dusk="tile-back-game">{{ $game['name'] }}</h4>
         @if($game['min_player'] === $game['max_player'])
           <p>Players: {{ $game['max_player'] }}</p>
         @else

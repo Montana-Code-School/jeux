@@ -22,11 +22,11 @@
     </div>
     @if(!$game['own_game'])
       {!! Form::open(['action'=>['InventoryController@store', 'game_id' => $game['game_id'], 'user_id'=>Auth::user()->id]]) !!}
-      {!! Form::button('Add', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+      {!! Form::button('Add', ['type' => 'submit', 'class' => "btn btn-primary", 'dusk' => 'add-game']) !!}
       {!! Form::close() !!}
     @else
       {!! Form::open(['_method' => 'delete', 'action'=>['InventoryController@destroy', 'game_id' => $game['game_id'], 'user_id'=>Auth::user()->id]]) !!}
-      {!! Form::button('Remove', ['type' => 'submit', 'class' => "btn btn-danger"]) !!}
+      {!! Form::button('Remove', ['type' => 'submit', 'class' => "btn btn-danger", 'dusk' => 'remove-game']) !!}
       {!! Form::close() !!}
     @endif
   </div>
