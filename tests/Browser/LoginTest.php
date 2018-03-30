@@ -28,7 +28,15 @@ class LoginTest extends DuskTestCase
                     ->pause(2000)
                     ->click('.btn')
                     ->pause(2000)
-                    ->on(new Home);
+                    ->on(new Home)
+                    ->pause(2000)
+                    ->mouseover('@tile-game-image')
+                    ->type('@search-games-input', 'settlers')
+                    ->pause(3000)
+                    ->click('@search-games-submit')
+                    ->pause(3000)
+                    ->mouseover('@tile-game-image')
+                    ->pause(2000);
         });
     }
 }

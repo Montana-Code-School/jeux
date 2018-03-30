@@ -30,13 +30,15 @@ class Home extends BasePage
                 ->assertSee('My Games')
                 ->assertSee('Browse')
                 ->assertSee('Options')
+                ->assertSee('Browse')
                 ->assertInputValue('@search-games-input', '')
+                
                 ->assertVisible('@search-games-submit')
                 ->assertVisible('@friends-dropdown-list')
                 ->assertVisible('@dropdown-notify-content')
                 ->assertVisible('@user-dropdown')
                 ->assertVisible('@filter')
-                ->assertVisible('@age-slider');
+                ->assertVisible('@age-slider')
                 ->assertVisible('@players-slider')
                 ->assertVisible('@Play-time-drop-down')
                 ->assertVisible('@genre-button')
