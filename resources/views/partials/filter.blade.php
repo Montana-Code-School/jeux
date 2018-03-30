@@ -35,7 +35,7 @@
     <li><input id="20m" class="filterCheck" dusk="quick-check" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
     <li><input id="60m" class="filterCheck" dusk="medium-check" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
     <li><input id="120m" class="filterCheck"  dusk="long-check" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
-    <li><input id="Commit+" class="filterCheck" dusk="commitment-check" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
+    <li><input id="commit" class="filterCheck" dusk="commitment-check" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
   </ul>
 </div>
 </br>
@@ -108,10 +108,11 @@ options to add an expansion-->
     <label class="gameform col-xs-3" for="des">Description:</label>
     <div class="col-xs-8">
       <textarea rows="4" id="des" type="text" dusk="add-game-description" class="form-control" placeholder="Description of the Game"></textarea>
+      <button class="btn btn-info btn-md pull-right gameSubmit" type="submit">Submit</button>
     </div>
   </div>
 
-  <button class="btn btn-info btn-md pull-right gameSubmit" type="submit">Submit</button>
+
 </form>
 </div>
 </br>
