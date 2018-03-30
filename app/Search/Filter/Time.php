@@ -12,6 +12,8 @@ class Time implements Filter
      */
     public static function apply(Game $game, $value)
     {
-        return $game->where('min_time','', $value);
+        list($min, $max) = explode('-', $value);
+        return $game->where('min_play',$min)
+                    ->where('max_play',$max);
     }
 }
