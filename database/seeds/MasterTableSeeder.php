@@ -61,7 +61,7 @@ class MasterTableSeeder extends Seeder
           'username' => 'Winnie',
           'email' => 'winnifred@email.com',
           'password' => bcrypt('password'),
-          'name' => 'Jill Ben Kendra-Frank III',
+          'name' => 'Winnifred Goggles Tallman',
           'token' => bcrypt('token'),
           'remember_token' => bcrypt('remember_token'),
           'created_at' => $date,
