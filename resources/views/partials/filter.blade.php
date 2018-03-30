@@ -12,35 +12,30 @@
     <!--form   -->
     <form>
       <ul id="ftchoice" style=""></ul>
-      <ul><input id="input-format"></input></ul>
+      <!-- <ul><input id="input-format"></input></ul> -->
       <input dusk="filter-submit" class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
+    <p>Age</p>
+</br>
   <!--Use flash & session-->
-  <p>Age</p>
-
   <div dusk="age-slider" id="slider"></div>
-
 </br>
 <p>Players</p>
-
+</br>
 <div dusk="players-slider" id="sliderPlay"></div>
-
 </br>
 </br>
-
 <!--Play time button  -->
 <button dusk="Play-time-drop-down" type="button" data-toggle="collapse" class="btn btn-info btn-block" style="color:black" data-target="#time">Time
   <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
   <div id="time" class="collapse">
   </br>
   <ul>
-
     <li><input id="20m" class="filterCheck" dusk="quick-check" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
     <li><input id="60m" class="filterCheck" dusk="medium-check" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
     <li><input id="120m" class="filterCheck"  dusk="long-check" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
     <li><input id="Commit+" class="filterCheck" dusk="commitment-check" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
-
   </ul>
 </div>
 </br>
@@ -50,7 +45,6 @@
   <div id="genres" class="collapse">
   </br>
   <ul>
-
     <li><input id="chi" class="filterCheck" dusk="children-check" type="checkbox" value ="child" name="genre">Children</input></li>
     <li><input id="fan" class="filterCheck" dusk="fantasy-check" type="checkbox" value ="fantasy" name="genre">Fantasy</input></li>
     <li><input id="mys" class="filterCheck" dusk="murder-check" type="checkbox" value ="mystery" name="genre">Murder Mystery</input></li>
@@ -117,7 +111,7 @@ options to add an expansion-->
     </div>
   </div>
 
-  <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
+  <button class="btn btn-info btn-md pull-right gameSubmit" type="submit">Submit</button>
 </form>
 </div>
 </br>
@@ -153,7 +147,7 @@ noUiSlider.create(sliderPlay, {
   animationDuration: 300,
   start: [2, 4],
   connect: true,
-  // tooltips: [ num, num ],
+   tooltips: [ num, num ],
   range: {
     'min': 1,
     'max': 20
