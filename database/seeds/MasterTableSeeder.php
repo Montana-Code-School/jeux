@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Game;
 
 class MasterTableSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class MasterTableSeeder extends Seeder
       $dateReturn = date('Y-m-d', strtotime("+30 days"));
 
       $this->seedGames();
+      $this->updateDescript();
 
         DB::table('users')->insert([[
           'username' => 'Frankie1',
@@ -61,7 +63,7 @@ class MasterTableSeeder extends Seeder
           'username' => 'Winnie',
           'email' => 'winnifred@email.com',
           'password' => bcrypt('password'),
-          'name' => 'Jill Ben Kendra-Frank III',
+          'name' => 'Winnifred Goggles Tallman',
           'token' => bcrypt('token'),
           'remember_token' => bcrypt('remember_token'),
           'created_at' => $date,
@@ -252,5 +254,31 @@ class MasterTableSeeder extends Seeder
         ]);
         $game->save();
       }
+    }
+
+    public function updateDescript(){
+      $invadeCanada = 'The year is 1812. War is raging across Europe and Russia. Napoleon, emperor of France, is seeking to dominate Europe through conquest. France’s enemies, led by England, are engaged in a desperate struggle to defeat Napoleon. England, in dire need of men, is impressing men to serve in its navy. Included are Americans who are pressed into service at gunpoint.';
+      $sevenWonders = 'In many ways 7 Wonders Duel resembles its parent game 7 Wonders as over three ages players acquire cards that provide resources or advance their military or scientific development in order to develop a civilization and complete wonders.';
+      $acquire = 'In Acquire, each player strategically invests in businesses, trying to retain a majority of stock. As the businesses grow with tile placements, they also start merging, giving the majority stockholders of the acquired business sizable bonuses, which can then be used to reinvest into other chains. All of the investors in the acquired company can then cash in their stocks for current value or trade them 2-for-1 for shares of the newer, larger business.';
+      $ageEmpire = 'Age of Empires is the critically acclaimed, award winning Real Time Strategy (RTS) game with a legacy spanning over 15 years and nearly a dozen titles in the franchise. Known for its strategic gameplay founded on historical civilizations, the series spans a period of time from the Stone Age to early modern time, and even includes an episode exploring the legendary creatures and lore from mythology.';
+      $bang = 'Age of Empires is the critically acclaimed, award winning Real Time Strategy (RTS) game with a legacy spanning over 15 years and nearly a dozen titles in the franchise. Known for its strategic gameplay founded on historical civilizations, the series spans a period of time from the Stone Age to early modern time, and even includes an episode exploring the legendary creatures and lore from mythology.';
+      $battleship = 'Battleship (also Battleships or Sea Battle) is a guessing game for two players. ... Battleship is known worldwide as a pencil and paper game which dates from World War I. It was published by various companies as a pad-and-pencil game in the 1930s, and was released as a plastic board game by Milton Bradley in 1967.';
+      $clue = "It was devised by Anthony E. Pratt, a so. you move around the game board (a mansion), as of one of the game's six suspects (or, collecting clues from which to deduce which suspect murdered the game's perpetual victim: Mr. Boddy (Dr. Black, outside of U.S.), and with which weapon and in what room.";
+      $life = "The Game of Life, also known simply as Life, is a board game originally created in 1860 by Milton Bradley, as The Checkered Game of Life. The Game of Life was America's first popular parlor game.Two to six players can participate in one game.";
+      $monopoly = 'Monopoly is a board game where players roll two six-sided dice to move around the game-board buying and trading properties, and develop them with houses and hotels. ... The game is named after the economic concept of monopoly—the domination of a market by a single entity.';
+      $pandemic = 'A pandemic is the worldwide spread of a new disease. An influenza pandemic occurs when a new influenza virus emerges and spreads around the world, and most people do not have immunity. Viruses that have caused past pandemics typically originated from animal influenza viruses.';
+      $payday = 'The game simulates money management, with the game board resembling a calendar month. Before the game, the players decide how many months to be played (i.e. how many times to travel across the board). During the game, players accumulate bills and expenses to pay, along with collecting their monthly wage on "pay day" at the end of the month. The winner is the player who has the most money at the end of the last month of play.';
+      $catan = 'The Settlers of Catan, sometimes shortened to Catan or to Settlers, is a multiplayer board game designed by Klaus Teuber and first published in 1995 in Germany by Franckh-Kosmos Verlag (Kosmos) as Die Siedler von Catan. ... The game involves large amounts of strategy, while still being fairly simple to learn.';
+
+
+
+      $gameIds = [1, 2, 3, 4, 15, 17, 44, 81, 111, 126, 130, 149];
+      $gameDescripts = [$invadeCanada, $sevenWonders, $acquire, $ageEmpire, $bang, $battleship, $clue, $life, $monopoly, $pandemic, $payday, $catan];
+      $gameAge = [10, 10, 12, 10, 8, 8, 8, 8, 8, 8, 8, 10];
+
+      for ($i=0; $i < count($gameIds); $i++) {
+        DB::table('games')->where('id', $gameIds[$i])->update(['description' => $gameDescripts[$i], 'min_age' => $gameAge[$i]]);
+      }
+
     }
 }

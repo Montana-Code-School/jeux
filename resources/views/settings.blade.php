@@ -15,28 +15,28 @@
           <span class="input-group-text glyphicon glyphicon-user" id="basic-addon1"></span>
         </div>
         {!! Form::label('username', 'Username', ['dusk' => 'update-username-label']); !!}
-        {!! Form::text('username'); !!}
+        {!! Form::text('username', '', ['dusk' => 'update-username-input']); !!}
       </div>
       <div class ="input-group has-feedback">
         <div class ="input-group-prepend">
           <span class="input-group-text glyphicon " id="basic-addon1"></span>
         </div>
         {!! Form::label('email', 'Email', ['dusk' => 'update-email-label']); !!}
-        {!! Form::text('email'); !!}
+        {!! Form::text('email', '', ['dusk' => 'update-email-input']); !!}
       </div>
       <div class ="input-group has-feedback">
         <div class ="input-group-prepend">
           <span class="input-group-text glyphicon " id="basic-addon1"></span>
         </div>
         {!! Form::label('name', 'Name', ['dusk' => 'update-name-label']); !!}
-        {!! Form::text('name'); !!}
+        {!! Form::text('name', '', ['dusk' => 'update-name-input']); !!}
       </div>
     </div>
     <div class="input-group has-feedback">
       <div class="input-group-prepend">
         <div class="avatar col-md-6">
           {!! Form::label('image', 'Profile Picture', ['dusk' => 'update-profile-pic-label']); !!}
-          {!! Form::file('image'); !!}
+          {!! Form::file('image', ['dusk' => 'update-profile-pic']); !!}
         </div>
       </div>
     </div>

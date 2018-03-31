@@ -108,9 +108,11 @@ options to add an expansion-->
     <label class="gameform col-xs-3" for="des">Description:</label>
     <div class="col-xs-8">
       <textarea rows="4" id="des" type="text" dusk="add-game-description" class="form-control" placeholder="Description of the Game"></textarea>
+
       <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
     </div>
   </div>
+
 </form>
 </div>
 </br>
