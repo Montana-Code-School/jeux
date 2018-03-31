@@ -18,6 +18,7 @@ Route::get('/home', 'HomeController@show')->name('home');
 
 //Routes that will give you items dealing with games
 Route::get('/browse', 'GameController@show')->name('browse');
+Route::post('/filter', 'GameController@filter')->name('filter');
 //Route::get('/browse/{request}', 'GameController@filter')->name('filter');
 
 Route::resource('games','GameController');

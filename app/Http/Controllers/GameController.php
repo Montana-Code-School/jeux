@@ -20,7 +20,7 @@ class GameController extends Controller
      {
          $this->middleware('auth');
      }
-     
+
     public function index()
     {
         $games = Game::all();
@@ -102,6 +102,7 @@ class GameController extends Controller
     }
     public function filter(Request $request)
     {
-      return GameSearch::apply($request);
+      dd($request);
+      // return GameSearch::apply($request);
     }
 }
