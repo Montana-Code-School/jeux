@@ -30,21 +30,21 @@ abstract class DuskTestCase extends BaseTestCase
     protected function driver()
     {
 
-        if(config('app.env') === "testing") {
-          $options = (new ChromeOptions)->addArguments([
-              '--disable-gpu',
-              //here is where we will use the headless version for everyday testing,
-              //but will have an option to show the test for demo purposes
-              '--headless'
-          ]);
-        } else {
+        // if(config('app.env') === "testing") {
+        //   $options = (new ChromeOptions)->addArguments([
+        //       '--disable-gpu',
+        //       //here is where we will use the headless version for everyday testing,
+        //       //but will have an option to show the test for demo purposes
+        //       '--headless'
+        //   ]);
+        // } else {
           $options = (new ChromeOptions)->addArguments([
               '--disable-gpu',
               //here is where we will use the headless version for everyday testing,
               //but will have an option to show the test for demo purposes
               // '--headless'
           ]);
-        }
+        // }
 
 
         return RemoteWebDriver::create(

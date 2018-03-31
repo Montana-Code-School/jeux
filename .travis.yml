@@ -1,17 +1,15 @@
 sudo: required
+language: php
 dist: trusty
+
+php:
+  - 7.2
 
 addons:
   chrome: stable
 
 install:
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-
-language: php
-
-php:
-
-  - 7.1
 
 before_script:
   - cp .env.travis .env
