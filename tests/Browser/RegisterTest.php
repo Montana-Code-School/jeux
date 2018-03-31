@@ -16,7 +16,7 @@ class RegisterTest extends DuskTestCase
      *
      * @return void
      */
-    public function testCanMakeUserKelsey()
+    public function testCanMakeUserAmita()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
@@ -25,11 +25,11 @@ class RegisterTest extends DuskTestCase
                     ->click('a[href="http://localhost:8888/register"]')
                     ->on(new Register)
                     ->pause(2000)
-                    ->type('name', 'Kelsey')
+                    ->type('name', 'Amita')
                     ->pause(2000)
-                    ->type('username', 'iverunamok')
+                    ->type('username', 'AmitaIsAwesome')
                     ->pause(2000)
-                    ->type('email', 'kelsey@email.com')
+                    ->type('email', 'amita@email.com')
                     ->pause(2000)
                     ->type('password', 'password')
                     ->pause(2000)
