@@ -5,7 +5,7 @@
 </div>
 
 <div class="title-container">
-  <h1><a href="{{ Auth::check() ? url('/home') :  url('/login') }}">b<sup>3</sup></a></h1>
+  <h1><a id="login-link" href="{{ Auth::check() ? url('/home') :  url('/login') }}">b<sup>3</sup></a></h1>
 </div>
 
 <script>
