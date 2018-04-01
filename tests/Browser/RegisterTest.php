@@ -7,35 +7,35 @@ use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\Browser\Pages\Landing;
 use Tests\Browser\Pages\Login;
-use Tests\Browser\Pages\Home;
+use Tests\Browser\Pages\Register;
 
-class LoginTest extends DuskTestCase
+class RegisterTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
      *
      * @return void
      */
-    public function testFrankie1CanLogin()
+    public function testCanMakeUserAmita()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
                     ->pause(2000)
                     ->click('a[href="http://localhost:8888/login"]')
-                    ->on(new Login)
-                    ->type('email', 'jbkFrankie1@email.com')
+                    ->click('a[href="http://localhost:8888/register"]')
+                    ->on(new Register)
+                    ->pause(2000)
+                    ->type('name', 'Amita')
+                    ->pause(2000)
+                    ->type('username', 'AmitaIsAwesome')
+                    ->pause(2000)
+                    ->type('email', 'amita@email.com')
+                    ->pause(2000)
                     ->type('password', 'password')
                     ->pause(2000)
+                    ->type('password_confirmation', 'password')
+                    ->pause(2000)
                     ->click('.btn')
-                    ->pause(2000)
-                    ->on(new Home)
-                    ->pause(2000)
-                    ->mouseover('@tile-game-image')
-                    ->type('@search-games-input', 'settlers')
-                    ->pause(3000)
-                    ->click('@search-games-submit')
-                    ->pause(3000)
-                    ->mouseover('@tile-game-image')
                     ->pause(2000);
         });
     }
