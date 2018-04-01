@@ -21,7 +21,7 @@ class LoginTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
                     ->pause(2000)
-                    ->click('a[href="http://localhost:8888/login"]')
+                    ->click('@b3')
                     ->on(new Login)
                     ->type('email', 'jbkFrankie1@email.com')
                     ->type('password', 'password')
