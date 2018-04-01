@@ -20,7 +20,7 @@ class GameController extends Controller
      {
          $this->middleware('auth');
      }
-     
+
     public function index()
     {
         $games = Game::all();
@@ -99,5 +99,10 @@ class GameController extends Controller
         $game = App\Game::find($id);
 
         $game->delete();
+    }
+    public function filter(Request $request)
+    {
+      dd($request);
+      // return GameSearch::apply($request);
     }
 }

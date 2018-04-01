@@ -1,62 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
-<body>
+<!-- Links for the noUiSlider  -->
   <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
   <script src="https://unpkg.com/wnumb@1.1.0"></script>
 
-  <form action="{{ route('browse') }}" method="GET">
+  <form action="{{ route('filter') }}" method="POST">
     <div dusk="filter" class="filter">
       <div id="title">
         <h2 class="text-center" style="color:orange; margin-top: 0px;">Options</h2>
       </div>
     </br>
+    <!--form   -->
     <form>
       <ul id="ftchoice" style=""></ul>
+      <ul><input id="input-format"></input></ul>
+      <input dusk="filter-submit" class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
-  <p>Age</p>
-  <div dusk="age-slider"id="slider"></div>
-  <script>
-  var num = wNumb({decimals: 0})
-  noUiSlider.create(slider, {
-    animationDuration: 300,
-    start: [20, 80],
-    connect: true,
-    tooltips: [ num, num ],
-    range: {
-      'min': 1,
-      'max': 100
-    }
-  });
-</script>
+    <p>Age</p>
 </br>
-
-<!--Use flash & session
-Use Slider
-Min and Max
--->
-
+  <!--Use flash & session-->
+  <div dusk="age-slider" id="slider"></div>
+</br>
 <p>Players</p>
-<div dusk="players-slider"id="sliderPlay"></div>
-<script>
-var num = wNumb({decimals: 0})
-noUiSlider.create(sliderPlay, {
-  animationDuration: 300,
-  start: [2, 4],
-  connect: true,
-  // tooltips: [ num, num ],
-  range: {
-    'min': 1,
-    'max': 20
-  }
-});
-
-</script>
+</br>
+<div dusk="players-slider" id="sliderPlay"></div>
 </br>
 </br>
 <!--Play time button  -->
@@ -65,10 +32,10 @@ noUiSlider.create(sliderPlay, {
   <div id="time" class="collapse">
   </br>
   <ul>
-    <li><input id="ft20M" dusk="quick-check"class="filterCheck" type="checkbox">Quick 5 to 20 Minutes</input></li>
-    <li><input id="ft60M" dusk="medium-check"class="filterCheck" type="checkbox">Medium 30 to 60 Minutes </input></li>
-    <li><input id="ft120M" dusk="long-check"class="filterCheck" type="checkbox">Long 60 to 120 Minutes</input></li>
-    <li><input id="ft+M" dusk="commitment-check"class="filterCheck" type="checkbox">Commitment 120++ </input></li>
+    <li><input id="20m" class="filterCheck" dusk="quick-check" type="checkbox" value="5-20" name="Time">Quick 5 to 20 Minutes</input></li>
+    <li><input id="60m" class="filterCheck" dusk="medium-check" type="checkbox" value="30-60" name="Time">Medium 30 to 60 Minutes </input></li>
+    <li><input id="120m" class="filterCheck"  dusk="long-check" type="checkbox" value="60-120" name="Time">Long 60 to 120 Minutes</input></li>
+    <li><input id="commit" class="filterCheck" dusk="commitment-check" type="checkbox" value="120-400" name="Time">Commitment 120++ </input></li>
   </ul>
 </div>
 </br>
@@ -78,12 +45,12 @@ noUiSlider.create(sliderPlay, {
   <div id="genres" class="collapse">
   </br>
   <ul>
-    <li><input id="ftChild" dusk="children-check"class="filterCheck" type="checkbox">Children</input></li>
-    <li><input id="ftFan" dusk="fantasy-check"class="filterCheck" type="checkbox">Fantasy</input></li>
-    <li><input id="ftMM" dusk="murder-check"class="filterCheck" type="checkbox">Murder Mystery</input></li>
-    <li><input id="ftH" dusk="horror-check"class="filterCheck" type="checkbox">Horror</input></li>
-    <li><input id="ftW" dusk="word-check"class="filterCheck" type="checkbox">Word</input></li>
-    <li><input id="ftP" dusk="party-check"class="filterCheck" type="checkbox">Party</input></li>
+    <li><input id="chi" class="filterCheck" dusk="children-check" type="checkbox" value ="child" name="genre">Children</input></li>
+    <li><input id="fan" class="filterCheck" dusk="fantasy-check" type="checkbox" value ="fantasy" name="genre">Fantasy</input></li>
+    <li><input id="mys" class="filterCheck" dusk="murder-check" type="checkbox" value ="mystery" name="genre">Murder Mystery</input></li>
+    <li><input id="hor" class="filterCheck" dusk="horror-check" type="checkbox" value ="horror" name="genre">Horror</input></li>
+    <li><input id="wor" class="filterCheck" dusk="word-check" type="checkbox" value ="word" name="genre">Word</input></li>
+    <li><input id="par" class="filterCheck" dusk="party-check" type="checkbox" value ="party" name="genre">Party</input></li>
   </ul>
 </div>
 </br>
@@ -141,16 +108,15 @@ options to add an expansion-->
     <label class="gameform col-xs-3" for="des">Description:</label>
     <div class="col-xs-8">
       <textarea rows="4" id="des" type="text" dusk="add-game-description" class="form-control" placeholder="Description of the Game"></textarea>
+
+      <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
     </div>
   </div>
-</br>
-<div class="row">
-  <button dusk="add-game-submit" class="btn btn-info btn-md pull-right" type="submit">Submit</button>
-</div>
+
 </form>
 </div>
 </br>
-    <input type="submit" dusk="filter-submit" class="btn btn-info btn-block">
+
 </div>
 </form>
 
@@ -162,13 +128,50 @@ $('.filterCheck').click(function() {
   } else {
     $("#ftchoice").find("#" + this.id).remove();
   }
-
-  //slider.on('update', function(){
-  //  var handles = handles()
-//});
-
 });
-</script>
+// Age slider
+var num = wNumb({decimals: 0})
+noUiSlider.create(slider, {
+  animationDuration: 300,
+  start: [20, 80],
+  connect: true,
+  tooltips: [ num, num ],
+  range: {
+    'min': [1],
+    'max': [100]
+  },
+  format: {
+	  to: function ( value, handle ) {
+		return value + ',-';
+	  },
+	  from: function ( value, handle ) {
+		return value.replace(',-', '');
+	  }
+	}
+});
 
-</body>
-</html>
+// Player Slider
+var num = wNumb({decimals: 0})
+noUiSlider.create(sliderPlay, {
+  animationDuration: 300,
+  start: [2, 4],
+  connect: true,
+   tooltips: [ num, num ],
+  range: {
+    'min': 1,
+    'max': 20
+  }
+});
+
+var inputFormat = document.getElementById('input-format');
+
+slider.noUiSlider.on('update', function( values, handle ) {
+	inputFormat.value = values[handle];
+});
+
+inputFormat.addEventListener('change', function(){
+	slider.noUiSlider.set(this.value);
+});
+
+
+</script>

@@ -1,4 +1,3 @@
-
 <?php
 namespace App\Search\Filters;
 use App\Game;

@@ -10,6 +10,7 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
+  background-color: rgb(222, 181, 98);
   padding: 60px;
 
 }
@@ -118,7 +119,7 @@ body {
       padding: 5px 10px 5px 10px;
       min-width: 450px;
       }
-      
+
       a {
         padding: 0;
         margin: 0;
@@ -278,7 +279,7 @@ body {
     }
   }
 }
-
+// end of styling for filter
 .lightbox {
   max-width: 1000px;
   min-width: 600px;

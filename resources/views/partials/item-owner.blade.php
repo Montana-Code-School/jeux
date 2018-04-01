@@ -7,11 +7,11 @@
       <h4>{{ $owner['username'] }}</h4>
       @if(!$owner['currently_borrowing'])
         {!! Form::open(['action'=>['UserController@borrowGame', 'game_id' => $game_id, 'owner_id' => $owner['id']]]) !!}
-        {!! Form::button('Borrow Game', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+        {!! Form::button('Borrow Game', ['type' => 'submit', 'class' => "btn btn-primary", 'dusk' => 'borrow-game']) !!}
         {!! Form::close() !!}
       @else
         {!! Form::open(['action'=>['UserController@returnGame', 'game_id' => $game_id, 'owner_id' => $owner['id']]]) !!}
-        {!! Form::button('Return Game', ['type' => 'submit', 'class' => "btn btn-primary"]) !!}
+        {!! Form::button('Return Game', ['type' => 'submit', 'class' => "btn btn-primary", 'dusk' => 'return-game']) !!}
         {!! Form::close() !!}
       @endif
     </div>
