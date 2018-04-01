@@ -25,13 +25,14 @@ class Game extends Model
     public function gameInfo($game_ids) {
         $games =[];
         // setup auth user friend and game ids
-        $auth_user = Auth::user()->with('friends', 'inventory')->first();
-        $auth_inventory = Auth::user()->inventory()->get();
-
+        $auth_user = Auth::user();
+        $auth_friends = $auth_user->friends()->get();
+        $auth_inventory = $auth_user->inventory()->get();
+        
         $auth_game_ids = [];
         $auth_friend_ids = [];
-        
-        foreach ($auth_user->friends as $friend) {
+
+        foreach ($auth_friends as $friend) {
             array_push($auth_friend_ids, $friend->id);
         }
 
