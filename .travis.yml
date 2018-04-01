@@ -8,6 +8,9 @@ php:
 addons:
   chrome: stable
 
+before install:
+  -google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+
 install:
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
@@ -22,7 +25,6 @@ before_script:
   - sleep 3 # give xvfb some time to start
   - sleep 3
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
 script:
