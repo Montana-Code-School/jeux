@@ -26,7 +26,7 @@ class Landing extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-                ->assertSee('b');
+                ->assertSee('g');
     }
 
     /**
