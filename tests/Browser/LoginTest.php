@@ -20,7 +20,11 @@ class LoginTest extends DuskTestCase
     public function testFrankie1CanLogin()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit(new Login)
+            $browser->visit(new Landing)
+                    ->pause(2000)
+                    ->click('@b3')
+                    ->pause(2000)
+                    ->on(new Login)
                     ->type('email', 'jbkFrankie1@email.com')
                     ->type('password', 'password')
                     ->pause(2000)
