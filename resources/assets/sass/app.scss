@@ -112,6 +112,7 @@ body {
     .dropdown-header{
       font-size: 18px;
       font-weight: bold;
+      color: black !important;
     }
 
     .dropdown-item {
@@ -488,6 +489,15 @@ body {
 
 label {
   color: white;
+}
+
+img {
+  border: 0;
+  border-radius: 2px;
+}
+
+.lead {
+  color: black !important;
 }
 
 .featherlight .featherlight-content {
