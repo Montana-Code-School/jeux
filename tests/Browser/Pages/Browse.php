@@ -6,7 +6,7 @@ use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 use Tests\Browser\Components\Navbar;
 
-class Home extends BasePage
+class Browse extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -15,7 +15,7 @@ class Home extends BasePage
      */
     public function url()
     {
-        return '/home';
+        return '/browse';
     }
 
     /**
@@ -37,21 +37,14 @@ class Home extends BasePage
                 ->assertVisible('@friends-dropdown-toggle')
                 ->assertVisible('@dropdown-notify-toggle')
                 ->assertVisible('@user-dropdown-toggle')
-                ->click('@friends-dropdown-toggle')
-                ->pause(2000)
-                ->click('@dropdown-notify-toggle')
-                ->pause(2000)
-                ->click('@dropdown-notify-toggle')
-                ->pause(2000)
                 ->click('@user-dropdown-toggle')
                 ->assertVisible('@user-profile')
                 ->assertVisible('@user-settings')
                 ->assertVisible('@user-logout')
-                ->pause(2000)
-                ->click('@user-dropdown-toggle')
         //testing the elements on Home
-                ->assertSee('My Games')
+                ->assertSee('Browse')
                 ->assertVisible('@tile-game-image')
+                ->assertVisible('.pagination')
         //testing the elements on Filter
                 ->assertSee('Options')
                 ->assertVisible('@filter')
@@ -61,10 +54,9 @@ class Home extends BasePage
                 ->assertVisible('@genre-button')
                 ->assertVisible('@add-game-button')
                 ->assertVisible('@filter-submit');
-
     }
 
-    /**->assertValue('h2', 'My Games')
+    /**
      * Get the element shortcuts for the page.
      *
      * @return array
