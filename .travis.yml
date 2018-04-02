@@ -9,7 +9,7 @@ addons:
   chrome: stable
 
 before install:
-  -google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  -google-chrome-stable --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
