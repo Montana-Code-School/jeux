@@ -27,16 +27,25 @@ class Home extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
+        //testing the navBar
                 ->assertSee('My Games')
                 ->assertSee('Browse')
-                ->assertSee('Options')
-                ->assertSee('Browse')
                 ->assertInputValue('@search-games-input', '')
-                
                 ->assertVisible('@search-games-submit')
                 ->assertVisible('@friends-dropdown-list')
                 ->assertVisible('@dropdown-notify-content')
-                ->assertVisible('@user-dropdown')
+                ->assertVisible('@friends-dropdown-toggle')
+                ->assertVisible('@dropdown-notify-toggle')
+                ->assertVisible('@user-dropdown-toggle')
+                ->click('@user-dropdown-toggle')
+                ->assertVisible('@user-profile')
+                ->assertVisible('@user-settings')
+                ->assertVisible('@user-logout')
+        //testing the elements on Home
+                ->assertSee('My Games')
+                ->assertVisible('@tile-game-image')
+        //testing the elements on Filter
+                ->assertSee('Options')
                 ->assertVisible('@filter')
                 ->assertVisible('@age-slider')
                 ->assertVisible('@players-slider')
