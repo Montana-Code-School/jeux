@@ -20,6 +20,7 @@ class LoginTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
+                    ->dump()
                     ->pause(2000)
                     ->click('@b3')
                     ->on(new Login)
