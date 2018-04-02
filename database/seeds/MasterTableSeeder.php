@@ -80,6 +80,8 @@ class MasterTableSeeder extends Seeder
           'updated_at' => $date
         ]]);
 
+        $this->updateDummyAvatars();
+
         DB::table('friends')->insert([[
           'user_id'=>1,
           'friend_id'=>2
@@ -198,6 +200,62 @@ class MasterTableSeeder extends Seeder
           'date_returned' => null
         ],
         [
+          'game_id' => 1,
+          'borrower_id' => 5,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
+        ],
+        [
+          'game_id' => 2,
+          'borrower_id' => 6,
+          'owner_id' => 5,
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
+        ],
+        [
+          'game_id' => 3,
+          'borrower_id' => null,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 4,
+          'borrower_id' => null,
+          'owner_id' => 5,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 15,
+          'borrower_id' => 5,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
+        ],
+        [
+          'game_id' => 17,
+          'borrower_id' => 6,
+          'owner_id' => 5,
+          'date_borrowed' => $date,
+          'date_returned' => $dateReturn
+        ],
+        [
+          'game_id' => 44,
+          'borrower_id' => null,
+          'owner_id' => 6,
+          'date_borrowed' => $date,
+          'date_returned' => null
+        ],
+        [
+          'game_id' => 81,
+          'borrower_id' => null,
+          'owner_id' => 5,
+          'date_borrowed' => null,
+          'date_returned' => null
+        ],
+        [
           'game_id' => 111,
           'borrower_id' => 5,
           'owner_id' => 6,
@@ -205,21 +263,21 @@ class MasterTableSeeder extends Seeder
           'date_returned' => $dateReturn
         ],
         [
-          'game_id' => 24,
+          'game_id' => 126,
           'borrower_id' => 6,
           'owner_id' => 5,
           'date_borrowed' => $date,
           'date_returned' => $dateReturn
         ],
         [
-          'game_id' => 1,
+          'game_id' => 130,
           'borrower_id' => null,
           'owner_id' => 6,
           'date_borrowed' => $date,
           'date_returned' => null
         ],
         [
-          'game_id' => 2,
+          'game_id' => 149,
           'borrower_id' => null,
           'owner_id' => 5,
           'date_borrowed' => null,
@@ -280,5 +338,14 @@ class MasterTableSeeder extends Seeder
         DB::table('games')->where('id', $gameIds[$i])->update(['description' => $gameDescripts[$i], 'min_age' => $gameAge[$i]]);
       }
 
+    }
+
+    public function updateDummyAvatars() {
+      $dummyId = [5, 6];
+      $dummyAvs = ['winnie.jpg', 'peggy.jpg'];
+
+      for ($i = 0; $i < count($dummyId); $i++) {
+        DB::table('users')->where('id', $dummyId[$i])->update(['image' => $dummyAvs[$i]]);
+      }
     }
 }

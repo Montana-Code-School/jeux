@@ -3,7 +3,7 @@
   <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
   <script src="https://unpkg.com/wnumb@1.1.0"></script>
 
-  <form action="{{ route('browse') }}" method="GET">
+  <form action="{{ route('filter') }}" method="POST">
     <div dusk="filter" class="filter">
       <div id="title">
         <h2 class="text-center" style="color:orange; margin-top: 0px;">Options</h2>
@@ -12,7 +12,7 @@
     <!--form   -->
     <form>
       <ul id="ftchoice" style=""></ul>
-      <!-- <ul><input id="input-format"></input></ul> -->
+      <ul><input id="input-format"></input></ul>
       <input dusk="filter-submit" class="btn btn-info btn-md pull-right" type="submit">
     </form>
   </br>
@@ -108,10 +108,10 @@ options to add an expansion-->
     <label class="gameform col-xs-3" for="des">Description:</label>
     <div class="col-xs-8">
       <textarea rows="4" id="des" type="text" dusk="add-game-description" class="form-control" placeholder="Description of the Game"></textarea>
-      <button class="btn btn-info btn-md pull-right gameSubmit" type="submit">Submit</button>
+
+      <button class="btn btn-info btn-md pull-right" type="submit">Submit</button>
     </div>
   </div>
-
 
 </form>
 </div>
@@ -137,9 +137,17 @@ noUiSlider.create(slider, {
   connect: true,
   tooltips: [ num, num ],
   range: {
-    'min': 1,
-    'max': 100
-  }
+    'min': [1],
+    'max': [100]
+  },
+  format: {
+	  to: function ( value, handle ) {
+		return value + ',-';
+	  },
+	  from: function ( value, handle ) {
+		return value.replace(',-', '');
+	  }
+	}
 });
 
 // Player Slider
@@ -157,12 +165,12 @@ noUiSlider.create(sliderPlay, {
 
 var inputFormat = document.getElementById('input-format');
 
-sliderFormat.noUiSlider.on('update', function( values, handle ) {
+slider.noUiSlider.on('update', function( values, handle ) {
 	inputFormat.value = values[handle];
 });
 
 inputFormat.addEventListener('change', function(){
-	sliderFormat.noUiSlider.set(this.value);
+	slider.noUiSlider.set(this.value);
 });
 
 
