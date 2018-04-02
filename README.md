@@ -3,7 +3,7 @@
 Game night.
 We all love it, we all do it, we all have a special "gamer tag" that defines who we are in that space.
 Ever wanted to try out a game to see if it's worth the price or the time? I bet you have. We have the solution for you!
-b<sup>3</sup> is a handy site that lets you and your friends share games with one another while allow you to keep track of who has what. No more wondering where your Friday night specialty has gone! b<sup>3</sup> has you covered!
+b<sup>3</sup> is a handy site that lets you and your friends share games with one another while allowing you to keep track of who has what. No more wondering where your Friday night specialty has gone! b<sup>3</sup> has you covered!
 
 ## Table of Contents
 
@@ -21,18 +21,20 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 ## <a name="Getting Started"></a> Getting Started
 
 ### Prerequisites
-- MAMP Server   
+- (L|M)AMP Server   
 - PHP >= 7.0.0
 - [composer (global installation) ](https://getcomposer.org/doc/00-intro.md#globally)
 
 
 ### Installing
 1. Clone the repository.
-2. Then install the following from the command line.  
+2. Then run the following from the command line.  
 
 `$ composer install`   
 `$ npm install`  
-`$ php artisan key:generate`   
+`$ php artisan key:generate`  
+
+### Setting Up the Database
 `$ php artisan migrate:refresh`   
 `$ php artisan db:seed`   
 
@@ -45,7 +47,8 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 
 ## <a name="Deployment"></a> Deployment
 
-### [DigitalOcean](https://www.digitalocean.com/)
+###  [DigitalOcean](https://www.digitalocean.com/)
+We deployed to DigitalOcean.
 
 ## <a name=" What's Inside (Technologies)"></a> What's Inside (Technologies)
 
@@ -56,7 +59,7 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 * OAuth
 * Bootstrap
 ### Back End
-* MySql
+* MySQL
 * Eloquent
 ### Testing Gear
 * TravisCI
@@ -72,7 +75,7 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 * **Cassidy**
   * Front End Design
   * Specialty Design Work
-  * Web GL
+  * WebGL
   * p5.js Development and Integration
 * **Keesha**
   * Routes
@@ -81,7 +84,7 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
   * Front End Development
 * **Kelsey**
   * Testing Architecture
-  * Travis-CI Integration
+  * Travis CI Integration
   * Automated Browser Testing
   * Front End Development
   * Database Design
