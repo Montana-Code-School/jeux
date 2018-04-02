@@ -15,7 +15,7 @@ before_script:
   - php artisan migrate
   - php artisan db:seed
   - cp .env.travis .env
-  - cp phpunit.travis.xml phpunit.xml
+  - cp phpunit.dusk.xml phpunit.xml
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
@@ -29,7 +29,7 @@ install:
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
    - cp .env.travis .env
-   - cp phpunit.travis.xml phpunit.xml
+   - cp phpunit.dusk.xml phpunit.xml
 
    - php artisan key:generate
 
