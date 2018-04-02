@@ -1,5 +1,6 @@
 dist: trusty
-sudo: required
+sudo: true
+
 language: php
 
 php:
@@ -8,24 +9,29 @@ php:
 addons:
   chrome: stable
 
-before install:
-  -google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-
-install:
-   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-
 before_script:
-  - cp .env.travis .env
   - composer self-update
   - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
+  - cp .env.travis .env
+  - cp phpunit.travis.xml.xml
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3 # give xvfb some time to start
   - sleep 3
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
+
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
+
+install:
+   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+
+   - cp .env.travis .env
+   - cp phpunit.travis.xml.xml
+
+   - php artisan key:generate
 
 script:
   - vendor/bin/phpunit
