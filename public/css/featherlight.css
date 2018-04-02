@@ -62,7 +62,8 @@
 		/* dimensions: handling large content */
 		margin-left: 5%;
 		margin-right: 5%;
-		max-height: 95%;
+		max-height: 80%;
+		max-width: 70%;
 
 		/* styling */
 		cursor: auto;
