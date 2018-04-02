@@ -16,7 +16,7 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testFrankie1CanLogin()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)

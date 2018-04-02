@@ -4,9 +4,8 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
-use Tests\Browser\Components\Navbar;
 
-class Home extends BasePage
+class Settings extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -15,7 +14,7 @@ class Home extends BasePage
      */
     public function url()
     {
-        return '/home';
+        return '/settings';
     }
 
     /**
@@ -27,7 +26,7 @@ class Home extends BasePage
     public function assert(Browser $browser)
     {
         $browser->assertPathIs($this->url())
-        //testing the navBar
+  //testing the navBar
                 ->assertSee('My Games')
                 ->assertSee('Browse')
                 ->assertInputValue('@search-games-input', '')
@@ -41,22 +40,22 @@ class Home extends BasePage
                 ->assertVisible('@user-profile')
                 ->assertVisible('@user-settings')
                 ->assertVisible('@user-logout')
-        //testing the elements on Home
-                ->assertSee('My Games')
-                ->assertVisible('@tile-game-image')
-        //testing the elements on Filter
-                ->assertSee('Options')
-                ->assertVisible('@filter')
-                ->assertVisible('@age-slider')
-                ->assertVisible('@players-slider')
-                ->assertVisible('@Play-time-drop-down')
-                ->assertVisible('@genre-button')
-                ->assertVisible('@add-game-button')
-                ->assertVisible('@filter-submit');
-
+//testing the elements on Settings
+                ->assertSee('Settings')
+                ->assertVisible('@update-name-label')
+                ->assertInputValue('#name', 'Jill Ben Kendra-Frank')
+                ->assertVisible('@update-username-label')
+                ->assertInputValue('@update-username-input', 'Frankie1')
+                ->assertVisible('@update-email-label')
+                ->assertInputValue('@update-email-input', 'jbkFrankie1@email.com')
+                ->assertVisible('@update-change-label')
+                ->assertVisible('@update-confirm-label')
+                ->assertVisible('@update-profile-pic-label')
+                ->assertVisible('@update-profile-pic')
+                ->assertVisible('@update-button');
     }
 
-    /**->assertValue('h2', 'My Games')
+    /**
      * Get the element shortcuts for the page.
      *
      * @return array
