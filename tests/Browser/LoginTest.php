@@ -29,6 +29,9 @@ class LoginTest extends DuskTestCase
                     ->type('password', 'password')
                     ->pause(2000)
                     ->click('.btn')
+                    ->pause(2000)
+
+                    -dump()
                     ->pause(4000)
                     // ->mouseover('@tile-front')
                     ->pause(2000)
