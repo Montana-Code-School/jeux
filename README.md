@@ -1,66 +1,108 @@
-# b3
+# b<sup>3</sup>
 
 Game night.
 We all love it, we all do it, we all have a special "gamer tag" that defines who we are in that space.
 Ever wanted to try out a game to see if it's worth the price or the time? I bet you have. We have the solution for you!
-Jeux is a handy site that lets you and your friends share games with one another while allow you to keep track of who has what. No more wondering where your Friday night specialty has gone! b3 has you covered!
+b<sup>3</sup> is a handy site that lets you and your friends share games with one another while allowing you to keep track of who has what. No more wondering where your Friday night specialty has gone! b<sup>3</sup> has you covered!
 
 ## Table of Contents
 
-- [What's inside (Technologies)](#What's-inside-Technologies)
-- [Meet the team](#Meet-the-team)
+- [Getting Started](#Getting-Started)
+- [Running the Tests](#Running-the Tests)
+- [Deployment](#Deployment)
+- [What's Inside (Technologies)](#What's-inside-Technologies)
+- [Meet the Team](#Meet-the-team)
 - [File Structure](#File-Structure)
 - [Standards](#Standards)
 - [Database](#Database)
 - [Deadlines](#Deadlines)
 - [User Stories](#User-Story)
 
-## <a name=" What's inside (Technologies)"></a> What's inside (Technologies)
+## <a name="Getting Started"></a> Getting Started
 
-### Frontend
+### Prerequisites
+- (L|M)AMP Server   
+- PHP >= 7.0.0
+- [composer (global installation) ](https://getcomposer.org/doc/00-intro.md#globally)
+
+
+### Installing
+1. Clone the repository.
+2. Then run the following from the command line.  
+
+`$ composer install`   
+`$ npm install`  
+`$ php artisan key:generate`  
+
+### Setting Up the Database
+`$ php artisan migrate:refresh`   
+`$ php artisan db:seed`   
+
+## <a name="Running the Tests"></a> Running the Tests
+
+### Run Unit Tests  
+`$ vendor/bin/phpunit`
+### Run Browser Tests  
+`$ php artisan dusk`
+
+## <a name="Deployment"></a> Deployment
+
+###  [DigitalOcean](https://www.digitalocean.com/)
+We deployed to DigitalOcean.
+
+## <a name=" What's Inside (Technologies)"></a> What's Inside (Technologies)
+
+### Front End
 * Laravel
-* Php
+* PHP
 * SASS
 * OAuth
 * Bootstrap
-### Backend
-* MySql
+### Back End
+* MySQL
 * Eloquent
-### Testing gear
-* Phpunit
-* Dusk
+### Testing Gear
+* TravisCI
+* PHPUnit
+* Automated Browser Testing (Dusk)
 ### Communication
 * Github
 * Zenhub
 * Slack
 
-## <a name="Meet-the-team"></a> Meet the team
+## <a name="Meet-the-team"></a> Meet the Team
 
 * **Cassidy**
-  * Front End Designer
-  * Specialty design work
+  * Front End Design
+  * Specialty Design Work
+  * WebGL
+  * p5.js Development and Integration
 * **Keesha**
   * Routes
-  * Backend/Database
-  * Git master
-  * Helping on frontend work
+  * Back End/Database
+  * Git Master
+  * Front End Development
 * **Kelsey**
-  * Testing
+  * Testing Architecture
+  * Travis CI Integration
+  * Automated Browser Testing
+  * Front End Development
+  * Database Design
 * **Kerry**
   * Project Manager
-  * Frontend assistant to Cassidy
+  * Front End Development
 * **Matt**
   * Mock ups
-  * Testing
+  * Automated Unit Testing
   * Deployment
-  * Git master
-  * Slight frontend work
+  * Git Master
+  * Front End Development
   * Our jack of all trades
 * **Nate**
   * Routes
-  * Testing
-  * Backend/Database
-  * Helping on frontend work
+  * Browser Testing
+  * Back End/Database
+  * Helped on Front End
 
 ## <a name="File-Structure"></a> File Structure
 ```
@@ -103,8 +145,7 @@ Jeux is a handy site that lets you and your friends share games with one another
 | dataBaseSpecs.md
 | README.md
 ```
-### <a name="Standards"></a> Standards
-
+## <a name="Standards"></a> Standards
 
 ### Github
 
@@ -114,18 +155,18 @@ Jeux is a handy site that lets you and your friends share games with one another
   * safety branch
 * Branches must have a name of what your are working on (example: n8-bug-fixing(insert error here))
 * Pull requests
-  * Add a description
-  * Add the Git masters as reviewers
-  * **Do not merge in your own branch to master, must have a new set of eyes merge into master**
+  * Add a description.
+  * Add the Git masters as reviewers.
+  * **Do not merge in your own branch to master, must have a new set of eyes merge into master.**
 
 ### Code
-* Code must be formatted and clean before a merge may be done
+* Code must be formatted and clean before a merge may be done.
 
 ### Due Dates
-* If you are unable to get a project done by it's stated due date
-  * Communicate with the project manager
-  * Communicate with the team members working on something similar
-  * Ask for help
+* If you are unable to get a project done by it's stated due date:
+  * Communicate with the project manager.
+  * Communicate with the team members working on something similar.
+  * Ask for help.
 
 ## <a name="Deadlines"></a> Deadlines
   * Thurs. February 1st:
@@ -159,8 +200,14 @@ Jeux is a handy site that lets you and your friends share games with one another
       - Presentation practice.
   * Tues. April 3rd:
       - Demo Day!
-## <a name="User-Stories"></a> User Stories
-  * Name:Jill Ben Kendra-Frank
-  * Username: Frankie5
-  * Password: Password
-  * Email: jbkFrankie@email.com
+## <a name="User-Stories"></a> User Stories  
+
+>Name: Winnifred  
+Username: Winnie  
+Password: password  
+Email: winnifred@email.com  
+
+>Name: Peggy  
+Username: Pegs  
+Password: password  
+Email: peggy@email.com
