@@ -35,7 +35,7 @@ class RegisterTest extends DuskTestCase
                     ->pause(2000)
                     ->type('password_confirmation', 'password')
                     ->pause(2000)
-                    ->click('.btn')
+                    ->click('@register')
                     ->pause(2000)
                     ->dump();
         });
