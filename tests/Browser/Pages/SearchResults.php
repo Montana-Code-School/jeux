@@ -51,7 +51,7 @@ class SearchResults extends BasePage
                 ->click('@user-dropdown-toggle')
         //testing the elements on Home
                 ->assertSee('Search Results Page')
-                ->assertVisible('@tile-game-image')
+                ->assertVisible('@tile-front')
                 ->assertVisible('.pagination')
         //testing the elements on Filter
                 ->assertSee('Options')

@@ -51,7 +51,7 @@ class Home extends BasePage
                 ->click('@user-dropdown-toggle')
         //testing the elements on Home
                 ->assertSee('My Games')
-                ->assertVisible('@tile-game-image')
+                ->assertVisible('@tile-front')
         //testing the elements on Filter
                 ->assertSee('Options')
                 ->assertVisible('@filter')
