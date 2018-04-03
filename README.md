@@ -8,7 +8,7 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 ## Table of Contents
 
 - [Getting Started](#Getting-Started)
-- [Running the Tests](#Running-the Tests)
+- [Running the Tests](#Running-the-Tests)
 - [Deployment](#Deployment)
 - [What's Inside (Technologies)](#What's-inside-Technologies)
 - [Meet the Team](#Meet-the-team)
