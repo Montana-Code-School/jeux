@@ -21,8 +21,8 @@ class RegisterTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit(new Landing)
                     ->pause(2000)
-                    ->click('a[href="http://localhost:8888/login"]')
-                    ->click('a[href="http://localhost:8888/register"]')
+                    ->click('@b3')
+                    ->click('@register')
                     ->on(new Register)
                     ->pause(2000)
                     ->type('name', 'Amita')

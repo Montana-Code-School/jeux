@@ -66,7 +66,7 @@
             <!--REGISTER HERE  -->
             <div class="form-group">
               <div class="col-md-8 col-md-offset-4">
-                <a class="btn btn-info register-btn color:black;" href="{{ route('register') }}">
+                <a dusk="register" class="btn btn-info register-btn color:black;" href="{{ route('register') }}">
                 Register Here
                 </a>
               </div>

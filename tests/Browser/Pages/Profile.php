@@ -45,7 +45,7 @@ class Profile extends BasePage
                 ->assertSee('User Profile')
                 ->assertVisible('.user-profile')
                 ->assertVisible('.user-info')
-                ->assertVisible('@tile-game-image')
+                // ->assertVisible('@tile-game-image')
         //testing the elements on Filter
                 ->assertSee('Options')
                 ->assertVisible('@filter')
