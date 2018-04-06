@@ -40,7 +40,7 @@
               <div class="col-md-6 col-md-offset-4">
                 <div class="checkbox">
                   <label>
-                      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                      <input dusk="remember-me" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                   </label>
                 </div>
               </div>
@@ -48,10 +48,10 @@
             <!--FORGOT YOUR PASSWORD -->
             <div class="form-group">
               <div class="col-md-8 col-md-offset-4">
-                <button type="submit" class="btn btn-info">
+                <button dusk="login-btn" type="submit" class="btn btn-info">
                     Login
                 </button>
-                <a class="btn btn-link" href="{{ route('password.request') }}">
+                <a dusk="forgot-password" class="btn btn-link" href="{{ route('password.request') }}">
                     Forgot Your Password?
                 </a>
               </div>
@@ -66,7 +66,7 @@
             <!--REGISTER HERE  -->
             <div class="form-group">
               <div class="col-md-8 col-md-offset-4">
-                <a class="btn btn-info register-btn color:black;" href="{{ route('register') }}">
+                <a dusk="register-btn" class="btn btn-info register-btn color:black;" href="{{ route('register') }}">
                 Register Here
                 </a>
               </div>
