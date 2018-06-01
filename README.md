@@ -36,7 +36,13 @@ b<sup>3</sup> is a handy site that lets you and your friends share games with on
 
 ### Setting Up the Database
 `$ php artisan migrate:refresh`   
-`$ php artisan db:seed`   
+`$ php artisan db:seed`
+
+### AND GO!
+Make sure your Mamp servers are started and document root is pointed at jeux
+
+`$ npm run watch`
+And then visit your localhost!
 
 ## <a name="Running the Tests"></a> Running the Tests
 
